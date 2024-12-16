@@ -1,13 +1,11 @@
-package MThien.Yumble;
+package com.mthien.yumble;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class YumbleApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(YumbleApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(YumbleApplication.class, args);
+    }
 }

@@ -1,4 +1,4 @@
-package MThien.Yumble;
+package com.mthien.yumble;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
