@@ -5,16 +5,18 @@ import com.mthien.yumble.entity.Enum.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    @OneToOne(mappedBy = "users")
+    private Premium premium;
 
     @Column(name = "avatar")
     private String avatar;

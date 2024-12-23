@@ -47,7 +47,6 @@ public class ChatGPTService {
                     .path("content")
                     .asText();
         } catch (Exception e) {
-            e.printStackTrace();
             return "Error processing request: " + e.getMessage();
         }
     }

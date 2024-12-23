@@ -2,7 +2,6 @@ package com.mthien.yumble.controller;
 
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.service.ChatGPTService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +9,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/chat")
 public class ChatGPTController {
 
-    @Autowired
-    private ChatGPTService chatGPTService;
+    private final ChatGPTService chatGPTService;
+
+    public ChatGPTController(ChatGPTService chatGPTService) {
+        this.chatGPTService = chatGPTService;
+    }
 
     @PostMapping("/ask")
     public ResponseEntity<ApiResponse<String>> askQuestion(@RequestBody String question) {

@@ -15,7 +15,12 @@ public enum ErrorCode {
     ACCOUNT_NOT_VERIFIED(1006, "Tài khoản của bạn chưa được xác thực", HttpStatus.FORBIDDEN),
 
     //FIREBASE
-    FILE_NOT_FOUND(1050, "Hình ảnh không tồn tại trên firebase", HttpStatus.NOT_FOUND);
+    FILE_NOT_FOUND(1050, "Hình ảnh không tồn tại trên firebase", HttpStatus.NOT_FOUND),
+
+    //PREMIUM
+    PREMIUM_NOT_REGISTERED(1100, "Bạn chưa đăng ký Premium", HttpStatus.BAD_REQUEST),
+    PREMIUM_EXPIRED(1101, "Thời gian Premium của bạn đã hết hạn", HttpStatus.BAD_REQUEST)
+    ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {
         this.code = code;

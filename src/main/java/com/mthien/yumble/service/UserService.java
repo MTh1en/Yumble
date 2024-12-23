@@ -24,17 +24,22 @@ public class UserService {
         this.firebaseService = firebaseService;
     }
 
-    public UserResponse updateProfile(Integer id, UpdateProfileRequest request) {
+    public UserResponse updateProfile(String id, UpdateProfileRequest request) {
         Users users = userRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
         userMapper.updateProfile(users, request);
         return userMapper.toUserResponse(userRepo.save(users));
     }
 
-    public UserResponse updateAvatar(Integer id, MultipartFile avatar) throws IOException {
+    public UserResponse updateAvatar(String id, MultipartFile avatar) throws IOException {
         Users users = userRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
         String imageUrl = firebaseService.uploadFile(users.getEmail(), avatar);
         users.setAvatar(imageUrl);
         return userMapper.toUserResponse(userRepo.save(users));
 
+    }
+
+    public UserResponse viewProfile(String id){
+        Users users = userRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
+        return userMapper.toUserResponse(users);
     }
 }
