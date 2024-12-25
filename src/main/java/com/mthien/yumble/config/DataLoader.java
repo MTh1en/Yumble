@@ -27,11 +27,20 @@ public class DataLoader implements CommandLineRunner {
                     .id(UUID.randomUUID().toString())
                     .name("Nguyen Yang")
                     .email("dstnmtxii@gmail.com")
-                    .password(passwordEncoder.encode("tnmt121222003mt"))
+                    .password(passwordEncoder.encode("tnmt12122003mt"))
+                    .role(Role.CUSTOMER)
+                    .status(UserStatus.VERIFIED)
+                    .build();
+            Users user2 = Users.builder()
+                    .id(UUID.randomUUID().toString())
+                    .name("Minh Thien")
+                    .email("mt121222003@gmail.com")
+                    .password(passwordEncoder.encode("tnmt12122003mt"))
                     .role(Role.ADMIN)
                     .status(UserStatus.VERIFIED)
                     .build();
             userRepo.save(user1);
+            userRepo.save(user2);
         }
     }
 }

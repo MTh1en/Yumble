@@ -8,6 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreatePremiumRequest {
-    private String userId;
     private Long days;
 }

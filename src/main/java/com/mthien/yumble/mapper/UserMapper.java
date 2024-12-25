@@ -11,6 +11,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
@@ -24,6 +26,7 @@ public interface UserMapper {
 
     UserResponse toUserResponse(Users users);
 
+    List<UserResponse> toListUserResponse(List<Users> users);
     default Role defaultRole() {
         return Role.GUEST;
     }

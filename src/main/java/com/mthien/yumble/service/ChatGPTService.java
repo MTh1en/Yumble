@@ -1,14 +1,18 @@
 package com.mthien.yumble.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.http.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.reactive.function.client.WebClient;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
@@ -27,8 +31,10 @@ public class ChatGPTService {
                 .build();
 
         Map<String, Object> requestBody = Map.of(
-                "model", "gpt-3.5-turbo",
-                "messages", List.of(Map.of("role", "user", "content", question))
+                "model", "gpt-4o-mini",
+                "messages", List.of(
+                        Map.of("role", "system", "content", "Bạn là một trợ lý chuyên về gợi ý món ăn. Nếu người dùng hỏi về món ăn, hãy trả lời tầm 5 tên món ăn bất ký liên quan đến chủ để đó viết liền 1 dòng. Nếu câu hỏi không liên quan, hãy trả lời 'Hãy liên hệ với bộ phận hỗ trợ để biết thêm thông tin.'"),
+                        Map.of("role", "user", "content", question))
         );
 
         try {

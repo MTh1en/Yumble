@@ -5,7 +5,6 @@ import com.mthien.yumble.entity.Users;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.PremiumMapper;
-import com.mthien.yumble.payload.request.premium.CalculatePremiumRequest;
 import com.mthien.yumble.payload.request.premium.CreatePremiumRequest;
 import com.mthien.yumble.payload.response.premium.PremiumResponse;
 import com.mthien.yumble.repository.PremiumRepo;
@@ -27,16 +26,16 @@ public class PremiumService {
         this.userRepo = userRepo;
     }
 
-    public PremiumResponse createPremium(CreatePremiumRequest request) {
-        Users users = userRepo.findById(request.getUserId())
+    public PremiumResponse createPremium(String id, CreatePremiumRequest request) {
+        Users users = userRepo.findById(id)
                 .orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
         Premium premium = premiumMapper.createPremium(request);
         premium.setUsers(users);
         return premiumMapper.toPremiumResponse(premiumRepo.save(premium));
     }
 
-    public PremiumResponse calculateRemaining(CalculatePremiumRequest request) {
-        Users users = userRepo.findById(request.getUserId())
+    public PremiumResponse calculateRemaining(String id) {
+        Users users = userRepo.findById(id)
                 .orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
         Premium premium = premiumRepo.findByUsers(users).orElseThrow(() -> new AppException(ErrorCode.PREMIUM_NOT_REGISTERED));
         long remaining = LocalDateTime.now().until(premium.getEnd(), ChronoUnit.DAYS);

@@ -39,8 +39,8 @@ public class AuthController {
                 .build());
     }
 
-    @PostMapping("send-verification-email")
-    public ResponseEntity<ApiResponse<String>> sendVerificationEmail(@RequestParam("email") String email) {
+    @PostMapping("send-verification-email/{email}")
+    public ResponseEntity<ApiResponse<String>> sendVerificationEmail(@PathVariable("email") String email) {
         authService.sendVerificationEmail(email);
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(200)

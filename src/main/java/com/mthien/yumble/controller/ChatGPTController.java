@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/chat")
+@RequestMapping("/ai")
 public class ChatGPTController {
 
     private final ChatGPTService chatGPTService;
@@ -15,7 +15,7 @@ public class ChatGPTController {
         this.chatGPTService = chatGPTService;
     }
 
-    @PostMapping("/ask")
+    @PostMapping("/chatgpt")
     public ResponseEntity<ApiResponse<String>> askQuestion(@RequestBody String question) {
         var data = chatGPTService.getChatGPTResponse(question);
         return ResponseEntity.ok(ApiResponse.<String>builder()

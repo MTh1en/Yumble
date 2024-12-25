@@ -1,6 +1,5 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.payload.request.premium.CalculatePremiumRequest;
 import com.mthien.yumble.payload.request.premium.CreatePremiumRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.premium.PremiumResponse;
@@ -17,9 +16,10 @@ public class PremiumController {
         this.premiumService = premiumService;
     }
 
-    @PostMapping("create")
-    public ResponseEntity<ApiResponse<PremiumResponse>> createPremium(@RequestBody CreatePremiumRequest request) {
-        var data = premiumService.createPremium(request);
+    @PostMapping("create/{id}")
+    public ResponseEntity<ApiResponse<PremiumResponse>> createPremium(@PathVariable("id") String id,
+                                                                          @RequestBody CreatePremiumRequest request) {
+        var data = premiumService.createPremium(id, request);
         return ResponseEntity.ok(ApiResponse.<PremiumResponse>builder()
                 .code(200)
                 .message("Bạn đã đăng ký Premium thành công")
@@ -27,9 +27,9 @@ public class PremiumController {
                 .build());
     }
 
-    @PutMapping("calculate-remaining")
-    public ResponseEntity<ApiResponse<PremiumResponse>> calculateRemaining(@RequestBody CalculatePremiumRequest request) {
-        var data = premiumService.calculateRemaining(request);
+    @PutMapping("calculate-remaining/{id}")
+    public ResponseEntity<ApiResponse<PremiumResponse>> calculateRemaining(@PathVariable("id") String id) {
+        var data = premiumService.calculateRemaining(id);
         return ResponseEntity.ok(ApiResponse.<PremiumResponse>builder()
                 .code(200)
                 .message("Cập nhật thời gian Premium còn lại thành công")
@@ -37,9 +37,9 @@ public class PremiumController {
                 .build());
     }
 
-    @GetMapping("view-by-user")
-    public ResponseEntity<ApiResponse<PremiumResponse>> viewPremiumByUser(@RequestParam("userId") String userId) {
-        var data = premiumService.viewPremium(userId);
+    @GetMapping("view-by-user/{id}")
+    public ResponseEntity<ApiResponse<PremiumResponse>> viewPremiumByUser(@PathVariable("id") String id) {
+        var data = premiumService.viewPremium(id);
         return ResponseEntity.ok(ApiResponse.<PremiumResponse>builder()
                 .code(200)
                 .message("Thông tin Premium của tài khoản")
