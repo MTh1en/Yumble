@@ -5,6 +5,8 @@ import com.mthien.yumble.entity.Enum.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -14,9 +16,6 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-
-    @OneToOne(mappedBy = "users")
-    private Premium premium;
 
     @Column(name = "avatar")
     private String avatar;
@@ -40,13 +39,26 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Column(name = "dietary")
-    private String dietary;
-
-    @Column(name = "allergy")
-    private String allergy;
-
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private UserStatus status;
+
+    @OneToOne(mappedBy = "users")
+    private Premium premium;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_allergy",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "allergy_id")
+    )
+    private Set<Allergy> allergies;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_dietary",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "dietary_id")
+    )
+    private Set<Dietary> dietaries;
 }

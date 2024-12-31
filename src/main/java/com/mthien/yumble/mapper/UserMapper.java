@@ -28,7 +28,7 @@ public interface UserMapper {
 
     List<UserResponse> toListUserResponse(List<Users> users);
     default Role defaultRole() {
-        return Role.GUEST;
+        return Role.CUSTOMER;
     }
 
     default UserStatus defaultStatus() {

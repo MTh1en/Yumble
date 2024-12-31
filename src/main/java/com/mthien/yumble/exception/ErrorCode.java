@@ -21,7 +21,10 @@ public enum ErrorCode {
 
     //PREMIUM
     PREMIUM_NOT_REGISTERED(1100, "Bạn chưa đăng ký Premium", HttpStatus.BAD_REQUEST),
-    PREMIUM_EXPIRED(1101, "Thời gian Premium của bạn đã hết hạn", HttpStatus.BAD_REQUEST)
+    PREMIUM_EXPIRED(1101, "Thời gian Premium của bạn đã hết hạn", HttpStatus.BAD_REQUEST),
+
+    //ALLERGY
+    ALLERGY_NOT_FOUND(1110, "Không tìm thấy thành phần dị ứng", HttpStatus.NOT_FOUND),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {
