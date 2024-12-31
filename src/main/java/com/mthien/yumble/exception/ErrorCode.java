@@ -25,6 +25,12 @@ public enum ErrorCode {
 
     //ALLERGY
     ALLERGY_NOT_FOUND(1110, "Không tìm thấy thành phần dị ứng", HttpStatus.NOT_FOUND),
+
+    //DIETARY
+    DIETARY_NOT_FOUND(1111, "Không tìm thấy chế độ ăn", HttpStatus.NOT_FOUND),
+
+    //METHOD COOKKING
+    METHOD_COOKING_NOT_FOUND(1112," Không tìm thấy phương pháp chế biến", HttpStatus.NOT_FOUND),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {
