@@ -16,8 +16,8 @@ public class PremiumController {
         this.premiumService = premiumService;
     }
 
-    @PostMapping("create/{id}")
-    public ResponseEntity<ApiResponse<PremiumResponse>> createPremium(@PathVariable("id") String id,
+    @PostMapping("create/{userId}")
+    public ResponseEntity<ApiResponse<PremiumResponse>> createPremium(@PathVariable("userId") String id,
                                                                           @RequestBody CreatePremiumRequest request) {
         var data = premiumService.createPremium(id, request);
         return ResponseEntity.ok(ApiResponse.<PremiumResponse>builder()
@@ -27,8 +27,8 @@ public class PremiumController {
                 .build());
     }
 
-    @PutMapping("calculate-remaining/{id}")
-    public ResponseEntity<ApiResponse<PremiumResponse>> calculateRemaining(@PathVariable("id") String id) {
+    @PutMapping("calculate-remaining/{userId}")
+    public ResponseEntity<ApiResponse<PremiumResponse>> calculateRemaining(@PathVariable("userId") String id) {
         var data = premiumService.calculateRemaining(id);
         return ResponseEntity.ok(ApiResponse.<PremiumResponse>builder()
                 .code(200)
@@ -37,8 +37,8 @@ public class PremiumController {
                 .build());
     }
 
-    @GetMapping("view-by-user/{id}")
-    public ResponseEntity<ApiResponse<PremiumResponse>> viewPremiumByUser(@PathVariable("id") String id) {
+    @GetMapping("view-by-user/{userId}")
+    public ResponseEntity<ApiResponse<PremiumResponse>> viewPremiumByUser(@PathVariable("userId") String id) {
         var data = premiumService.viewPremium(id);
         return ResponseEntity.ok(ApiResponse.<PremiumResponse>builder()
                 .code(200)

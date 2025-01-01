@@ -29,8 +29,12 @@ public class PremiumService {
     public PremiumResponse createPremium(String id, CreatePremiumRequest request) {
         Users users = userRepo.findById(id)
                 .orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
-        Premium premium = premiumMapper.createPremium(request);
-        premium.setUsers(users);
+        Premium premium = Premium.builder()
+                .users(users)
+                .start(LocalDateTime.now())
+                .end(LocalDateTime.now().minusDays(request.getDays()))
+                .remaining(request.getDays())
+                .build();
         return premiumMapper.toPremiumResponse(premiumRepo.save(premium));
     }
 

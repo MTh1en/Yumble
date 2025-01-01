@@ -19,7 +19,5 @@ public class UserResponse {
     private String phone;
     private String address;
     private Role role;
-    private String dietary;
-    private String allergy;
     private UserStatus status;
 }
