@@ -1,5 +1,6 @@
 package com.mthien.yumble.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mthien.yumble.entity.Enum.Role;
 import com.mthien.yumble.entity.Enum.UserStatus;
 import jakarta.persistence.*;
@@ -52,6 +53,7 @@ public class Users {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "allergy_id")
     )
+    @JsonManagedReference
     private Set<Allergy> allergies;
 
     @ManyToMany
@@ -60,5 +62,6 @@ public class Users {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "dietary_id")
     )
+    @JsonManagedReference
     private Set<Dietary> dietaries;
 }

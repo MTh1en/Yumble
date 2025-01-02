@@ -1,5 +1,6 @@
 package com.mthien.yumble.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,8 +26,10 @@ public class Dietary {
     private String description;
 
     @ManyToMany(mappedBy = "dietaries")
+    @JsonBackReference
     private Set<Food> foods;
 
     @ManyToMany(mappedBy = "dietaries")
+    @JsonBackReference
     private Set<Users> users;
 }

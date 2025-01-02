@@ -1,6 +1,8 @@
 package com.mthien.yumble.service;
 
 import com.mthien.yumble.entity.*;
+import com.mthien.yumble.exception.AppException;
+import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodMapper;
 import com.mthien.yumble.payload.request.food.CreateFoodRequest;
 import com.mthien.yumble.payload.response.food.FoodResponse;
@@ -9,6 +11,7 @@ import com.mthien.yumble.repository.DietaryRepo;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.MethodCookingRepo;
 import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.Set;
 import java.util.function.Function;
@@ -31,25 +34,26 @@ public class FoodService {
     }
 
     public FoodResponse create(CreateFoodRequest request) {
-        Set<Allergy> allergies = mapToEntities(request.getAllergies(), allergyRepo::findAllByNameIn, "allergy");
-        Set<Dietary> dietaries = mapToEntities(request.getDietaries(), dietaryRepo::findAllByNameIn, "dietaries");
-        Set<MethodCooking> methodCookings = mapToEntities(request.getMethodCooking(), methodCookingRepo::findAllByNameIn, "methodCookings");
-
         Food food = foodMapper.createFood(request);
-        food.setAllergies(allergies);
-        food.setDietaries(dietaries);
-        food.setMethodCooking(methodCookings);
+        food.setAllergies(mapToEntities(request.getAllergies(), allergyRepo::findAllByNameIn, "allergies"));
+        food.setDietaries(mapToEntities(request.getDietaries(), dietaryRepo::findAllByNameIn, "dietaries"));
+        food.setMethodCooking(mapToEntities(request.getMethodCooking(), methodCookingRepo::findAllByNameIn, "methodCookings"));
         return foodMapper.toFoodResponse(foodRepo.save(food));
     }
 
+    public FoodResponse viewOne(String id) {
+        Food food = foodRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
+        Food foodResponse = foodMapper.toFood(food);
+        foodResponse.setAllergies(foodRepo.findAllergiesByFoodId(id));
+        foodResponse.setDietaries(foodRepo.findDietaryByFoodId(id));
+        foodResponse.setMethodCooking(foodRepo.findMethodCookingByFoodId(id));
+        return foodMapper.toFoodResponse(foodResponse);
+    }
 
-    private <T> Set<T> mapToEntities(String input, Function<Set<String>, Set<T>> processFunction, String typeName) {
-        if (input == null || input.isEmpty()) {
-            return Set.of();
-        }
-        Set<String> names = Arrays.stream(input.trim().split(",")).map(String::trim).collect(Collectors.toSet());
-        Set<T> foundEntities = processFunction.apply(names);
-        Set<String> notFound = names.stream()
+
+    private <T> Set<T> mapToEntities(Set<String> input, Function<Set<String>, Set<T>> processFunction, String typeName) {
+        Set<T> foundEntities = processFunction.apply(input);
+        Set<String> notFound = input.stream()
                 .filter(name -> foundEntities.stream()
                         .noneMatch(entity -> getName(entity).equalsIgnoreCase(name)))
                 .collect(Collectors.toSet());
@@ -57,7 +61,6 @@ public class FoodService {
         if (!notFound.isEmpty()) {
             throw new RuntimeException("Không tìm thấy " + typeName + " với tên: " + String.join(", ", notFound));
         }
-
         return foundEntities;
     }
 

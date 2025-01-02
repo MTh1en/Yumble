@@ -31,6 +31,9 @@ public enum ErrorCode {
 
     //METHOD COOKKING
     METHOD_COOKING_NOT_FOUND(1112," Không tìm thấy phương pháp chế biến", HttpStatus.NOT_FOUND),
+
+    //FOOD
+    FOOD_NOT_FOUND(1113, "Không tìm thấy thông tin món ăn", HttpStatus.NOT_FOUND),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {

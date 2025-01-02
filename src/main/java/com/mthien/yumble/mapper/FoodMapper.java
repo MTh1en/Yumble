@@ -19,4 +19,9 @@ public interface FoodMapper {
     @Mapping(target = "dietaries", source = "dietaries")
     @Mapping(target = "methodCooking", source = "methodCooking")
     FoodResponse toFoodResponse(Food food);
+
+    @Mapping(target = "allergies", ignore = true)
+    @Mapping(target = "dietaries", ignore = true)
+    @Mapping(target = "methodCooking", ignore = true)
+    Food toFood(Food Food);
 }

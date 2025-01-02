@@ -6,17 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateFoodRequest {
+public class UpdateFoodRequest {
     private String name;
     private String description;
     private Meal meal;
-    private Set<String> allergies;
-    private Set<String> dietaries;
-    private Set<String> methodCooking;
+    private String allergies;
+    private String dietaries;
+    private String methodCooking;
 }

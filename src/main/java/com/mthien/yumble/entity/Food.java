@@ -1,16 +1,16 @@
 package com.mthien.yumble.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mthien.yumble.entity.Enum.Meal;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class Food {
     @Id
@@ -45,6 +45,7 @@ public class Food {
             joinColumns = @JoinColumn(name = "food_id"),
             inverseJoinColumns = @JoinColumn(name = "allergy_id")
     )
+    @JsonManagedReference
     private Set<Allergy> allergies;
 
     @ManyToMany
@@ -53,6 +54,7 @@ public class Food {
             joinColumns = @JoinColumn(name = "food_id"),
             inverseJoinColumns = @JoinColumn(name = "dietary_id")
     )
+    @JsonManagedReference
     private Set<Dietary> dietaries;
 
     @ManyToMany
@@ -61,5 +63,6 @@ public class Food {
             joinColumns = @JoinColumn(name = "food_id"),
             inverseJoinColumns =  @JoinColumn(name = "method_cooking_id")
     )
+    @JsonManagedReference
     private Set<MethodCooking> methodCooking;
 }
