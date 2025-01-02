@@ -1,17 +1,13 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.entity.Allergy;
-import com.mthien.yumble.entity.Dietary;
 import com.mthien.yumble.payload.request.food.CreateFoodRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.service.FoodService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Set;
-
 
 @RestController
 @RequestMapping("food")
@@ -24,8 +20,8 @@ public class FoodController {
         this.foodRepo = foodRepo;
     }
 
-    @PostMapping("create")
-    public ResponseEntity<ApiResponse<FoodResponse>> create(@RequestBody CreateFoodRequest request) {
+    @PostMapping(value = "create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ApiResponse<FoodResponse>> create(@ModelAttribute CreateFoodRequest request) {
         var data = foodService.create(request);
         return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
                 .code(200)
@@ -42,10 +38,5 @@ public class FoodController {
                 .message("Thông tin món ăn")
                 .data(data)
                 .build());
-    }
-
-    @GetMapping("test/{id}")
-    public Set<Dietary> test(@PathVariable("id") String id) {
-        return foodRepo.findDietaryByFoodId(id);
     }
 }

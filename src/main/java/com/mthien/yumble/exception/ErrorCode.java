@@ -34,6 +34,9 @@ public enum ErrorCode {
 
     //FOOD
     FOOD_NOT_FOUND(1113, "Không tìm thấy thông tin món ăn", HttpStatus.NOT_FOUND),
+
+    //STEP
+    STEP_NOT_FOUND(1114, "Không tìm thấy bước chế biến món ăn", HttpStatus.NOT_FOUND),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {

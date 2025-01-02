@@ -2,10 +2,7 @@ package com.mthien.yumble.controller;
 
 import com.mthien.yumble.payload.request.cookingmethod.CreateCookingMethodRequest;
 import com.mthien.yumble.payload.request.cookingmethod.UpdateCookingMethodRequest;
-import com.mthien.yumble.payload.request.dietary.CreateDietaryRequest;
-import com.mthien.yumble.payload.request.dietary.UpdateDietaryRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
-import com.mthien.yumble.payload.response.dietary.DietaryResponse;
 import com.mthien.yumble.payload.response.methodcooking.MethodCookingResponse;
 import com.mthien.yumble.service.MethodCookingService;
 import org.springframework.http.ResponseEntity;

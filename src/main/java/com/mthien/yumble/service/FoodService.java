@@ -6,13 +6,9 @@ import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodMapper;
 import com.mthien.yumble.payload.request.food.CreateFoodRequest;
 import com.mthien.yumble.payload.response.food.FoodResponse;
-import com.mthien.yumble.repository.AllergyRepo;
-import com.mthien.yumble.repository.DietaryRepo;
-import com.mthien.yumble.repository.FoodRepo;
-import com.mthien.yumble.repository.MethodCookingRepo;
+import com.mthien.yumble.repository.*;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -24,13 +20,15 @@ public class FoodService {
     private final AllergyRepo allergyRepo;
     private final DietaryRepo dietaryRepo;
     private final MethodCookingRepo methodCookingRepo;
+    private final StepRepo stepRepo;
 
-    public FoodService(FoodMapper foodMapper, FoodRepo foodRepo, AllergyRepo allergyRepo, DietaryRepo dietaryRepo, MethodCookingRepo methodCookingRepo) {
+    public FoodService(FoodMapper foodMapper, FoodRepo foodRepo, AllergyRepo allergyRepo, DietaryRepo dietaryRepo, MethodCookingRepo methodCookingRepo, StepRepo stepRepo) {
         this.foodMapper = foodMapper;
         this.foodRepo = foodRepo;
         this.allergyRepo = allergyRepo;
         this.dietaryRepo = dietaryRepo;
         this.methodCookingRepo = methodCookingRepo;
+        this.stepRepo = stepRepo;
     }
 
     public FoodResponse create(CreateFoodRequest request) {
@@ -47,6 +45,7 @@ public class FoodService {
         foodResponse.setAllergies(foodRepo.findAllergiesByFoodId(id));
         foodResponse.setDietaries(foodRepo.findDietaryByFoodId(id));
         foodResponse.setMethodCooking(foodRepo.findMethodCookingByFoodId(id));
+        foodResponse.setSteps(stepRepo.findByFoodIdOrderByStepOrder(id));
         return foodMapper.toFoodResponse(foodResponse);
     }
 

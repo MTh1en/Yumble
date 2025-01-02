@@ -13,15 +13,19 @@ public interface FoodMapper {
     @Mapping(target = "allergies", ignore = true)
     @Mapping(target = "dietaries", ignore = true)
     @Mapping(target = "methodCooking", ignore = true)
+    @Mapping(target = "steps", ignore = true)
+    @Mapping(target = "image", ignore = true)
     Food createFood(CreateFoodRequest request);
 
     @Mapping(target = "allergies", source = "allergies")
     @Mapping(target = "dietaries", source = "dietaries")
     @Mapping(target = "methodCooking", source = "methodCooking")
+    @Mapping(target = "steps", source = "steps")
     FoodResponse toFoodResponse(Food food);
 
     @Mapping(target = "allergies", ignore = true)
     @Mapping(target = "dietaries", ignore = true)
     @Mapping(target = "methodCooking", ignore = true)
+    @Mapping(target = "steps", ignore = true)
     Food toFood(Food Food);
 }

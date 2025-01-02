@@ -2,7 +2,6 @@ package com.mthien.yumble.controller;
 
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.service.FirebaseService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +12,11 @@ import java.io.IOException;
 @RestController
 @RequestMapping("firebase")
 public class FirebaseController {
-    @Autowired
-    private FirebaseService firebaseService;
+    private final FirebaseService firebaseService;
+
+    public FirebaseController(FirebaseService firebaseService) {
+        this.firebaseService = firebaseService;
+    }
 
     @PostMapping(value = "upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<String>> updateProfile(@RequestParam("name") String name,
@@ -28,7 +30,7 @@ public class FirebaseController {
     }
 
     @GetMapping("image-url")
-    public ResponseEntity<ApiResponse<String>> getImageUrl(@RequestParam String imageName) throws IOException {
+    public ResponseEntity<ApiResponse<String>> getImageUrl(@RequestParam String imageName) {
         var data = firebaseService.getImageUrl(imageName);
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(200)
@@ -38,7 +40,7 @@ public class FirebaseController {
     }
 
     @PostMapping("delete")
-    public ResponseEntity<ApiResponse<String>> deleteFile(@RequestParam("name") String name) throws IOException {
+    public ResponseEntity<ApiResponse<String>> deleteFile(@RequestParam("name") String name) {
         firebaseService.deleteFile(name);
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(200)
