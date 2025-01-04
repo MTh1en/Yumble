@@ -8,7 +8,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-import java.util.List;
 import java.util.Set;
 
 @Mapper(componentModel = "spring")
@@ -22,7 +21,7 @@ public interface StepMapper {
     @Mapping(target = "foodId", expression = "java(getFoodId(step))" )
     StepResponse toStepResponse(Step step);
 
-    Set<StepResponse> toStepResponseList(Set<Step> steps);
+    Set<StepResponse> toSetStepResponse(Set<Step> steps);
 
     default String getFoodId(Step step){
         return step.getFood().getId();

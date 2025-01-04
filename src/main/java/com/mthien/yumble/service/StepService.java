@@ -51,6 +51,6 @@ public class StepService {
 
     public Set<StepResponse> viewStepsByFoodId(String foodId) {
         Set<Step> steps = stepRepo.findByFoodIdOrderByStepOrder(foodId);
-        return stepMapper.toStepResponseList(steps);
+        return stepMapper.toSetStepResponse(steps);
     }
 }

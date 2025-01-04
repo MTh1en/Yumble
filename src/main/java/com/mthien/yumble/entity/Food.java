@@ -39,7 +39,7 @@ public class Food {
     @OneToMany(mappedBy = "food")
     private Set<IngredientUsing> ingredientUsings;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "food_allergy",
             joinColumns = @JoinColumn(name = "food_id"),
@@ -48,7 +48,7 @@ public class Food {
     @JsonManagedReference
     private Set<Allergy> allergies;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "food_dietary",
             joinColumns = @JoinColumn(name = "food_id"),
@@ -57,7 +57,7 @@ public class Food {
     @JsonManagedReference
     private Set<Dietary> dietaries;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "food_cooking_method",
             joinColumns = @JoinColumn(name = "food_id"),

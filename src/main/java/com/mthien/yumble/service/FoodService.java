@@ -3,12 +3,11 @@ package com.mthien.yumble.service;
 import com.mthien.yumble.entity.*;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
-import com.mthien.yumble.mapper.FoodMapper;
+import com.mthien.yumble.mapper.*;
 import com.mthien.yumble.payload.request.food.CreateFoodRequest;
 import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.repository.*;
 import org.springframework.stereotype.Service;
-
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -40,13 +39,25 @@ public class FoodService {
     }
 
     public FoodResponse viewOne(String id) {
-        Food food = foodRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
-        Food foodResponse = foodMapper.toFood(food);
-        foodResponse.setAllergies(foodRepo.findAllergiesByFoodId(id));
-        foodResponse.setDietaries(foodRepo.findDietaryByFoodId(id));
-        foodResponse.setMethodCooking(foodRepo.findMethodCookingByFoodId(id));
-        foodResponse.setSteps(stepRepo.findByFoodIdOrderByStepOrder(id));
-        return foodMapper.toFoodResponse(foodResponse);
+        Food foodFounded = foodRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
+        Food food = foodMapper.toFood(foodFounded);
+        food.setAllergies(foodRepo.findAllergiesByFoodId(id));
+        food.setDietaries(foodRepo.findDietaryByFoodId(id));
+        food.setMethodCooking(foodRepo.findMethodCookingByFoodId(id));
+        food.setSteps(stepRepo.findByFoodIdOrderByStepOrder(id));
+        return foodMapper.toFoodResponse(food);
+    }
+
+    public Set<FoodResponse> viewAll() {
+        Set<Food> foodSet = foodRepo.findAllFood();
+        return foodSet.stream().map(food -> {
+            Food newFood = foodMapper.toFood(food);
+            newFood.setAllergies(foodRepo.findAllergiesByFoodId(food.getId()));
+            newFood.setDietaries(foodRepo.findDietaryByFoodId(food.getId()));
+            newFood.setMethodCooking(foodRepo.findMethodCookingByFoodId(food.getId()));
+            newFood.setSteps(stepRepo.findByFoodIdOrderByStepOrder(food.getId()));
+            return foodMapper.toFoodResponse(newFood);
+        }).collect(Collectors.toSet());
     }
 
 

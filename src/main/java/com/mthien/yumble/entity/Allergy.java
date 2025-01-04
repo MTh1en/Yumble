@@ -25,7 +25,7 @@ public class Allergy {
     @Column(name = "description", columnDefinition = "NVARCHAR(255)")
     private String description;
 
-    @ManyToMany(mappedBy = "allergies")
+    @ManyToMany(mappedBy = "allergies", fetch = FetchType.LAZY)
     @JsonBackReference
     private Set<Food> foods;
 
