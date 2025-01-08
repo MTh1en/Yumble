@@ -8,7 +8,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
 import java.util.List;
-import java.util.Set;
 
 @Mapper(componentModel = "spring")
 public interface AllergyMapper {

@@ -1,10 +1,12 @@
 package com.mthien.yumble.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mthien.yumble.entity.Enum.Meal;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -20,10 +22,10 @@ public class Food {
     @Column(name = "image")
     private String image;
 
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "NVARCHAR(255)")
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "NVARCHAR(255)")
     private String description;
 
     @Column(name = "meal")
@@ -39,7 +41,7 @@ public class Food {
     @OneToMany(mappedBy = "food")
     private Set<IngredientUsing> ingredientUsings;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(
             name = "food_allergy",
             joinColumns = @JoinColumn(name = "food_id"),
@@ -48,7 +50,7 @@ public class Food {
     @JsonManagedReference
     private Set<Allergy> allergies;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(
             name = "food_dietary",
             joinColumns = @JoinColumn(name = "food_id"),
@@ -57,11 +59,11 @@ public class Food {
     @JsonManagedReference
     private Set<Dietary> dietaries;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(
             name = "food_cooking_method",
             joinColumns = @JoinColumn(name = "food_id"),
-            inverseJoinColumns =  @JoinColumn(name = "method_cooking_id")
+            inverseJoinColumns = @JoinColumn(name = "method_cooking_id")
     )
     @JsonManagedReference
     private Set<MethodCooking> methodCooking;
