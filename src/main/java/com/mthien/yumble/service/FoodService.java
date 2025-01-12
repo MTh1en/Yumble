@@ -8,15 +8,18 @@ import com.mthien.yumble.payload.request.food.CreateFoodRequest;
 import com.mthien.yumble.payload.request.food.UpdateFoodRequest;
 import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.repository.*;
+import com.mthien.yumble.utils.RelationshipService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
 public class FoodService {
+    private static final Logger log = LoggerFactory.getLogger(FoodService.class);
     private final FoodMapper foodMapper;
     private final FoodRepo foodRepo;
     private final AllergyRepo allergyRepo;
@@ -24,8 +27,9 @@ public class FoodService {
     private final MethodCookingRepo methodCookingRepo;
     private final StepRepo stepRepo;
     private final FirebaseService firebaseService;
+    private final RelationshipService relationshipService;
 
-    public FoodService(FoodMapper foodMapper, FoodRepo foodRepo, AllergyRepo allergyRepo, DietaryRepo dietaryRepo, MethodCookingRepo methodCookingRepo, StepRepo stepRepo, FirebaseService firebaseService) {
+    public FoodService(FoodMapper foodMapper, FoodRepo foodRepo, AllergyRepo allergyRepo, DietaryRepo dietaryRepo, MethodCookingRepo methodCookingRepo, StepRepo stepRepo, FirebaseService firebaseService, RelationshipService relationshipService) {
         this.foodMapper = foodMapper;
         this.foodRepo = foodRepo;
         this.allergyRepo = allergyRepo;
@@ -33,31 +37,32 @@ public class FoodService {
         this.methodCookingRepo = methodCookingRepo;
         this.stepRepo = stepRepo;
         this.firebaseService = firebaseService;
+        this.relationshipService = relationshipService;
     }
 
     public FoodResponse create(CreateFoodRequest request) throws IOException {
         Food food = foodMapper.createFood(request);
         food.setImage(firebaseService.uploadFile(request.getName(), request.getImage()));
-        food.setAllergies(mapToEntities(request.getAllergies(), allergyRepo::findAllByNameIn, "allergies"));
-        food.setDietaries(mapToEntities(request.getDietaries(), dietaryRepo::findAllByNameIn, "dietaries"));
-        food.setMethodCooking(mapToEntities(request.getMethodCooking(), methodCookingRepo::findAllByNameIn, "methodCookings"));
+        food.setAllergies(relationshipService.convertSetStringToSetObject(request.getAllergies(), allergyRepo::findAllByNameIn, "allergies"));
+        food.setDietaries(relationshipService.convertSetStringToSetObject(request.getDietaries(), dietaryRepo::findAllByNameIn, "dietaries"));
+        food.setMethodCooking(relationshipService.convertSetStringToSetObject(request.getMethodCooking(), methodCookingRepo::findAllByNameIn, "methodCookings"));
         return foodMapper.toFoodResponse(foodRepo.save(food));
     }
 
-    public FoodResponse update(String id, UpdateFoodRequest request) throws IOException {
-        Food founded = foodRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
-        Food foodUpdated = foodMapper.toFood(founded);
-        foodMapper.updateFood(foodUpdated, request);
-        foodRepo.save(foodUpdated);
-        if (!request.getImage().isEmpty()) {
-            foodUpdated.setImage(firebaseService.uploadFile(request.getName(), request.getImage()));
-        }
-        foodUpdated.setAllergies(mapToEntities(request.getAllergies(), allergyRepo::findAllByNameIn, "allergies"));
-        foodUpdated.setDietaries(mapToEntities(request.getDietaries(), dietaryRepo::findAllByNameIn, "dietaries"));
-        foodUpdated.setMethodCooking(mapToEntities(request.getMethodCooking(), methodCookingRepo::findAllByNameIn, "methodCookings"));
-        foodRepo.save(foodUpdated);
-        foodUpdated.setSteps(stepRepo.findByFoodIdOrderByStepOrder(id));
-        return foodMapper.toFoodResponse(foodUpdated);
+    public FoodResponse updateInformation(String id, UpdateFoodRequest request) throws IOException {
+        Food food = foodRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
+        foodMapper.updateFood(food, request);
+
+        foodRepo.deleteAllergiesByFoodId(id);
+        foodRepo.deleteDietaryByFoodId(id);
+        foodRepo.deleteMethodCookingByFoodId(id);
+
+        food.setAllergies(relationshipService.convertSetStringToSetObject(request.getAllergies(), allergyRepo::findAllByNameIn, "allergies"));
+        food.setDietaries(relationshipService.convertSetStringToSetObject(request.getDietaries(), dietaryRepo::findAllByNameIn, "dietaries"));
+        food.setMethodCooking(relationshipService.convertSetStringToSetObject(request.getMethodCooking(), methodCookingRepo::findAllByNameIn, "methodCookings"));
+        foodRepo.save(food);
+        food.setSteps(stepRepo.findByFoodIdOrderByStepOrder(id));
+        return foodMapper.toFoodResponse(food);
     }
 
     public FoodResponse viewOne(String id) {
@@ -87,29 +92,5 @@ public class FoodService {
         Set<Step> foodStep = stepRepo.findByFoodIdOrderByStepOrder(id);
         stepRepo.deleteAll(foodStep);
         foodRepo.delete(foodFounded);
-    }
-
-    private <T> Set<T> mapToEntities(Set<String> input, Function<Set<String>, Set<T>> processFunction, String typeName) {
-        Set<T> foundEntities = processFunction.apply(input);
-        Set<String> notFound = input.stream()
-                .filter(name -> foundEntities.stream()
-                        .noneMatch(entity -> getName(entity).equalsIgnoreCase(name)))
-                .collect(Collectors.toSet());
-
-        if (!notFound.isEmpty()) {
-            throw new RuntimeException("Không tìm thấy " + typeName + " với tên: " + String.join(", ", notFound));
-        }
-        return foundEntities;
-    }
-
-    private <T> String getName(T entity) {
-        if (entity instanceof Allergy) {
-            return ((Allergy) entity).getName();
-        } else if (entity instanceof Dietary) {
-            return ((Dietary) entity).getName();
-        } else if (entity instanceof MethodCooking) {
-            return ((MethodCooking) entity).getName();
-        }
-        return "";
     }
 }

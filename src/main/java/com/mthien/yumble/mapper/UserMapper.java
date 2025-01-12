@@ -16,17 +16,27 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-    @Mappings({
-            @Mapping(target = "role", expression = "java(defaultRole())"),
-            @Mapping(target = "status", expression = "java(defaultStatus())")
-    })
+
+    @Mapping(target = "role", expression = "java(defaultRole())")
+    @Mapping(target = "status", expression = "java(defaultStatus())")
+    @Mapping(target = "allergies", ignore = true)
+    @Mapping(target = "dietaries", ignore = true)
     Users register(RegisterRequest registerRequest);
 
+    @Mapping(target = "allergies", ignore = true)
+    @Mapping(target = "dietaries", ignore = true)
     void updateProfile(@MappingTarget Users users, UpdateProfileRequest request);
 
     UserResponse toUserResponse(Users users);
 
+    @Mapping(target = "role", expression = "java(defaultRole())")
+    @Mapping(target = "status", expression = "java(defaultStatus())")
+    @Mapping(target = "allergies", ignore = true)
+    @Mapping(target = "dietaries", ignore = true)
+    Users toUsers(Users users);
+
     List<UserResponse> toListUserResponse(List<Users> users);
+
     default Role defaultRole() {
         return Role.CUSTOMER;
     }

@@ -14,7 +14,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class UpdateFoodRequest {
-    private MultipartFile image;
     private String name;
     private String description;
     private Meal meal;

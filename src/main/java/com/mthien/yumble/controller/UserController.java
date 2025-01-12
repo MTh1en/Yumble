@@ -1,5 +1,6 @@
 package com.mthien.yumble.controller;
 
+import com.mthien.yumble.payload.request.user.AddAllergiesAndDietariesRequest;
 import com.mthien.yumble.payload.request.user.ChangePasswordRequest;
 import com.mthien.yumble.payload.request.user.UpdateProfileRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
@@ -65,6 +66,17 @@ public class UserController {
                 .data(data)
                 .build());
 
+    }
+
+    @PutMapping(value = "add-allergies-and-dietaries{id}")
+    public ResponseEntity<ApiResponse<UserResponse>> addAllAllergiesAndDietaries(@PathVariable("id") String id,
+                                                                                 @RequestBody AddAllergiesAndDietariesRequest request) {
+        var data = userService.addAllergiesAndDietaries(id, request);
+        return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
+                .code(200)
+                .message("Cập nhật thông tin ăn uống cá nhân thành công")
+                .data(data)
+                .build());
     }
 
     //ADMIN.
