@@ -1,12 +1,9 @@
 package com.mthien.yumble.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mthien.yumble.entity.Enum.Meal;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -32,39 +29,25 @@ public class Food {
     @Enumerated(EnumType.STRING)
     private Meal meal;
 
-    @OneToOne(mappedBy = "food")
+    @OneToOne(mappedBy = "food", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Nutrition nutrition;
 
-    @OneToMany(mappedBy = "food")
+    @OneToMany(mappedBy = "food",fetch = FetchType.LAZY)
     private Set<Step> steps;
 
     @OneToMany(mappedBy = "food")
     private Set<IngredientUsing> ingredientUsings;
 
-    @ManyToMany
-    @JoinTable(
-            name = "food_allergy",
-            joinColumns = @JoinColumn(name = "food_id"),
-            inverseJoinColumns = @JoinColumn(name = "allergy_id")
-    )
+    @OneToMany(mappedBy = "food")
     @JsonManagedReference
-    private Set<Allergy> allergies;
+    private Set<FoodAllergy> foodAllergies;
 
-    @ManyToMany
-    @JoinTable(
-            name = "food_dietary",
-            joinColumns = @JoinColumn(name = "food_id"),
-            inverseJoinColumns = @JoinColumn(name = "dietary_id")
-    )
+    @OneToMany(mappedBy = "food")
     @JsonManagedReference
-    private Set<Dietary> dietaries;
+    private Set<FoodDietary> foodDietaries;
 
-    @ManyToMany
-    @JoinTable(
-            name = "food_cooking_method",
-            joinColumns = @JoinColumn(name = "food_id"),
-            inverseJoinColumns = @JoinColumn(name = "method_cooking_id")
-    )
+    @OneToMany(mappedBy = "food")
     @JsonManagedReference
-    private Set<MethodCooking> methodCooking;
+    private Set<FoodMethodCooking> foodMethodCookings;
 }

@@ -25,7 +25,7 @@ public class MethodCooking {
     @Column(name = "description", columnDefinition = "NVARCHAR(255)")
     private String description;
 
-    @ManyToMany(mappedBy = "methodCooking")
+    @OneToMany(mappedBy = "methodCooking")
     @JsonBackReference
-    private Set<Food> foods;
+    private Set<FoodMethodCooking> foodMethodCookings;
 }

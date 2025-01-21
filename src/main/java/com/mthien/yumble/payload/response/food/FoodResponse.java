@@ -8,6 +8,7 @@ import com.mthien.yumble.entity.Step;
 import com.mthien.yumble.payload.response.allergy.AllergyResponse;
 import com.mthien.yumble.payload.response.dietary.DietaryResponse;
 import com.mthien.yumble.payload.response.methodcooking.MethodCookingResponse;
+import com.mthien.yumble.payload.response.nutrition.NutritionResponse;
 import com.mthien.yumble.payload.response.step.FoodStepResponse;
 import com.mthien.yumble.payload.response.step.StepResponse;
 import lombok.AllArgsConstructor;
@@ -27,8 +28,4 @@ public class FoodResponse {
     private String name;
     private String description;
     private Meal meal;
-    private Set<FoodStepResponse> steps;
-    private Set<AllergyResponse> allergies;
-    private Set<DietaryResponse> dietaries;
-    private Set<MethodCookingResponse> methodCooking;
 }

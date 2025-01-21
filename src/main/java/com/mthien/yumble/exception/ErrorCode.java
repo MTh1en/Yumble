@@ -26,17 +26,22 @@ public enum ErrorCode {
     //ALLERGY
     ALLERGY_NOT_FOUND(1110, "Không tìm thấy thành phần dị ứng", HttpStatus.NOT_FOUND),
 
+    ALLERGY_IS_EXISTED(1110, "Thành phần dị ứng đã được đêm vào món ăn", HttpStatus.BAD_REQUEST),
+
     //DIETARY
     DIETARY_NOT_FOUND(1111, "Không tìm thấy chế độ ăn", HttpStatus.NOT_FOUND),
 
     //METHOD COOKKING
-    METHOD_COOKING_NOT_FOUND(1112," Không tìm thấy phương pháp chế biến", HttpStatus.NOT_FOUND),
+    METHOD_COOKING_NOT_FOUND(1112, " Không tìm thấy phương pháp chế biến", HttpStatus.NOT_FOUND),
 
     //FOOD
     FOOD_NOT_FOUND(1113, "Không tìm thấy thông tin món ăn", HttpStatus.NOT_FOUND),
 
     //STEP
     STEP_NOT_FOUND(1114, "Không tìm thấy bước chế biến món ăn", HttpStatus.NOT_FOUND),
+
+    //NUTRITION
+    NUTRITION_NOT_FOUND(1115, "Không tìm thấy số giá trị dinh dưỡng của món ăn", HttpStatus.NOT_FOUND),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {

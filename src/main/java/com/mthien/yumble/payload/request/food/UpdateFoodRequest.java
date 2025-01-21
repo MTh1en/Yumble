@@ -5,9 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -17,7 +14,4 @@ public class UpdateFoodRequest {
     private String name;
     private String description;
     private Meal meal;
-    private Set<String> allergies;
-    private Set<String> dietaries;
-    private Set<String> methodCooking;
 }
