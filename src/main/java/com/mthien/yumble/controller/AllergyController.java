@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("allergy")
+@RequestMapping("allergies")
 public class AllergyController {
     private final AllergyService allergyService;
 
@@ -19,7 +19,7 @@ public class AllergyController {
         this.allergyService = allergyService;
     }
 
-    @PostMapping("create")
+    @PostMapping()
     public ResponseEntity<ApiResponse<AllergyResponse>> create(@RequestBody CreateAllergyRequest request) {
         var data = allergyService.create(request);
         return ResponseEntity.ok(ApiResponse.<AllergyResponse>builder()
@@ -29,7 +29,7 @@ public class AllergyController {
                 .build());
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<ApiResponse<AllergyResponse>> update(@PathVariable("id") String id,
                                                                @RequestBody UpdateAllergyRequest request) {
         var data = allergyService.update(id, request);
@@ -40,7 +40,7 @@ public class AllergyController {
                 .build());
     }
 
-    @GetMapping("view-one/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<ApiResponse<AllergyResponse>> viewOne(@PathVariable("id") String id) {
         var data = allergyService.viewOne(id);
         return ResponseEntity.ok(ApiResponse.<AllergyResponse>builder()
@@ -50,7 +50,7 @@ public class AllergyController {
                 .build());
     }
 
-    @GetMapping("view-all")
+    @GetMapping()
     public ResponseEntity<ApiResponse<List<AllergyResponse>>> viewAll() {
         var data = allergyService.viewAll();
         return ResponseEntity.ok(ApiResponse.<List<AllergyResponse>>builder()
@@ -60,7 +60,7 @@ public class AllergyController {
                 .build());
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<ApiResponse<Void>> delete(@PathVariable("id") String id) {
         allergyService.delete(id);
         return ResponseEntity.ok(ApiResponse.<Void>builder()

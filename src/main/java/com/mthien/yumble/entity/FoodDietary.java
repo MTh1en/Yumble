@@ -24,6 +24,6 @@ public class FoodDietary {
     @JoinColumn(name = "dietary_id")
     private Dietary dietary;
 
-    @Column(name = "priority")
-    private Integer priority;
+    @Column(name = "priority", columnDefinition = "NVARCHAR(255)")
+    private String priority;
 }

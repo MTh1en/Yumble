@@ -25,11 +25,12 @@ public enum ErrorCode {
 
     //ALLERGY
     ALLERGY_NOT_FOUND(1110, "Không tìm thấy thành phần dị ứng", HttpStatus.NOT_FOUND),
-
-    ALLERGY_IS_EXISTED(1110, "Thành phần dị ứng đã được đêm vào món ăn", HttpStatus.BAD_REQUEST),
+    FOOD_ALLERGY_NOT_FOUND(1116, "Không tìm thấy thành phần dị ứng đã được thêm vào món ăn", HttpStatus.NOT_FOUND),
+    FOOD_ALLERGY_IS_EXISTED(1110, "Thành phần dị ứng đã được đêm vào món ăn", HttpStatus.BAD_REQUEST),
 
     //DIETARY
     DIETARY_NOT_FOUND(1111, "Không tìm thấy chế độ ăn", HttpStatus.NOT_FOUND),
+    FOOD_DIETARY_IS_EXISTED(1111, "Chế độ ăn đã được thêm vào món ăn", HttpStatus.BAD_REQUEST),
 
     //METHOD COOKKING
     METHOD_COOKING_NOT_FOUND(1112, " Không tìm thấy phương pháp chế biến", HttpStatus.NOT_FOUND),
@@ -42,6 +43,8 @@ public enum ErrorCode {
 
     //NUTRITION
     NUTRITION_NOT_FOUND(1115, "Không tìm thấy số giá trị dinh dưỡng của món ăn", HttpStatus.NOT_FOUND),
+
+
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {

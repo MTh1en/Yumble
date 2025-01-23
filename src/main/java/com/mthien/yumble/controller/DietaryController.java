@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("dietary")
+@RequestMapping("dietaries")
 public class DietaryController {
     private final DietaryService dietaryService;
 
@@ -19,7 +19,7 @@ public class DietaryController {
         this.dietaryService = dietaryService;
     }
 
-    @PostMapping("create")
+    @PostMapping()
     public ResponseEntity<ApiResponse<DietaryResponse>> create(@RequestBody CreateDietaryRequest request) {
         var data = dietaryService.create(request);
         return ResponseEntity.ok(ApiResponse.<DietaryResponse>builder()
@@ -29,7 +29,7 @@ public class DietaryController {
                 .build());
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<ApiResponse<DietaryResponse>> update(@PathVariable("id") String id,
                                                                @RequestBody UpdateDietaryRequest request) {
         var data = dietaryService.update(id, request);
@@ -40,7 +40,7 @@ public class DietaryController {
                 .build());
     }
 
-    @GetMapping("view-one/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<ApiResponse<DietaryResponse>> viewOne(@PathVariable("id") String id) {
         var data = dietaryService.viewOne(id);
         return ResponseEntity.ok(ApiResponse.<DietaryResponse>builder()
@@ -50,7 +50,7 @@ public class DietaryController {
                 .build());
     }
 
-    @GetMapping("view-all")
+    @GetMapping()
     public ResponseEntity<ApiResponse<List<DietaryResponse>>> viewAll() {
         var data = dietaryService.viewAll();
         return ResponseEntity.ok(ApiResponse.<List<DietaryResponse>>builder()

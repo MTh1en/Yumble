@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("FoodAllergy")
 public class FoodAllergyController {
     private final FoodAllergyService foodAllergyService;
 
@@ -16,14 +15,24 @@ public class FoodAllergyController {
         this.foodAllergyService = foodAllergyService;
     }
 
-    @PostMapping("add-allergies/{foodId}")
+    @PostMapping("foods/{foodId}/allergies")
     public ResponseEntity<ApiResponse<FoodAllergyResponse>> addAllergies(@PathVariable String foodId,
                                                                          @RequestBody AddAllergiesRequest request) {
-        var data = foodAllergyService.addFoodAllergy(foodId, request);
+        var data = foodAllergyService.addAllergy(foodId, request);
         return ResponseEntity.ok(ApiResponse.<FoodAllergyResponse>builder()
                 .code(200)
                 .message("Thêm thành phần dị ứng thành công")
                 .data(data)
+                .build());
+    }
+
+    @DeleteMapping("foods/{foodId}/allergies/{allergyId}")
+    public ResponseEntity<ApiResponse<Void>> deleteAllergies(@PathVariable("foodId") String foodId,
+                                                             @PathVariable("allergyId") String allergyId) {
+        foodAllergyService.deleteAllergy(foodId, allergyId);
+        return ResponseEntity.ok(ApiResponse.<Void>builder()
+                .code(200)
+                .message("Đã xóa thành phần dị ứng khỏi món ăn thành công")
                 .build());
     }
 }

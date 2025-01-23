@@ -7,15 +7,11 @@ import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodAllergyMapper;
 import com.mthien.yumble.payload.request.foodallergy.AddAllergiesRequest;
-import com.mthien.yumble.payload.response.allergy.AllergyResponse;
 import com.mthien.yumble.payload.response.foodallergy.FoodAllergyResponse;
 import com.mthien.yumble.repository.AllergyRepo;
 import com.mthien.yumble.repository.FoodAllergyRepo;
 import com.mthien.yumble.repository.FoodRepo;
 import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 public class FoodAllergyService {
@@ -31,13 +27,24 @@ public class FoodAllergyService {
         this.allergyRepo = allergyRepo;
     }
 
-    public FoodAllergyResponse addFoodAllergy(String foodId, AddAllergiesRequest request) {
-        Food food = foodRepo.findById(foodId).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
-        Allergy allergy = allergyRepo.findByName(request.getAllergy()).orElseThrow(() -> new AppException(ErrorCode.ALLERGY_NOT_FOUND));
+    public FoodAllergyResponse addAllergy(String foodId, AddAllergiesRequest request) {
+        Food food = foodRepo.findById(foodId)
+                .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
+        Allergy allergy = allergyRepo.findById(request.getAllergyId())
+                .orElseThrow(() -> new AppException(ErrorCode.ALLERGY_NOT_FOUND));
         foodAllergyRepo.findByAllergyAndFood(allergy, food).ifPresent(existingAllergy -> {
-            throw new AppException(ErrorCode.ALLERGY_IS_EXISTED);
+            throw new AppException(ErrorCode.FOOD_ALLERGY_IS_EXISTED);
         });
         FoodAllergy foodAllergy = foodAllergyMapper.createFoodAllergy(food, allergy, request.getSeverity());
         return foodAllergyMapper.toFoodAllergyResponse(foodAllergyRepo.save(foodAllergy));
     }
+
+    public void deleteAllergy(String foodId, String allergyId) {
+        Food food = foodRepo.findById(foodId).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
+        Allergy allergy = allergyRepo.findById(allergyId).orElseThrow(() -> new AppException(ErrorCode.ALLERGY_NOT_FOUND));
+        FoodAllergy foodAllergy = foodAllergyRepo.findByAllergyAndFood(allergy, food)
+                .orElseThrow(() -> new AppException(ErrorCode.FOOD_ALLERGY_NOT_FOUND));
+        foodAllergyRepo.delete(foodAllergy);
+    }
+
 }

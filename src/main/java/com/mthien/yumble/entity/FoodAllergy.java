@@ -24,6 +24,6 @@ public class FoodAllergy {
     @JoinColumn(name = "allergy_id")
     private Allergy allergy;
 
-    @Column(name = "severity")
+    @Column(name = "severity", columnDefinition = "NVARCHAR(255)")
     private String severity;
 }

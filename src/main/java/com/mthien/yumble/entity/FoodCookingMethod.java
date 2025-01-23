@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-public class FoodMethodCooking {
+public class FoodCookingMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -21,8 +21,8 @@ public class FoodMethodCooking {
     private Food food;
 
     @ManyToOne
-    @JoinColumn(name = "method_cooking_id")
-    private MethodCooking methodCooking;
+    @JoinColumn(name = "cooking_method_id")
+    private CookingMethod cookingMethod;
 
     @Column(name = "time_required")
     private Integer timeRequired;

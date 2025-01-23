@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Set;
 
 @RestController
-@RequestMapping("step")
 public class StepController {
     private final StepService stepService;
 
@@ -21,7 +20,7 @@ public class StepController {
         this.stepService = stepService;
     }
 
-    @PostMapping(value = "add-step-to-food/{foodId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "foods/{foodId}/steps", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<StepResponse>> addStepToFood(@PathVariable("foodId") String id,
                                                                    @ModelAttribute CreateStepRequest request) throws IOException {
         var data = stepService.addStepToFood(id, request);
@@ -32,7 +31,7 @@ public class StepController {
                 .build());
     }
 
-    @PutMapping(value = "edit-step/{stepId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(value = "steps/{stepId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<StepResponse>> editStep(@PathVariable("stepId") String id,
                                                               @ModelAttribute UpdateStepRequest request) throws IOException {
         var data = stepService.updateStep(id, request);
@@ -43,7 +42,7 @@ public class StepController {
                 .build());
     }
 
-    @GetMapping("view-by-food/{foodId}")
+    @GetMapping("foods/{foodId}/steps")
     public ResponseEntity<ApiResponse<Set<StepResponse>>> viewStepByFood(@PathVariable("foodId") String id) {
         var data = stepService.viewStepsByFoodId(id);
         return ResponseEntity.ok(ApiResponse.<Set<StepResponse>>builder()

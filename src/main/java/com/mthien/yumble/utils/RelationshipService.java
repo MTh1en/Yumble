@@ -1,9 +1,9 @@
 package com.mthien.yumble.utils;
 
 import com.mthien.yumble.entity.Allergy;
+import com.mthien.yumble.entity.CookingMethod;
 import com.mthien.yumble.entity.Dietary;
 import com.mthien.yumble.entity.Food;
-import com.mthien.yumble.entity.MethodCooking;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.repository.FoodRepo;
@@ -61,8 +61,8 @@ public class RelationshipService {
             return ((Allergy) entity).getName();
         } else if (entity instanceof Dietary) {
             return ((Dietary) entity).getName();
-        } else if (entity instanceof MethodCooking) {
-            return ((MethodCooking) entity).getName();
+        } else if (entity instanceof CookingMethod) {
+            return ((CookingMethod) entity).getName();
         }
         return "";
     }

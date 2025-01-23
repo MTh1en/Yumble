@@ -1,4 +1,4 @@
-package com.mthien.yumble.payload.response.methodcooking;
+package com.mthien.yumble.payload.response.cookingmethod;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MethodCookingResponse {
+public class CookingMethodResponse {
     private String id;
     private String name;
     private String description;

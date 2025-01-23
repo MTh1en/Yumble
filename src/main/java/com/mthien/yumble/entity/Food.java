@@ -49,5 +49,5 @@ public class Food {
 
     @OneToMany(mappedBy = "food")
     @JsonManagedReference
-    private Set<FoodMethodCooking> foodMethodCookings;
+    private Set<FoodCookingMethod> foodCookingMethods;
 }

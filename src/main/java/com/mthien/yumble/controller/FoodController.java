@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("food")
+@RequestMapping("foods")
 public class FoodController {
     private final FoodService foodService;
 
@@ -20,7 +20,7 @@ public class FoodController {
         this.foodService = foodService;
     }
 
-    @PostMapping("create")
+    @PostMapping()
     public ResponseEntity<ApiResponse<FoodResponse>> create(@RequestBody CreateFoodRequest request) {
         var data = foodService.create(request);
         return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
@@ -30,7 +30,7 @@ public class FoodController {
                 .build());
     }
 
-    @PutMapping("update/{foodId}")
+    @PutMapping("{foodId}")
     public ResponseEntity<ApiResponse<FoodResponse>> update(@PathVariable("foodId") String foodId,
                                                             @RequestBody UpdateFoodRequest request) {
         var data = foodService.update(foodId, request);
@@ -41,7 +41,7 @@ public class FoodController {
                 .build());
     }
 
-    @GetMapping("view-one/{foodId}")
+    @GetMapping("{foodId}")
     public ResponseEntity<ApiResponse<FoodResponse>> viewOne(@PathVariable("foodId") String foodId) {
         var data = foodService.viewOne(foodId);
         return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
@@ -51,7 +51,7 @@ public class FoodController {
                 .build());
     }
 
-    @GetMapping("view-all")
+    @GetMapping()
     public ResponseEntity<ApiResponse<List<FoodResponse>>> viewAll() {
         var data = foodService.viewAll();
         return ResponseEntity.ok(ApiResponse.<List<FoodResponse>>builder()

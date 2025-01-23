@@ -4,11 +4,11 @@ import com.mthien.yumble.entity.Allergy;
 import com.mthien.yumble.entity.Dietary;
 import com.mthien.yumble.entity.Enum.Role;
 import com.mthien.yumble.entity.Enum.UserStatus;
-import com.mthien.yumble.entity.MethodCooking;
+import com.mthien.yumble.entity.CookingMethod;
 import com.mthien.yumble.entity.Users;
 import com.mthien.yumble.repository.AllergyRepo;
 import com.mthien.yumble.repository.DietaryRepo;
-import com.mthien.yumble.repository.MethodCookingRepo;
+import com.mthien.yumble.repository.CookingMethodRepo;
 import com.mthien.yumble.repository.UserRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,13 +25,13 @@ public class DataLoader implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
     private final DietaryRepo dietaryRepo;
     private final AllergyRepo allergyRepo;
-    private final MethodCookingRepo methodCookingRepo;
+    private final CookingMethodRepo cookingMethodRepo;
 
-    public DataLoader(UserRepo userRepo, DietaryRepo dietaryRepo, AllergyRepo allergyRepo, MethodCookingRepo methodCookingRepo) {
+    public DataLoader(UserRepo userRepo, DietaryRepo dietaryRepo, AllergyRepo allergyRepo, CookingMethodRepo cookingMethodRepo) {
         this.userRepo = userRepo;
         this.dietaryRepo = dietaryRepo;
         this.allergyRepo = allergyRepo;
-        this.methodCookingRepo = methodCookingRepo;
+        this.cookingMethodRepo = cookingMethodRepo;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class DataLoader implements CommandLineRunner {
         }
 
         //DIETARY
-        if (methodCookingRepo.count() == 0) {
+        if (cookingMethodRepo.count() == 0) {
             String[] methodCooking = {
                     "Chiên-Dùng nhiều dầu mỡ, món ăn thường có lớp vỏ ngoài giòn.",
                     "Xào-Sử dụng ít dầu, nguyên liệu được đảo nhanh trên lửa lớn.",
@@ -82,14 +82,14 @@ public class DataLoader implements CommandLineRunner {
                     "Làm đông/lạnh-Dùng nhiệt độ thấp để bảo quản hoặc làm món ăn đặc biệt."
 
             };
-            List<MethodCooking> methodCookingList = Arrays.stream(methodCooking).map(entry -> {
+            List<CookingMethod> cookingMethodList = Arrays.stream(methodCooking).map(entry -> {
                 String[] parts = entry.split("-", 2);
-                return MethodCooking.builder()
+                return CookingMethod.builder()
                         .name(parts[0])
                         .description(parts[1])
                         .build();
             }).toList();
-            methodCookingRepo.saveAll(methodCookingList);
+            cookingMethodRepo.saveAll(cookingMethodList);
         }
 
         if (dietaryRepo.count() == 0) {

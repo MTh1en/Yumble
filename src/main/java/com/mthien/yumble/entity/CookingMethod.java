@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Entity
-public class MethodCooking {
+public class CookingMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -25,7 +25,7 @@ public class MethodCooking {
     @Column(name = "description", columnDefinition = "NVARCHAR(255)")
     private String description;
 
-    @OneToMany(mappedBy = "methodCooking")
+    @OneToMany(mappedBy = "cookingMethod")
     @JsonBackReference
-    private Set<FoodMethodCooking> foodMethodCookings;
+    private Set<FoodCookingMethod> foodCookingMethods;
 }

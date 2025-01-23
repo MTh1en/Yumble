@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("users")
 public class UserController {
     private final UserService userService;
 
@@ -24,7 +24,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("update-profile/{id}")
+    @PostMapping("/{id}/profile")
     public ResponseEntity<ApiResponse<UserResponse>> updateProfile(@PathVariable("id") String id,
                                                                    @RequestBody UpdateProfileRequest request) {
         var data = userService.updateProfile(id, request);
@@ -35,7 +35,7 @@ public class UserController {
                 .build());
     }
 
-    @PostMapping(value = "update-avatar/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/{id}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<UserResponse>> updateAvatar(@PathVariable("id") String id,
                                                                   @RequestParam("file") MultipartFile file) throws IOException {
         var data = userService.updateAvatar(id, file);
@@ -46,7 +46,7 @@ public class UserController {
                 .build());
     }
 
-    @GetMapping("view-profile/{id}")
+    @GetMapping("/{id}/profile")
     public ResponseEntity<ApiResponse<UserResponse>> viewProfile(@PathVariable("id") String id) {
         var data = userService.viewProfile(id);
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
@@ -56,7 +56,7 @@ public class UserController {
                 .build());
     }
 
-    @PutMapping("change-password/{id}")
+    @PutMapping("/{id}/password")
     public ResponseEntity<ApiResponse<UserResponse>> changePassword(@Valid @PathVariable("id") String id,
                                                                     @RequestBody ChangePasswordRequest request) {
         var data = userService.changePassword(id, request);
@@ -68,7 +68,7 @@ public class UserController {
 
     }
 
-    @PutMapping(value = "add-allergies-and-dietaries{id}")
+    @PutMapping(value = "/{id}/preferences")
     public ResponseEntity<ApiResponse<UserResponse>> addAllAllergiesAndDietaries(@PathVariable("id") String id,
                                                                                  @RequestBody AddAllergiesAndDietariesRequest request) {
         var data = userService.addAllergiesAndDietaries(id, request);
@@ -80,7 +80,7 @@ public class UserController {
     }
 
     //ADMIN.
-    @GetMapping("view-all")
+    @GetMapping()
     public ResponseEntity<ApiResponse<List<UserResponse>>> viewAll() {
         var data = userService.getAllUsers();
         return ResponseEntity.ok(ApiResponse.<List<UserResponse>>builder()

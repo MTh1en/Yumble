@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("nutrition")
 public class NutritionController {
     private final NutritionService nutritionService;
 
@@ -20,7 +19,7 @@ public class NutritionController {
         this.nutritionService = nutritionService;
     }
 
-    @PostMapping("create/{foodId}")
+    @PostMapping("foods/{foodId}/nutrition")
     public ResponseEntity<ApiResponse<NutritionResponse>> create(@PathVariable("foodId") String id,
                                                                  @RequestBody CreateNutritionRequest request) {
         var data = nutritionService.create(id, request);
@@ -31,7 +30,7 @@ public class NutritionController {
                 .build());
     }
 
-    @PutMapping("update/{foodId}")
+    @PutMapping("foods/{foodId}/nutrition")
     public ResponseEntity<ApiResponse<NutritionResponse>> update(@PathVariable("foodId") String id,
                                                                  @RequestBody UpdateNutritionRequest request) {
         var data = nutritionService.update(id, request);
@@ -42,7 +41,7 @@ public class NutritionController {
                 .build());
     }
 
-    @GetMapping("view-one/{foodId}")
+    @GetMapping("foods/{foodId}/nutrition")
     public ResponseEntity<ApiResponse<NutritionResponse>> viewOne(@PathVariable("foodId") String id) {
         var data = nutritionService.viewOne(id);
         return ResponseEntity.ok(ApiResponse.<NutritionResponse>builder()
@@ -52,7 +51,7 @@ public class NutritionController {
                 .build());
     }
 
-    @GetMapping("view-all")
+    @GetMapping("foods/nutrition")
     public ResponseEntity<ApiResponse<List<NutritionResponse>>> viewAll() {
         var data = nutritionService.viewAll();
         return ResponseEntity.ok(ApiResponse.<List<NutritionResponse>>builder()
@@ -62,17 +61,12 @@ public class NutritionController {
                 .build());
     }
 
-    @DeleteMapping("delete/{foodId}")
+    @DeleteMapping("foods/{foodId}/nutrition")
     public ResponseEntity<ApiResponse<Void>> delete(@PathVariable("foodId") String id) {
         nutritionService.delete(id);
         return ResponseEntity.ok(ApiResponse.<Void>builder()
                 .code(200)
                 .message("Xóa thông tin dinh dưỡng thành công")
                 .build());
-    }
-
-    @GetMapping("view/{foodId}")
-    public Nutrition view(@PathVariable("foodId") String id) {
-        return nutritionService.view(id);
     }
 }

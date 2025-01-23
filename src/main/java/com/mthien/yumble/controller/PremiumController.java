@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("premium")
 public class PremiumController {
     private final PremiumService premiumService;
 
@@ -16,7 +15,7 @@ public class PremiumController {
         this.premiumService = premiumService;
     }
 
-    @PostMapping("create/{userId}")
+    @PostMapping("users/{userId}/premium")
     public ResponseEntity<ApiResponse<PremiumResponse>> createPremium(@PathVariable("userId") String id,
                                                                           @RequestBody CreatePremiumRequest request) {
         var data = premiumService.createPremium(id, request);
@@ -27,7 +26,7 @@ public class PremiumController {
                 .build());
     }
 
-    @PutMapping("calculate-remaining/{userId}")
+    @GetMapping("users/{userId}/premium/remaining")
     public ResponseEntity<ApiResponse<PremiumResponse>> calculateRemaining(@PathVariable("userId") String id) {
         var data = premiumService.calculateRemaining(id);
         return ResponseEntity.ok(ApiResponse.<PremiumResponse>builder()
@@ -37,7 +36,7 @@ public class PremiumController {
                 .build());
     }
 
-    @GetMapping("view-by-user/{userId}")
+    @GetMapping("users/{userId}/premium")
     public ResponseEntity<ApiResponse<PremiumResponse>> viewPremiumByUser(@PathVariable("userId") String id) {
         var data = premiumService.viewPremium(id);
         return ResponseEntity.ok(ApiResponse.<PremiumResponse>builder()
