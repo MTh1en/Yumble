@@ -24,10 +24,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/{id}/profile")
-    public ResponseEntity<ApiResponse<UserResponse>> updateProfile(@PathVariable("id") String id,
+    @PostMapping("/{userId}/profile")
+    public ResponseEntity<ApiResponse<UserResponse>> updateProfile(@PathVariable("userId") String userId,
                                                                    @RequestBody UpdateProfileRequest request) {
-        var data = userService.updateProfile(id, request);
+        var data = userService.updateProfile(userId, request);
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
                 .code(200)
                 .message(("Cập nhật thông tin tài khoản thành công"))
@@ -35,10 +35,10 @@ public class UserController {
                 .build());
     }
 
-    @PostMapping(value = "/{id}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ApiResponse<UserResponse>> updateAvatar(@PathVariable("id") String id,
+    @PostMapping(value = "/{userId}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ApiResponse<UserResponse>> updateAvatar(@PathVariable("userId") String userId,
                                                                   @RequestParam("file") MultipartFile file) throws IOException {
-        var data = userService.updateAvatar(id, file);
+        var data = userService.updateAvatar(userId, file);
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
                 .code(200)
                 .message("Cập nhật hình đại diện của tài khoản thành công")
@@ -46,9 +46,9 @@ public class UserController {
                 .build());
     }
 
-    @GetMapping("/{id}/profile")
-    public ResponseEntity<ApiResponse<UserResponse>> viewProfile(@PathVariable("id") String id) {
-        var data = userService.viewProfile(id);
+    @GetMapping("/{userId}/profile")
+    public ResponseEntity<ApiResponse<UserResponse>> viewProfile(@PathVariable("userId") String userId) {
+        var data = userService.viewProfile(userId);
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
                 .code(200)
                 .message("Thông tin tài khoản của bạn")
@@ -56,10 +56,10 @@ public class UserController {
                 .build());
     }
 
-    @PutMapping("/{id}/password")
-    public ResponseEntity<ApiResponse<UserResponse>> changePassword(@Valid @PathVariable("id") String id,
+    @PutMapping("/{userId}/password")
+    public ResponseEntity<ApiResponse<UserResponse>> changePassword(@Valid @PathVariable("userId") String userId,
                                                                     @RequestBody ChangePasswordRequest request) {
-        var data = userService.changePassword(id, request);
+        var data = userService.changePassword(userId, request);
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
                 .code(200)
                 .message("Đổi mật khẩu thành công")
@@ -68,10 +68,10 @@ public class UserController {
 
     }
 
-    @PutMapping(value = "/{id}/preferences")
-    public ResponseEntity<ApiResponse<UserResponse>> addAllAllergiesAndDietaries(@PathVariable("id") String id,
+    @PutMapping(value = "/{userId}/preferences")
+    public ResponseEntity<ApiResponse<UserResponse>> addAllAllergiesAndDietaries(@PathVariable("userId") String userId,
                                                                                  @RequestBody AddAllergiesAndDietariesRequest request) {
-        var data = userService.addAllergiesAndDietaries(id, request);
+        var data = userService.addAllergiesAndDietaries(userId, request);
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
                 .code(200)
                 .message("Cập nhật thông tin ăn uống cá nhân thành công")
