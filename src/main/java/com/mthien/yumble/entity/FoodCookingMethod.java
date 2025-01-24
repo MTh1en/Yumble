@@ -25,5 +25,8 @@ public class FoodCookingMethod {
     private CookingMethod cookingMethod;
 
     @Column(name = "time_required")
-    private Integer timeRequired;
+    private Float timeRequired;
+
+    @Column(name = "is_Core", nullable = false)
+    private Boolean isCore;
 }
