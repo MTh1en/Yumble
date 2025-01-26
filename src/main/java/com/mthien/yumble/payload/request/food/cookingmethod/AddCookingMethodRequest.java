@@ -1,4 +1,4 @@
-package com.mthien.yumble.payload.request.foodcookingmethod;
+package com.mthien.yumble.payload.request.food.cookingmethod;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

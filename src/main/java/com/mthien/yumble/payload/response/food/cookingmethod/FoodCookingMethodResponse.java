@@ -1,4 +1,4 @@
-package com.mthien.yumble.payload.response.foodcookingmethod;
+package com.mthien.yumble.payload.response.food.cookingmethod;
 
 import com.mthien.yumble.payload.response.cookingmethod.CookingMethodResponse;
 import com.mthien.yumble.payload.response.food.FoodResponse;

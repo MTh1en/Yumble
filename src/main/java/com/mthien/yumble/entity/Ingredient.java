@@ -25,5 +25,5 @@ public class Ingredient {
     private String image;
 
     @OneToMany(mappedBy = "ingredient")
-    private Set<IngredientUsing> ingredientUsings;
+    private Set<FoodIngredient> foodIngredients;
 }

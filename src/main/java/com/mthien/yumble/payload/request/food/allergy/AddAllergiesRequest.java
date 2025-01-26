@@ -1,4 +1,4 @@
-package com.mthien.yumble.payload.request.fooddietary;
+package com.mthien.yumble.payload.request.food.allergy;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AddDietariesRequest {
-    private String dietaryId;
-    private String priority;
+public class AddAllergiesRequest {
+    private String allergyId;
+    private String severity;
 }

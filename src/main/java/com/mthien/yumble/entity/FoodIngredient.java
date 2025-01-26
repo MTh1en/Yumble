@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class IngredientUsing {
+public class FoodIngredient {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

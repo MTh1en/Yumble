@@ -37,7 +37,7 @@ public class Food {
     private Set<Step> steps;
 
     @OneToMany(mappedBy = "food")
-    private Set<IngredientUsing> ingredientUsings;
+    private Set<FoodIngredient> foodIngredients;
 
     @OneToMany(mappedBy = "food")
     @JsonManagedReference

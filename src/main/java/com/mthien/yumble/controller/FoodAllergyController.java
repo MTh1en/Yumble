@@ -1,8 +1,8 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.payload.request.foodallergy.AddAllergiesRequest;
+import com.mthien.yumble.payload.request.food.allergy.AddAllergiesRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
-import com.mthien.yumble.payload.response.foodallergy.FoodAllergyResponse;
+import com.mthien.yumble.payload.response.food.allergy.FoodAllergyResponse;
 import com.mthien.yumble.service.FoodAllergyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

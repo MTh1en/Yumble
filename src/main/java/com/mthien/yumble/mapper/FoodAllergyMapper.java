@@ -3,7 +3,7 @@ package com.mthien.yumble.mapper;
 import com.mthien.yumble.entity.Allergy;
 import com.mthien.yumble.entity.Food;
 import com.mthien.yumble.entity.FoodAllergy;
-import com.mthien.yumble.payload.response.foodallergy.FoodAllergyResponse;
+import com.mthien.yumble.payload.response.food.allergy.FoodAllergyResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

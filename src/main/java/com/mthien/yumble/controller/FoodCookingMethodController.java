@@ -1,8 +1,8 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.payload.request.foodcookingmethod.AddCookingMethodRequest;
+import com.mthien.yumble.payload.request.food.cookingmethod.AddCookingMethodRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
-import com.mthien.yumble.payload.response.foodcookingmethod.FoodCookingMethodResponse;
+import com.mthien.yumble.payload.response.food.cookingmethod.FoodCookingMethodResponse;
 import com.mthien.yumble.service.FoodCookingMethodService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -3,8 +3,8 @@ package com.mthien.yumble.mapper;
 import com.mthien.yumble.entity.CookingMethod;
 import com.mthien.yumble.entity.Food;
 import com.mthien.yumble.entity.FoodCookingMethod;
-import com.mthien.yumble.payload.request.foodcookingmethod.AddCookingMethodRequest;
-import com.mthien.yumble.payload.response.foodcookingmethod.FoodCookingMethodResponse;
+import com.mthien.yumble.payload.request.food.cookingmethod.AddCookingMethodRequest;
+import com.mthien.yumble.payload.response.food.cookingmethod.FoodCookingMethodResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

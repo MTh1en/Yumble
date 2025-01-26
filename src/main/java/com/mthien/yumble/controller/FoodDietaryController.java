@@ -1,8 +1,8 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.payload.request.fooddietary.AddDietariesRequest;
+import com.mthien.yumble.payload.request.food.dietary.AddDietariesRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
-import com.mthien.yumble.payload.response.fooddietary.FoodDietaryResponse;
+import com.mthien.yumble.payload.response.food.dietary.FoodDietaryResponse;
 import com.mthien.yumble.service.FoodDietaryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

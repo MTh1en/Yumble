@@ -1,6 +1,6 @@
-package com.mthien.yumble.payload.response.foodallergy;
+package com.mthien.yumble.payload.response.food.dietary;
 
-import com.mthien.yumble.payload.response.allergy.AllergyResponse;
+import com.mthien.yumble.payload.response.dietary.DietaryResponse;
 import com.mthien.yumble.payload.response.food.FoodResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FoodAllergyResponse {
+public class FoodDietaryResponse {
     private FoodResponse food;
-    private AllergyResponse allergy;
-    private String severity;
+    private DietaryResponse dietary;
+    private String priority;
 }
