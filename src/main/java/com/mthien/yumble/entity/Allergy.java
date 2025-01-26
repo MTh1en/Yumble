@@ -29,7 +29,7 @@ public class Allergy {
     @JsonBackReference
     private Set<FoodAllergy> foodAllergies;
 
-    @ManyToMany(mappedBy = "allergies")
+    @OneToMany(mappedBy = "allergy")
     @JsonBackReference
-    private Set<Users> users;
+    private Set<UserAllergy> userAllergies;
 }

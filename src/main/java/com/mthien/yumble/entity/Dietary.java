@@ -29,7 +29,7 @@ public class Dietary {
     @JsonBackReference
     private Set<FoodDietary> foodDietaries;
 
-    @ManyToMany(mappedBy = "dietaries")
+    @OneToMany(mappedBy = "dietary")
     @JsonBackReference
-    private Set<Users> users;
+    private Set<UserDietary> userDietaries;
 }

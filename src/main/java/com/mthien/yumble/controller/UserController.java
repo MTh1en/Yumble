@@ -67,18 +67,6 @@ public class UserController {
                 .build());
 
     }
-
-    @PutMapping(value = "/{userId}/preferences")
-    public ResponseEntity<ApiResponse<UserResponse>> addAllAllergiesAndDietaries(@PathVariable("userId") String userId,
-                                                                                 @RequestBody AddAllergiesAndDietariesRequest request) {
-        var data = userService.addAllergiesAndDietaries(userId, request);
-        return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
-                .code(200)
-                .message("Cập nhật thông tin ăn uống cá nhân thành công")
-                .data(data)
-                .build());
-    }
-
     //ADMIN.
     @GetMapping()
     public ResponseEntity<ApiResponse<List<UserResponse>>> viewAll() {

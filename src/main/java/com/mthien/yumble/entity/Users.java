@@ -47,21 +47,15 @@ public class Users {
     @OneToOne(mappedBy = "users")
     private Premium premium;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_allergy",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "allergy_id")
-    )
+    @OneToMany(mappedBy = "user")
     @JsonManagedReference
-    private Set<Allergy> allergies;
+    private Set<UserAllergy> userAllergies;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_dietary",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "dietary_id")
-    )
+    @OneToMany(mappedBy = "user")
     @JsonManagedReference
-    private Set<Dietary> dietaries;
+    private Set<UserDietary> userDietaries;
+
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private Set<Favorite> favorites;
 }

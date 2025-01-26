@@ -50,4 +50,8 @@ public class Food {
     @OneToMany(mappedBy = "food")
     @JsonManagedReference
     private Set<FoodCookingMethod> foodCookingMethods;
+
+    @OneToMany(mappedBy = "food")
+    @JsonManagedReference
+    private Set<Favorite> favorites;
 }
