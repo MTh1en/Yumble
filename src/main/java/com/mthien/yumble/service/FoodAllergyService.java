@@ -6,7 +6,7 @@ import com.mthien.yumble.entity.FoodAllergy;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodAllergyMapper;
-import com.mthien.yumble.payload.request.food.allergy.AddAllergiesRequest;
+import com.mthien.yumble.payload.request.food.allergy.AddFoodAllergyRequest;
 import com.mthien.yumble.payload.response.food.allergy.FoodAllergyResponse;
 import com.mthien.yumble.repository.AllergyRepo;
 import com.mthien.yumble.repository.FoodAllergyRepo;
@@ -27,7 +27,7 @@ public class FoodAllergyService {
         this.allergyRepo = allergyRepo;
     }
 
-    public FoodAllergyResponse addAllergy(String foodId, AddAllergiesRequest request) {
+    public FoodAllergyResponse addFoodAllergy(String foodId, AddFoodAllergyRequest request) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Allergy allergy = allergyRepo.findById(request.getAllergyId())
@@ -39,7 +39,7 @@ public class FoodAllergyService {
         return foodAllergyMapper.toFoodAllergyResponse(foodAllergyRepo.save(foodAllergy));
     }
 
-    public void deleteAllergy(String foodId, String allergyId) {
+    public void deleteFoodAllergy(String foodId, String allergyId) {
         Food food = foodRepo.findById(foodId).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Allergy allergy = allergyRepo.findById(allergyId).orElseThrow(() -> new AppException(ErrorCode.ALLERGY_NOT_FOUND));
         FoodAllergy foodAllergy = foodAllergyRepo.findByAllergyAndFood(allergy, food)

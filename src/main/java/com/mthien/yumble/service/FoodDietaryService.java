@@ -6,7 +6,7 @@ import com.mthien.yumble.entity.FoodDietary;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodDietaryMapper;
-import com.mthien.yumble.payload.request.food.dietary.AddDietariesRequest;
+import com.mthien.yumble.payload.request.food.dietary.AddFoodDietaryRequest;
 import com.mthien.yumble.payload.response.food.dietary.FoodDietaryResponse;
 import com.mthien.yumble.repository.DietaryRepo;
 import com.mthien.yumble.repository.FoodDietaryRepo;
@@ -27,7 +27,7 @@ public class FoodDietaryService {
         this.dietaryRepo = dietaryRepo;
     }
 
-    public FoodDietaryResponse addDietary(String foodId, AddDietariesRequest request) {
+    public FoodDietaryResponse addFoodDietary(String foodId, AddFoodDietaryRequest request) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Dietary dietary = dietaryRepo.findById(request.getDietaryId())
@@ -39,13 +39,13 @@ public class FoodDietaryService {
         return foodDietaryMapper.toFoodDietaryResponse(foodDietaryRepo.save(foodDietary));
     }
 
-    public void deleteDietary(String foodId, String dietaryId) {
+    public void deleteFoodDietary(String foodId, String dietaryId) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Dietary dietary = dietaryRepo.findById(dietaryId)
                 .orElseThrow(() -> new AppException(ErrorCode.DIETARY_NOT_FOUND));
         FoodDietary foodDietary = foodDietaryRepo.findByFoodAndDietary(food, dietary)
-                .orElseThrow(() -> new AppException(ErrorCode.FOOD_DIETARY_IS_EXISTED));
+                .orElseThrow(() -> new AppException(ErrorCode.FOOD_DIETARY_NOT_FOUND));
         foodDietaryRepo.delete(foodDietary);
     }
 }

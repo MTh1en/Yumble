@@ -18,7 +18,7 @@ public class FoodIngredientController {
     @PostMapping("foods/{foodId}/ingredients")
     public ResponseEntity<ApiResponse<FoodIngredientResponse>> addIngredient(@PathVariable("foodId") String foodId,
                                                                              @RequestBody AddIngredientRequest request) {
-        var data = foodIngredientService.addIngredient(foodId, request);
+        var data = foodIngredientService.addFoodIngredient(foodId, request);
         return ResponseEntity.ok(ApiResponse.<FoodIngredientResponse>builder()
                 .code(200)
                 .message("Nguyên liệu đã được thêm vào món ăn")
@@ -29,7 +29,7 @@ public class FoodIngredientController {
     @DeleteMapping("foods/{foodId}/ingredients/{ingredientId}")
     public ResponseEntity<ApiResponse<Void>> deleteIngredient(@PathVariable("foodId") String foodId,
                                                               @PathVariable("ingredientId") String ingredientId) {
-        foodIngredientService.deleteIngredient(foodId, ingredientId);
+        foodIngredientService.deleteFoodIngredient(foodId, ingredientId);
         return ResponseEntity.ok(ApiResponse.<Void>builder()
                 .code(200)
                 .message("Đã xóa nguyên liệu khỏi món ăn thành công")

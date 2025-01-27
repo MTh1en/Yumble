@@ -6,7 +6,7 @@ import com.mthien.yumble.entity.FoodCookingMethod;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodCookingMethodMapper;
-import com.mthien.yumble.payload.request.food.cookingmethod.AddCookingMethodRequest;
+import com.mthien.yumble.payload.request.food.cookingmethod.AddFoodCookingMethodRequest;
 import com.mthien.yumble.payload.response.food.cookingmethod.FoodCookingMethodResponse;
 import com.mthien.yumble.repository.CookingMethodRepo;
 import com.mthien.yumble.repository.FoodCookingMethodRepo;
@@ -27,7 +27,7 @@ public class FoodCookingMethodService {
         this.cookingMethodRepo = cookingMethodRepo;
     }
 
-    public FoodCookingMethodResponse addCookingMethod(String foodId, AddCookingMethodRequest request) {
+    public FoodCookingMethodResponse addFoodCookingMethod(String foodId, AddFoodCookingMethodRequest request) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         CookingMethod cookingMethod = cookingMethodRepo.findById(request.getCookingMethodId())
@@ -39,7 +39,7 @@ public class FoodCookingMethodService {
         return foodCookingMethodMapper.toFoodCookingMethodResponse(foodCookingMethodRepo.save(foodCookingMethod));
     }
 
-    public void deleteCookingMethod(String foodId, String cookingMethodId) {
+    public void deleteFoodCookingMethod(String foodId, String cookingMethodId) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         CookingMethod cookingMethod = cookingMethodRepo.findById(cookingMethodId)

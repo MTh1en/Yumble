@@ -1,6 +1,6 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.payload.request.food.allergy.AddAllergiesRequest;
+import com.mthien.yumble.payload.request.food.allergy.AddFoodAllergyRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.food.allergy.FoodAllergyResponse;
 import com.mthien.yumble.service.FoodAllergyService;
@@ -17,8 +17,8 @@ public class FoodAllergyController {
 
     @PostMapping("foods/{foodId}/allergies")
     public ResponseEntity<ApiResponse<FoodAllergyResponse>> addAllergies(@PathVariable String foodId,
-                                                                         @RequestBody AddAllergiesRequest request) {
-        var data = foodAllergyService.addAllergy(foodId, request);
+                                                                         @RequestBody AddFoodAllergyRequest request) {
+        var data = foodAllergyService.addFoodAllergy(foodId, request);
         return ResponseEntity.ok(ApiResponse.<FoodAllergyResponse>builder()
                 .code(200)
                 .message("Thêm thành phần dị ứng thành công")
@@ -29,7 +29,7 @@ public class FoodAllergyController {
     @DeleteMapping("foods/{foodId}/allergies/{allergyId}")
     public ResponseEntity<ApiResponse<Void>> deleteAllergies(@PathVariable("foodId") String foodId,
                                                              @PathVariable("allergyId") String allergyId) {
-        foodAllergyService.deleteAllergy(foodId, allergyId);
+        foodAllergyService.deleteFoodAllergy(foodId, allergyId);
         return ResponseEntity.ok(ApiResponse.<Void>builder()
                 .code(200)
                 .message("Đã xóa thành phần dị ứng khỏi món ăn thành công")

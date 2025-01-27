@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AddCookingMethodRequest {
+public class AddFoodCookingMethodRequest {
     private String cookingMethodId;
     private Float timeRequired;
     private Boolean isCore;

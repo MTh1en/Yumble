@@ -27,7 +27,7 @@ public class FoodIngredientService {
         this.ingredientRepo = ingredientRepo;
     }
 
-    public FoodIngredientResponse addIngredient(String foodId, AddIngredientRequest request) {
+    public FoodIngredientResponse addFoodIngredient(String foodId, AddIngredientRequest request) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Ingredient ingredient = ingredientRepo.findById(request.getIngredientId())
@@ -39,7 +39,7 @@ public class FoodIngredientService {
         return foodIngredientMapper.toIngredientResponse(foodIngredientRepo.save(foodIngredient));
     }
 
-    public void deleteIngredient(String foodId, String ingredientId) {
+    public void deleteFoodIngredient(String foodId, String ingredientId) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Ingredient ingredient = ingredientRepo.findById(ingredientId)
