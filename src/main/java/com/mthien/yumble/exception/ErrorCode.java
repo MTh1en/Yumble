@@ -18,6 +18,7 @@ public enum ErrorCode {
 
     //FIREBASE
     FILE_NOT_FOUND(1050, "Hình ảnh không tồn tại trên firebase", HttpStatus.NOT_FOUND),
+    FILE_UPLOAD_FAILED(1151, "Lỗi khi tải hình ảnh lên firebase", HttpStatus.INTERNAL_SERVER_ERROR),
 
     //PREMIUM
     PREMIUM_NOT_REGISTERED(1100, "Bạn chưa đăng ký Premium", HttpStatus.BAD_REQUEST),

@@ -7,8 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-
 @RestController
 @RequestMapping("firebase")
 public class FirebaseController {
@@ -20,7 +18,7 @@ public class FirebaseController {
 
     @PostMapping(value = "upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<String>> updateProfile(@RequestParam("name") String name,
-                                                             @RequestParam("file") MultipartFile file) throws IOException {
+                                                             @RequestParam("file") MultipartFile file) {
         var data = firebaseService.uploadFile(name, file);
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(200)
@@ -30,7 +28,7 @@ public class FirebaseController {
     }
 
     @GetMapping("image-url")
-    public ResponseEntity<ApiResponse<String>> getImageUrl(@RequestParam String fileName) throws IOException {
+    public ResponseEntity<ApiResponse<String>> getImageUrl(@RequestParam String fileName) {
         var data = firebaseService.getImageUrl(fileName);
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(200)

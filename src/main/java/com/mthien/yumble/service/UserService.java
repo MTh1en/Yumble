@@ -12,9 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -35,9 +35,9 @@ public class UserService {
         return userMapper.toUserResponse(userRepo.save(users));
     }
 
-    public UserResponse updateAvatar(String id, MultipartFile avatar) throws IOException {
+    public UserResponse updateAvatar(String id, MultipartFile avatar){
         Users users = userRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
-        String imageUrl = firebaseService.uploadFile(users.getEmail(), avatar);
+        String imageUrl = firebaseService.uploadFile(generateUniqueAvatarFileName(users), avatar);
         users.setAvatar(imageUrl);
         return userMapper.toUserResponse(userRepo.save(users));
 
@@ -45,7 +45,13 @@ public class UserService {
 
     public UserResponse viewProfile(String id) {
         Users users = userRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
-        return userMapper.toUserResponse(users);
+        String avatar = Optional.ofNullable(users.getAvatar())
+                .filter(avatarPath -> !avatarPath.isEmpty())
+                .map(firebaseService::getImageUrl)
+                .orElse(null);
+        UserResponse userResponse = userMapper.toUserResponse(users);
+        userResponse.setAvatar(avatar);
+        return userResponse;
     }
 
     public UserResponse changePassword(String id, ChangePasswordRequest request) {
@@ -67,5 +73,10 @@ public class UserService {
     public List<UserResponse> getAllUsers() {
         List<Users> users = userRepo.findAll();
         return userMapper.toListUserResponse(users);
+    }
+
+    public String generateUniqueAvatarFileName(Users user) {
+        String uniqueId = UUID.randomUUID().toString();
+        return String.format("avatar/%s_%s", uniqueId, user.getEmail());
     }
 }
