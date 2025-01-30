@@ -3,18 +3,18 @@ package com.mthien.yumble.service;
 import com.google.cloud.storage.*;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Map;
+import java.net.URL;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class FirebaseService {
-    @Value("${firebase.image-url}")
-    protected String firebaseImageUrl;
     @Value("${firebase.bucket-name}")
     protected String firebaseBucketName;
 
@@ -24,26 +24,29 @@ public class FirebaseService {
         this.storage = storage;
     }
 
-    public String uploadFile(String fileName, MultipartFile file) throws IOException {
-        Bucket bucket = storage.get(firebaseBucketName);
-        String downloadToken = UUID.randomUUID().toString();
-        BlobInfo blobInfo = BlobInfo.newBuilder(bucket.getName(), fileName)
-                .setContentType(file.getContentType())
-                .setMetadata(Map.of("firebaseStorageDownloadTokens", downloadToken))
-                .build();
-        storage.create(blobInfo, file.getBytes());
-        return String.format(firebaseImageUrl, fileName, downloadToken);
+    public String generateUniqueFileName(String fileName) {
+        String uniqueId = UUID.randomUUID().toString();
+        return String.format("%s - %s", uniqueId, fileName);
     }
 
-    public String getImageUrl(String fileName) {
+    public String uploadFile(String fileName, MultipartFile file) throws IOException {
         Bucket bucket = storage.get(firebaseBucketName);
-        Blob blob = bucket.get(fileName);
-        if (blob == null) {
-            throw new RuntimeException("Image not found.");
-        }
-        String token = blob.getMetadata().get("firebaseStorageDownloadTokens");
-        return String.format(firebaseImageUrl, fileName, token);
+        String uniqueFileName = generateUniqueFileName(fileName);
+        BlobInfo blobInfo = BlobInfo.newBuilder(bucket.getName(), uniqueFileName)
+                .setContentType(file.getContentType())
+                .build();
+        storage.create(blobInfo, file.getBytes());
+        return String.format("%s", uniqueFileName);
     }
+
+    public String getImageUrl(String baseImageUrl) throws IOException {
+        URL signedUrl = storage.signUrl(
+                BlobInfo.newBuilder(BlobId.of(firebaseBucketName, baseImageUrl)).build(),
+                1, TimeUnit.DAYS,
+                Storage.SignUrlOption.withV4Signature());
+        return signedUrl.toString();
+    }
+
 
     public void deleteFile(String fileName) {
         Bucket bucket = storage.get(firebaseBucketName);
@@ -53,7 +56,5 @@ public class FirebaseService {
         } else {
             throw new AppException(ErrorCode.FILE_NOT_FOUND);
         }
-
     }
-
 }

@@ -30,11 +30,11 @@ public class FirebaseController {
     }
 
     @GetMapping("image-url")
-    public ResponseEntity<ApiResponse<String>> getImageUrl(@RequestParam String imageName) {
-        var data = firebaseService.getImageUrl(imageName);
+    public ResponseEntity<ApiResponse<String>> getImageUrl(@RequestParam String fileName) throws IOException {
+        var data = firebaseService.getImageUrl(fileName);
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(200)
-                .message("đường dẫn hình ảnh: " + imageName)
+                .message("Lấy đường dẫn của hình ảnh thành công")
                 .data(data)
                 .build());
     }
@@ -44,7 +44,7 @@ public class FirebaseController {
         firebaseService.deleteFile(name);
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .code(200)
-                .message("Xóa file với tên " + name + " thành công")
+                .message("Xóa file thành công")
                 .build());
     }
 }
