@@ -63,6 +63,11 @@ public class StepService {
         }).collect(Collectors.toList());
     }
 
+    public void deleteStep(String stepId) {
+        Step step = stepRepo.findById(stepId).orElseThrow(() -> new AppException(ErrorCode.STEP_NOT_FOUND));
+        stepRepo.delete(step);
+    }
+
     public String generateUniqueStepImageUrl(Food food, Step step) {
         String uniqueId = UUID.randomUUID().toString();
         return String.format("step/%s_%s_%s", uniqueId, food.getId(), step.getStepOrder());

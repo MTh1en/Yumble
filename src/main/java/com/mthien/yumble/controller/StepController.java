@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 
 @RestController
@@ -34,7 +35,7 @@ public class StepController {
 
     @PatchMapping("/steps/{stepId}")
     public ResponseEntity<ApiResponse<FoodStepResponse>> updateStepInformation(@PathVariable("stepId") String id,
-                                                                           @RequestBody UpdateStepRequest request) {
+                                                                               @RequestBody UpdateStepRequest request) {
         var data = stepService.updateStepInformation(id, request);
         return ResponseEntity.ok(ApiResponse.<FoodStepResponse>builder()
                 .code(200)
@@ -45,7 +46,7 @@ public class StepController {
 
     @PatchMapping(value = "/steps/{stepId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<FoodStepResponse>> updateStepImage(@PathVariable("stepId") String stepId,
-                                                                     @RequestParam("file") MultipartFile file) {
+                                                                         @RequestParam("file") MultipartFile file) {
         var data = stepService.updateStepImage(stepId, file);
         return ResponseEntity.ok(ApiResponse.<FoodStepResponse>builder()
                 .code(200)
@@ -61,6 +62,15 @@ public class StepController {
                 .code(200)
                 .message("Thông tin các bước nấu ăn của món")
                 .data(data)
+                .build());
+    }
+
+    @DeleteMapping("/steps/{stepId}")
+    public ResponseEntity<ApiResponse<Void>> deleteStep(@PathVariable("stepId") String id) {
+        stepService.deleteStep(id);
+        return ResponseEntity.ok(ApiResponse.<Void>builder()
+                .code(200)
+                .message("Đã xóa bước nấu món ăn thành công")
                 .build());
     }
 }
