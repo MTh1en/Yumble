@@ -11,7 +11,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Mapper(componentModel = "spring")
@@ -25,9 +24,9 @@ public interface UserMapper {
 
     UserResponse toUserResponse(Users users);
 
-    @Mapping(target = "role", expression = "java(defaultRole())")
-    @Mapping(target = "status", expression = "java(defaultStatus())")
-    Users toUsers(Users users);
+    @Mapping(target = "avatar", expression = "java(avatar)")
+    UserResponse toUserResponse(Users users, String avatar);
+
 
     List<UserResponse> toListUserResponse(List<Users> users);
 

@@ -5,8 +5,10 @@ import com.mthien.yumble.payload.request.food.UpdateFoodRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.service.FoodService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,8 +22,8 @@ public class FoodController {
         this.foodService = foodService;
     }
 
-    @PostMapping()
-    public ResponseEntity<ApiResponse<FoodResponse>> create(@RequestBody CreateFoodRequest request) {
+    @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ApiResponse<FoodResponse>> create(@ModelAttribute CreateFoodRequest request) {
         var data = foodService.create(request);
         return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
                 .code(200)
@@ -61,12 +63,23 @@ public class FoodController {
                 .build());
     }
 
-    @DeleteMapping("delete/{foodId}")
+    @DeleteMapping("/{foodId}")
     public ResponseEntity<ApiResponse<Void>> delete(@PathVariable("foodId") String foodId) {
         foodService.delete(foodId);
         return ResponseEntity.ok(ApiResponse.<Void>builder()
                 .code(200)
                 .message("Xóa món ăn thành công")
+                .build());
+    }
+
+    @PutMapping(value = "/{foodId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ApiResponse<FoodResponse>> uploadImage(@PathVariable("foodId") String foodId,
+                                                                 @RequestParam("image") MultipartFile image) {
+        var data = foodService.uploadFoodImage(foodId, image);
+        return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
+                .code(200)
+                .message("Tải hình ảnh món ăn thành công")
+                .data(data)
                 .build());
     }
 }

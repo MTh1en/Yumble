@@ -20,5 +20,8 @@ public interface FoodMapper {
 
     FoodResponse toFoodResponse(Food food);
 
+    @Mapping(target = "image", expression = "java(image)")
+    FoodResponse toFoodResponse(Food food, String image);
+
     List<FoodResponse> toFoodResponseList(List<Food> foods);
 }

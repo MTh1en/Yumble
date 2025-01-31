@@ -8,13 +8,16 @@ import com.mthien.yumble.payload.request.user.ChangePasswordRequest;
 import com.mthien.yumble.payload.request.user.UpdateProfileRequest;
 import com.mthien.yumble.payload.response.user.UserResponse;
 import com.mthien.yumble.repository.UserRepo;
+import io.micrometer.common.util.StringUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -35,10 +38,9 @@ public class UserService {
         return userMapper.toUserResponse(userRepo.save(users));
     }
 
-    public UserResponse updateAvatar(String id, MultipartFile avatar){
+    public UserResponse updateAvatar(String id, MultipartFile avatar) {
         Users users = userRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
-        String imageUrl = firebaseService.uploadFile(generateUniqueAvatarFileName(users), avatar);
-        users.setAvatar(imageUrl);
+        users.setAvatar(firebaseService.uploadFile(generateUniqueAvatarFileName(users), avatar));
         return userMapper.toUserResponse(userRepo.save(users));
 
     }
@@ -46,12 +48,10 @@ public class UserService {
     public UserResponse viewProfile(String id) {
         Users users = userRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
         String avatar = Optional.ofNullable(users.getAvatar())
-                .filter(avatarPath -> !avatarPath.isEmpty())
+                .filter(avatarUrl -> avatarUrl.contains("avatar"))
                 .map(firebaseService::getImageUrl)
-                .orElse(null);
-        UserResponse userResponse = userMapper.toUserResponse(users);
-        userResponse.setAvatar(avatar);
-        return userResponse;
+                .orElse(users.getAvatar());
+        return userMapper.toUserResponse(users, avatar);
     }
 
     public UserResponse changePassword(String id, ChangePasswordRequest request) {
@@ -71,8 +71,13 @@ public class UserService {
 
     //ADMIN
     public List<UserResponse> getAllUsers() {
-        List<Users> users = userRepo.findAll();
-        return userMapper.toListUserResponse(users);
+        return userRepo.findAll().stream().map(users1 -> {
+            String avatar = Optional.ofNullable(users1.getAvatar())
+                    .filter(avatarUrl -> avatarUrl.contains("avatar"))
+                    .map(firebaseService::getImageUrl)
+                    .orElse(users1.getAvatar());
+            return userMapper.toUserResponse(users1, avatar);
+        }).collect(Collectors.toList());
     }
 
     public String generateUniqueAvatarFileName(Users user) {

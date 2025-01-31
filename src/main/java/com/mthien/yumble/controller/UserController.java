@@ -24,7 +24,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/{userId}/profile")
+    @PutMapping("/{userId}/profile")
     public ResponseEntity<ApiResponse<UserResponse>> updateProfile(@PathVariable("userId") String userId,
                                                                    @RequestBody UpdateProfileRequest request) {
         var data = userService.updateProfile(userId, request);
@@ -35,7 +35,7 @@ public class UserController {
                 .build());
     }
 
-    @PostMapping(value = "/{userId}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(value = "/{userId}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<UserResponse>> updateAvatar(@PathVariable("userId") String userId,
                                                                   @RequestParam("file") MultipartFile file) throws IOException {
         var data = userService.updateAvatar(userId, file);

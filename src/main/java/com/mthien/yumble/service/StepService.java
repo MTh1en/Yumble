@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class StepService {
@@ -52,5 +53,10 @@ public class StepService {
     public Set<StepResponse> viewStepsByFoodId(String foodId) {
         Set<Step> steps = stepRepo.findByFoodIdOrderByStepOrder(foodId);
         return stepMapper.toSetStepResponse(steps);
+    }
+
+    public String generateUniqueStepImageUrl(Step step){
+        String uniqueId = UUID.randomUUID().toString();
+        return String.format("step/%s_%s_%s", uniqueId, step.getStepOrder(), step.getStepOrder());
     }
 }
