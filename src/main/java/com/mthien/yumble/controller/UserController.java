@@ -1,6 +1,5 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.payload.request.user.AddAllergiesAndDietariesRequest;
 import com.mthien.yumble.payload.request.user.ChangePasswordRequest;
 import com.mthien.yumble.payload.request.user.UpdateProfileRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
@@ -11,8 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -37,7 +34,7 @@ public class UserController {
 
     @PutMapping(value = "/{userId}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<UserResponse>> updateAvatar(@PathVariable("userId") String userId,
-                                                                  @RequestParam("file") MultipartFile file) throws IOException {
+                                                                  @RequestParam("file") MultipartFile file){
         var data = userService.updateAvatar(userId, file);
         return ResponseEntity.ok(ApiResponse.<UserResponse>builder()
                 .code(200)

@@ -32,13 +32,24 @@ public class FoodController {
                 .build());
     }
 
-    @PutMapping("{foodId}")
+    @PatchMapping("{foodId}")
     public ResponseEntity<ApiResponse<FoodResponse>> update(@PathVariable("foodId") String foodId,
                                                             @RequestBody UpdateFoodRequest request) {
         var data = foodService.update(foodId, request);
         return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
                 .code(200)
                 .message("Cập nhật thông tin món ăn thành công")
+                .data(data)
+                .build());
+    }
+
+    @PatchMapping(value = "/{foodId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ApiResponse<FoodResponse>> uploadImage(@PathVariable("foodId") String foodId,
+                                                                 @RequestParam("image") MultipartFile image) {
+        var data = foodService.uploadFoodImage(foodId, image);
+        return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
+                .code(200)
+                .message("Tải hình ảnh món ăn thành công")
                 .data(data)
                 .build());
     }
@@ -69,17 +80,6 @@ public class FoodController {
         return ResponseEntity.ok(ApiResponse.<Void>builder()
                 .code(200)
                 .message("Xóa món ăn thành công")
-                .build());
-    }
-
-    @PutMapping(value = "/{foodId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ApiResponse<FoodResponse>> uploadImage(@PathVariable("foodId") String foodId,
-                                                                 @RequestParam("image") MultipartFile image) {
-        var data = foodService.uploadFoodImage(foodId, image);
-        return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
-                .code(200)
-                .message("Tải hình ảnh món ăn thành công")
-                .data(data)
                 .build());
     }
 }

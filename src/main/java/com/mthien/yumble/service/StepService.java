@@ -7,14 +7,17 @@ import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.StepMapper;
 import com.mthien.yumble.payload.request.step.CreateStepRequest;
 import com.mthien.yumble.payload.request.step.UpdateStepRequest;
+import com.mthien.yumble.payload.response.step.FoodStepResponse;
 import com.mthien.yumble.payload.response.step.StepResponse;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.StepRepo;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class StepService {
@@ -30,33 +33,38 @@ public class StepService {
         this.firebaseService = firebaseService;
     }
 
-    public StepResponse addStepToFood(String foodId, CreateStepRequest request) throws IOException {
+    public FoodStepResponse addStepToFood(String foodId, CreateStepRequest request) {
         Food food = foodRepo.findById(foodId).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
-        String fileName = String.format("%s-step%s", foodId, request.getStepOrder());
-        String imageUrl = firebaseService.uploadFile(fileName, request.getImage());
         Step step = stepMapper.createStep(request);
         step.setFood(food);
-        step.setImage(imageUrl);
-        return stepMapper.toStepResponse(stepRepo.save(step));
+        step.setImage(firebaseService.uploadFile(generateUniqueStepImageUrl(food, step), request.getImage()));
+        return stepMapper.toFoodStepResponse(stepRepo.save(step));
     }
 
-    public StepResponse updateStep(String stepId, UpdateStepRequest request) throws IOException {
+    public FoodStepResponse updateStepInformation(String stepId, UpdateStepRequest request) {
         Step step = stepRepo.findById(stepId).orElseThrow(() -> new AppException(ErrorCode.STEP_NOT_FOUND));
-        String fileName = String.format("%s-step%s", step.getFood().getId(), request.getStepOrder());
-        String imageUrl = firebaseService.uploadFile(fileName, request.getImage());
-
         stepMapper.updateStep(step, request);
-        step.setImage(imageUrl);
-        return stepMapper.toStepResponse(stepRepo.save(step));
+        return stepMapper.toFoodStepResponse(stepRepo.save(step));
     }
 
-    public Set<StepResponse> viewStepsByFoodId(String foodId) {
-        Set<Step> steps = stepRepo.findByFoodIdOrderByStepOrder(foodId);
-        return stepMapper.toSetStepResponse(steps);
+    public FoodStepResponse updateStepImage(String stepId, MultipartFile image) {
+        Step step = stepRepo.findById(stepId).orElseThrow(() -> new AppException(ErrorCode.STEP_NOT_FOUND));
+        step.setImage(firebaseService.uploadFile(generateUniqueStepImageUrl(step.getFood(), step), image));
+        return stepMapper.toFoodStepResponse(stepRepo.save(step));
     }
 
-    public String generateUniqueStepImageUrl(Step step){
+    public List<StepResponse> viewStepsByFoodId(String foodId) {
+        return stepRepo.findByFoodIdOrderByStepOrder(foodId).stream().map(step -> {
+            String image = Optional.ofNullable(step.getImage())
+                    .filter(imageUrl -> imageUrl.contains("step"))
+                    .map(firebaseService::getImageUrl)
+                    .orElse(step.getImage());
+            return stepMapper.toStepResponse(image, step);
+        }).collect(Collectors.toList());
+    }
+
+    public String generateUniqueStepImageUrl(Food food, Step step) {
         String uniqueId = UUID.randomUUID().toString();
-        return String.format("step/%s_%s_%s", uniqueId, step.getStepOrder(), step.getStepOrder());
+        return String.format("step/%s_%s_%s", uniqueId, food.getId(), step.getStepOrder());
     }
 }

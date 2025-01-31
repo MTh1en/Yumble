@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StepResponse {
     private String id;
-    private String foodId;
     private String image;
     private Integer stepOrder;
     private String description;

@@ -15,7 +15,7 @@ public class Step {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(name = "step_order", nullable = false, unique = true)
+    @Column(name = "step_order", nullable = false)
     private Integer stepOrder;
 
     @Column(name = "description", nullable = false)

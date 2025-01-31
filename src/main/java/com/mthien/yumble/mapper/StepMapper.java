@@ -3,27 +3,24 @@ package com.mthien.yumble.mapper;
 import com.mthien.yumble.entity.Step;
 import com.mthien.yumble.payload.request.step.CreateStepRequest;
 import com.mthien.yumble.payload.request.step.UpdateStepRequest;
+import com.mthien.yumble.payload.response.step.FoodStepResponse;
 import com.mthien.yumble.payload.response.step.StepResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-import java.util.Set;
 
 @Mapper(componentModel = "spring")
 public interface StepMapper {
+    @Mapping(target = "food", ignore = true)
     @Mapping(target = "image", ignore = true)
     Step createStep(CreateStepRequest request);
 
     @Mapping(target = "image", ignore = true)
     void updateStep(@MappingTarget Step step, UpdateStepRequest request);
 
-    @Mapping(target = "foodId", expression = "java(getFoodId(step))" )
-    StepResponse toStepResponse(Step step);
+    @Mapping(target = "image", expression = "java(image)")
+    StepResponse toStepResponse(String image, Step step);
 
-    Set<StepResponse> toSetStepResponse(Set<Step> steps);
-
-    default String getFoodId(Step step){
-        return step.getFood().getId();
-    }
+    FoodStepResponse toFoodStepResponse(Step step);
 }
