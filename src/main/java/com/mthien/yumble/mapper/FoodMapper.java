@@ -8,7 +8,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface FoodMapper {
@@ -22,6 +21,4 @@ public interface FoodMapper {
 
     @Mapping(target = "image", expression = "java(image)")
     FoodResponse toFoodResponse(Food food, String image);
-
-    List<FoodResponse> toFoodResponseList(List<Food> foods);
 }

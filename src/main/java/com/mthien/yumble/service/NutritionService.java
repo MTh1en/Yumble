@@ -40,7 +40,7 @@ public class NutritionService {
         return nutritionMapper.toNutritionResponse(nutritionRepo.save(nutrition));
     }
 
-    public NutritionResponse viewOne(String id) {
+    public NutritionResponse viewByFood(String id) {
         Food food = foodRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Nutrition nutrition = nutritionRepo.findByFood(food).orElseThrow(() -> new AppException(ErrorCode.NUTRITION_NOT_FOUND));
         return nutritionMapper.toNutritionResponse(nutrition);
@@ -53,10 +53,5 @@ public class NutritionService {
 
     public void delete(String id) {
         nutritionRepo.deleteById(id);
-    }
-
-    public Nutrition view(String id) {
-        Food food = foodRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
-        return nutritionRepo.findByFood(food).orElseThrow(() -> new AppException(ErrorCode.NUTRITION_NOT_FOUND));
     }
 }

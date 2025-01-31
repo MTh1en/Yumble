@@ -19,10 +19,12 @@ public class UserAllergy {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private Users user;
 
     @ManyToOne
     @JoinColumn(name = "allergy_id")
+    @JsonBackReference
     private Allergy allergy;
 
     @Column(name = "severity", columnDefinition = "NVARCHAR(255)")

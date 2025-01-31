@@ -4,6 +4,7 @@ import com.mthien.yumble.entity.Food;
 import com.mthien.yumble.entity.Ingredient;
 import com.mthien.yumble.entity.FoodIngredient;
 import com.mthien.yumble.payload.request.food.ingredient.AddIngredientRequest;
+import com.mthien.yumble.payload.response.food.ingredient.FoodIngredientDetailResponse;
 import com.mthien.yumble.payload.response.food.ingredient.FoodIngredientResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,5 +16,7 @@ public interface FoodIngredientMapper {
     @Mapping(target = "ingredient", expression = "java(ingredient)")
     FoodIngredient addIngredient(Food food, Ingredient ingredient, AddIngredientRequest request);
 
-    FoodIngredientResponse toIngredientResponse(FoodIngredient foodIngredient);
+    FoodIngredientDetailResponse toFoodIngredientDetailResponse(FoodIngredient foodIngredient);
+
+    FoodIngredientResponse toFoodIngredientResponse(FoodIngredient foodIngredient);
 }

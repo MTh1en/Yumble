@@ -1,6 +1,7 @@
 package com.mthien.yumble.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,10 +27,10 @@ public class Allergy {
     private String description;
 
     @OneToMany(mappedBy = "allergy")
-    @JsonBackReference
+    @JsonManagedReference
     private Set<FoodAllergy> foodAllergies;
 
     @OneToMany(mappedBy = "allergy")
-    @JsonBackReference
+    @JsonManagedReference
     private Set<UserAllergy> userAllergies;
 }

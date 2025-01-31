@@ -7,11 +7,15 @@ import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodIngredientMapper;
 import com.mthien.yumble.payload.request.food.ingredient.AddIngredientRequest;
+import com.mthien.yumble.payload.response.food.ingredient.FoodIngredientDetailResponse;
 import com.mthien.yumble.payload.response.food.ingredient.FoodIngredientResponse;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.IngredientRepo;
 import com.mthien.yumble.repository.FoodIngredientRepo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FoodIngredientService {
@@ -27,7 +31,7 @@ public class FoodIngredientService {
         this.ingredientRepo = ingredientRepo;
     }
 
-    public FoodIngredientResponse addFoodIngredient(String foodId, AddIngredientRequest request) {
+    public FoodIngredientDetailResponse addFoodIngredient(String foodId, AddIngredientRequest request) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Ingredient ingredient = ingredientRepo.findById(request.getIngredientId())
@@ -36,7 +40,7 @@ public class FoodIngredientService {
             throw new AppException(ErrorCode.INGREDIENT_USING_IS_EXITED);
         });
         FoodIngredient foodIngredient = foodIngredientMapper.addIngredient(food, ingredient, request);
-        return foodIngredientMapper.toIngredientResponse(foodIngredientRepo.save(foodIngredient));
+        return foodIngredientMapper.toFoodIngredientDetailResponse(foodIngredientRepo.save(foodIngredient));
     }
 
     public void deleteFoodIngredient(String foodId, String ingredientId) {
@@ -47,5 +51,12 @@ public class FoodIngredientService {
         FoodIngredient foodIngredient = foodIngredientRepo.findByFoodAndIngredient(food, ingredient)
                 .orElseThrow(() -> new AppException(ErrorCode.INGREDIENT_USING_NOT_FOUND));
         foodIngredientRepo.delete(foodIngredient);
+    }
+
+    public List<FoodIngredientResponse> viewIngredientByFood(String foodId) {
+        Food food = foodRepo.findById(foodId).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
+        return foodIngredientRepo.findByFood(food).stream()
+                .map(foodIngredientMapper::toFoodIngredientResponse)
+                .collect(Collectors.toList());
     }
 }

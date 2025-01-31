@@ -3,7 +3,7 @@ package com.mthien.yumble.mapper;
 import com.mthien.yumble.entity.Step;
 import com.mthien.yumble.payload.request.step.CreateStepRequest;
 import com.mthien.yumble.payload.request.step.UpdateStepRequest;
-import com.mthien.yumble.payload.response.step.FoodStepResponse;
+import com.mthien.yumble.payload.response.step.StepDetailResponse;
 import com.mthien.yumble.payload.response.step.StepResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -22,5 +22,5 @@ public interface StepMapper {
     @Mapping(target = "image", expression = "java(image)")
     StepResponse toStepResponse(String image, Step step);
 
-    FoodStepResponse toFoodStepResponse(Step step);
+    StepDetailResponse toFoodStepResponse(Step step);
 }

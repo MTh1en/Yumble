@@ -54,7 +54,7 @@ public class FoodController {
                 .build());
     }
 
-    @GetMapping("{foodId}")
+    @GetMapping("/{foodId}")
     public ResponseEntity<ApiResponse<FoodResponse>> viewOne(@PathVariable("foodId") String foodId) {
         var data = foodService.viewOne(foodId);
         return ResponseEntity.ok(ApiResponse.<FoodResponse>builder()
@@ -69,7 +69,7 @@ public class FoodController {
         var data = foodService.viewAll();
         return ResponseEntity.ok(ApiResponse.<List<FoodResponse>>builder()
                 .code(200)
-                .message("thông tin món ăn")
+                .message("thông tin cơ bản món ăn")
                 .data(data)
                 .build());
     }

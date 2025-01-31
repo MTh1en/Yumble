@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FoodStepResponse {
+public class StepDetailResponse {
     private String id;
     private FoodResponse food;
     private String image;

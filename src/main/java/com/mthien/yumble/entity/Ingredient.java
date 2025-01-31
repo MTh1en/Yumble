@@ -1,5 +1,6 @@
 package com.mthien.yumble.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,5 +26,6 @@ public class Ingredient {
     private String image;
 
     @OneToMany(mappedBy = "ingredient")
+    @JsonManagedReference
     private Set<FoodIngredient> foodIngredients;
 }

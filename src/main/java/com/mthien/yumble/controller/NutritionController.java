@@ -1,6 +1,5 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.entity.Nutrition;
 import com.mthien.yumble.payload.request.nutrition.CreateNutritionRequest;
 import com.mthien.yumble.payload.request.nutrition.UpdateNutritionRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
@@ -43,7 +42,7 @@ public class NutritionController {
 
     @GetMapping("foods/{foodId}/nutrition")
     public ResponseEntity<ApiResponse<NutritionResponse>> viewOne(@PathVariable("foodId") String id) {
-        var data = nutritionService.viewOne(id);
+        var data = nutritionService.viewByFood(id);
         return ResponseEntity.ok(ApiResponse.<NutritionResponse>builder()
                 .code(200)
                 .message("thông tin dinh dưỡng cho món ăn")

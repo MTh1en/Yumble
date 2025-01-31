@@ -7,7 +7,13 @@ import com.mthien.yumble.mapper.FoodMapper;
 import com.mthien.yumble.payload.request.food.CreateFoodRequest;
 import com.mthien.yumble.payload.request.food.UpdateFoodRequest;
 import com.mthien.yumble.payload.response.food.FoodResponse;
-import com.mthien.yumble.repository.FoodRepo;
+import com.mthien.yumble.payload.response.food.allergy.FoodAllergyResponse;
+import com.mthien.yumble.payload.response.food.cookingmethod.FoodCookingMethodResponse;
+import com.mthien.yumble.payload.response.food.dietary.FoodDietaryResponse;
+import com.mthien.yumble.payload.response.food.ingredient.FoodIngredientResponse;
+import com.mthien.yumble.payload.response.nutrition.NutritionResponse;
+import com.mthien.yumble.payload.response.step.StepResponse;
+import com.mthien.yumble.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,7 +48,10 @@ public class FoodService {
 
     public FoodResponse viewOne(String foodId) {
         Food food = foodRepo.findById(foodId).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
-        String image = Optional.ofNullable(food.getImage()).filter(imageUrl -> imageUrl.contains("food")).map(firebaseService::getImageUrl).orElse(food.getImage());
+        String image = Optional.ofNullable(food.getImage())
+                .filter(imageUrl -> imageUrl.contains("food"))
+                .map(firebaseService::getImageUrl)
+                .orElse(food.getImage());
         return foodMapper.toFoodResponse(food, image);
     }
 

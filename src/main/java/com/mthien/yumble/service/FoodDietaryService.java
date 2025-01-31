@@ -7,11 +7,15 @@ import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodDietaryMapper;
 import com.mthien.yumble.payload.request.food.dietary.AddFoodDietaryRequest;
+import com.mthien.yumble.payload.response.food.dietary.FoodDietaryDetailResponse;
 import com.mthien.yumble.payload.response.food.dietary.FoodDietaryResponse;
 import com.mthien.yumble.repository.DietaryRepo;
 import com.mthien.yumble.repository.FoodDietaryRepo;
 import com.mthien.yumble.repository.FoodRepo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FoodDietaryService {
@@ -27,7 +31,7 @@ public class FoodDietaryService {
         this.dietaryRepo = dietaryRepo;
     }
 
-    public FoodDietaryResponse addFoodDietary(String foodId, AddFoodDietaryRequest request) {
+    public FoodDietaryDetailResponse addFoodDietary(String foodId, AddFoodDietaryRequest request) {
         Food food = foodRepo.findById(foodId)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Dietary dietary = dietaryRepo.findById(request.getDietaryId())
@@ -36,7 +40,7 @@ public class FoodDietaryService {
             throw new AppException(ErrorCode.FOOD_DIETARY_IS_EXISTED);
         });
         FoodDietary foodDietary = foodDietaryMapper.createFoodDietary(food, dietary, request.getPriority());
-        return foodDietaryMapper.toFoodDietaryResponse(foodDietaryRepo.save(foodDietary));
+        return foodDietaryMapper.toFoodDietaryDetailResponse(foodDietaryRepo.save(foodDietary));
     }
 
     public void deleteFoodDietary(String foodId, String dietaryId) {
@@ -47,5 +51,11 @@ public class FoodDietaryService {
         FoodDietary foodDietary = foodDietaryRepo.findByFoodAndDietary(food, dietary)
                 .orElseThrow(() -> new AppException(ErrorCode.FOOD_DIETARY_NOT_FOUND));
         foodDietaryRepo.delete(foodDietary);
+    }
+
+    public List<FoodDietaryResponse> viewDietariesByFood(String foodId) {
+        Food food = foodRepo.findById(foodId)
+                .orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
+        return foodDietaryRepo.findByFood(food).stream().map(foodDietaryMapper::toFoodDietaryResponse).collect(Collectors.toList());
     }
 }

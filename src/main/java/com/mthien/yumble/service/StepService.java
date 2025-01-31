@@ -7,7 +7,7 @@ import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.StepMapper;
 import com.mthien.yumble.payload.request.step.CreateStepRequest;
 import com.mthien.yumble.payload.request.step.UpdateStepRequest;
-import com.mthien.yumble.payload.response.step.FoodStepResponse;
+import com.mthien.yumble.payload.response.step.StepDetailResponse;
 import com.mthien.yumble.payload.response.step.StepResponse;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.StepRepo;
@@ -33,7 +33,7 @@ public class StepService {
         this.firebaseService = firebaseService;
     }
 
-    public FoodStepResponse addStepToFood(String foodId, CreateStepRequest request) {
+    public StepDetailResponse addStepToFood(String foodId, CreateStepRequest request) {
         Food food = foodRepo.findById(foodId).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));
         Step step = stepMapper.createStep(request);
         step.setFood(food);
@@ -41,19 +41,19 @@ public class StepService {
         return stepMapper.toFoodStepResponse(stepRepo.save(step));
     }
 
-    public FoodStepResponse updateStepInformation(String stepId, UpdateStepRequest request) {
+    public StepDetailResponse updateStepInformation(String stepId, UpdateStepRequest request) {
         Step step = stepRepo.findById(stepId).orElseThrow(() -> new AppException(ErrorCode.STEP_NOT_FOUND));
         stepMapper.updateStep(step, request);
         return stepMapper.toFoodStepResponse(stepRepo.save(step));
     }
 
-    public FoodStepResponse updateStepImage(String stepId, MultipartFile image) {
+    public StepDetailResponse updateStepImage(String stepId, MultipartFile image) {
         Step step = stepRepo.findById(stepId).orElseThrow(() -> new AppException(ErrorCode.STEP_NOT_FOUND));
         step.setImage(firebaseService.uploadFile(generateUniqueStepImageUrl(step.getFood(), step), image));
         return stepMapper.toFoodStepResponse(stepRepo.save(step));
     }
 
-    public List<StepResponse> viewStepsByFoodId(String foodId) {
+    public List<StepResponse> viewStepsByFood(String foodId) {
         return stepRepo.findByFoodIdOrderByStepOrder(foodId).stream().map(step -> {
             String image = Optional.ofNullable(step.getImage())
                     .filter(imageUrl -> imageUrl.contains("step"))

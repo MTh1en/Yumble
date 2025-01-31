@@ -34,9 +34,11 @@ public class Food {
     private Nutrition nutrition;
 
     @OneToMany(mappedBy = "food",fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Step> steps;
 
     @OneToMany(mappedBy = "food")
+    @JsonManagedReference
     private Set<FoodIngredient> foodIngredients;
 
     @OneToMany(mappedBy = "food")

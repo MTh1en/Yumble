@@ -1,5 +1,6 @@
 package com.mthien.yumble.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,10 +19,12 @@ public class FoodCookingMethod {
 
     @ManyToOne
     @JoinColumn(name = "food_id")
+    @JsonBackReference
     private Food food;
 
     @ManyToOne
     @JoinColumn(name = "cooking_method_id")
+    @JsonBackReference
     private CookingMethod cookingMethod;
 
     @Column(name = "time_required")

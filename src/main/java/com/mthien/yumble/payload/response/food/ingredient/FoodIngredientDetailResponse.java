@@ -1,5 +1,6 @@
 package com.mthien.yumble.payload.response.food.ingredient;
 
+import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.payload.response.ingredient.IngredientResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FoodIngredientResponse {
+public class FoodIngredientDetailResponse {
+    private FoodResponse food;
     private IngredientResponse ingredient;
     private Float usage;
     private Boolean isCore;
