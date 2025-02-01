@@ -12,6 +12,7 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface StepMapper {
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "food", ignore = true)
     @Mapping(target = "image", ignore = true)
     Step createStep(CreateStepRequest request);

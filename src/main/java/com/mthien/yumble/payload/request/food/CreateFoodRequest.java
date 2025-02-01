@@ -16,4 +16,5 @@ public class CreateFoodRequest {
     private String description;
     private MultipartFile image;
     private Meal meal;
+    private String cookingMethod;
 }

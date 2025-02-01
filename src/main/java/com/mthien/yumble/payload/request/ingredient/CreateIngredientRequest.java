@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CreateIngredientRequest {
-    private String name;
-    private String image;
+    private String ingredientName;
+    private Float usage;
+    private Boolean isCore;
 }

@@ -29,6 +29,9 @@ public class Food {
     @Enumerated(EnumType.STRING)
     private Meal meal;
 
+    @Column(name = "cooking_method", columnDefinition = "NVARCHAR(255)")
+    private String cookingMethod;
+
     @OneToOne(mappedBy = "food", fetch = FetchType.LAZY)
     @JsonManagedReference
     private Nutrition nutrition;
@@ -39,7 +42,7 @@ public class Food {
 
     @OneToMany(mappedBy = "food")
     @JsonManagedReference
-    private Set<FoodIngredient> foodIngredients;
+    private Set<Ingredient> ingredients;
 
     @OneToMany(mappedBy = "food")
     @JsonManagedReference
@@ -48,10 +51,6 @@ public class Food {
     @OneToMany(mappedBy = "food")
     @JsonManagedReference
     private Set<FoodDietary> foodDietaries;
-
-    @OneToMany(mappedBy = "food")
-    @JsonManagedReference
-    private Set<FoodCookingMethod> foodCookingMethods;
 
     @OneToMany(mappedBy = "food")
     @JsonManagedReference

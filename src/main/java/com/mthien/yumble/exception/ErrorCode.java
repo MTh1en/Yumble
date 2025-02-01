@@ -56,8 +56,6 @@ public enum ErrorCode {
 
     //INGREDIENT
     INGREDIENT_NOT_FOUND(1116, "Không tìm thấy nguyên liệu", HttpStatus.NOT_FOUND),
-    INGREDIENT_USING_IS_EXITED(1117, "Nguyên liệu đã được thêm vào món ăn", HttpStatus.BAD_REQUEST),
-    INGREDIENT_USING_NOT_FOUND(1118, "Không tìm thấy nguyên liệu được sử dụng trong món ăn", HttpStatus.NOT_FOUND),
 
     //FAVORITE
     FAVORITE_IS_EXISTED(1119, "Món ăn đã được thêm vào mục yêu thích", HttpStatus.BAD_REQUEST),

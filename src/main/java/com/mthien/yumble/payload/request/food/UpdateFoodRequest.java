@@ -14,4 +14,5 @@ public class UpdateFoodRequest {
     private String name;
     private String description;
     private Meal meal;
+    private String cookingMethod;
 }

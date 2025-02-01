@@ -3,6 +3,7 @@ package com.mthien.yumble.controller;
 import com.mthien.yumble.payload.request.ingredient.CreateIngredientRequest;
 import com.mthien.yumble.payload.request.ingredient.UpdateIngredientRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
+import com.mthien.yumble.payload.response.ingredient.FoodIngredientResponse;
 import com.mthien.yumble.payload.response.ingredient.IngredientResponse;
 import com.mthien.yumble.service.IngredientService;
 import lombok.RequiredArgsConstructor;
@@ -11,49 +12,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("ingredients")
+@RequestMapping("foods")
 @RequiredArgsConstructor
 public class IngredientController {
     private final IngredientService ingredientService;
 
-    @PostMapping()
-    public ApiResponse<IngredientResponse> create(@RequestBody CreateIngredientRequest request) {
+    @PostMapping("/{foodId}/ingredients")
+    public ApiResponse<IngredientResponse> createIngredient(@PathVariable("foodId") String foodId,
+                                                            @RequestBody CreateIngredientRequest request) {
         return ApiResponse.<IngredientResponse>builder()
-                .message("Tạo nguyên liệu thành công")
-                .data(ingredientService.create(request))
+                .message("Thêm nguyên liệu vào món ăn thành công")
+                .data(ingredientService.addIngredientIntoFood(foodId, request))
                 .build();
     }
 
-    @PutMapping("{ingredientId}")
-    public ApiResponse<IngredientResponse> update(@PathVariable("ingredientId") String ingredientId,
-                                                  @RequestBody UpdateIngredientRequest request) {
+    @PutMapping("/ingredients/{ingredientId}")
+    public ApiResponse<IngredientResponse> updateIngredient(@PathVariable("ingredientId") String ingredientId,
+                                                            @RequestBody UpdateIngredientRequest request) {
         return ApiResponse.<IngredientResponse>builder()
-                .message("Cập nhật nguyên liệu thành công")
-                .data(ingredientService.update(ingredientId, request))
+                .message("Cập nhật thông tin nguyên liệu thành công")
+                .data(ingredientService.updateIngredient(ingredientId, request))
                 .build();
     }
 
-    @GetMapping("{ingredientId}")
-    public ApiResponse<IngredientResponse> viewOne(@PathVariable("ingredientId") String ingredientId) {
+    @DeleteMapping("/ingredients/{ingredientId}")
+    public ApiResponse<IngredientResponse> deleteIngredient(@PathVariable("ingredientId") String ingredientId) {
+        ingredientService.deleteIngredient(ingredientId);
         return ApiResponse.<IngredientResponse>builder()
-                .message("Thông tin nguyên liệu")
-                .data(ingredientService.viewOne(ingredientId))
+                .message("Xóa nguyên liệu khỏi món ăn thành công")
                 .build();
     }
 
-    @GetMapping()
-    public ApiResponse<List<IngredientResponse>> viewAll() {
-        return ApiResponse.<List<IngredientResponse>>builder()
-                .message("Thông tin tất cả nguyên liệu")
-                .data(ingredientService.viewAll())
-                .build();
-    }
-
-    @DeleteMapping("{ingredientId}")
-    public ApiResponse<Void> delete(@PathVariable("ingredientId") String ingredientId) {
-        ingredientService.delete(ingredientId);
-        return ApiResponse.<Void>builder()
-                .message("Thông tin nguyên liệu được xóa thành công")
+    @GetMapping("/{foodId}/ingredients")
+    public ApiResponse<List<FoodIngredientResponse>> viewIngredientsByFood(@PathVariable("foodId") String foodId) {
+        return ApiResponse.<List<FoodIngredientResponse>>builder()
+                .message("Thông tin nguyên liệu cần có của món ăn")
+                .data(ingredientService.viewIngredientsByFood(foodId))
                 .build();
     }
 }

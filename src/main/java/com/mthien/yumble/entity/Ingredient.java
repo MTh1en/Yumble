@@ -1,31 +1,31 @@
 package com.mthien.yumble.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(name = "name", nullable = false, unique = true, columnDefinition = "NVARCHAR(255)")
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "food_id")
+    @JsonBackReference
+    private Food food;
 
-    @Column(name = "image")
-    private String image;
+    @Column(name = "name", columnDefinition = "NVARCHAR(255)")
+    private String ingredientName;
 
-    @OneToMany(mappedBy = "ingredient")
-    @JsonManagedReference
-    private Set<FoodIngredient> foodIngredients;
+    @Column(name = "usage", nullable = false)
+    private Float usage;
+
+    @Column(name = "is_Core", nullable = false)
+    private Boolean isCore;
 }

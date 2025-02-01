@@ -4,12 +4,9 @@ import com.mthien.yumble.entity.Allergy;
 import com.mthien.yumble.entity.Dietary;
 import com.mthien.yumble.entity.Enum.Role;
 import com.mthien.yumble.entity.Enum.UserStatus;
-import com.mthien.yumble.entity.CookingMethod;
 import com.mthien.yumble.entity.Users;
-import com.mthien.yumble.repository.AllergyRepo;
-import com.mthien.yumble.repository.DietaryRepo;
-import com.mthien.yumble.repository.CookingMethodRepo;
-import com.mthien.yumble.repository.UserRepo;
+import com.mthien.yumble.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,19 +18,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
+@RequiredArgsConstructor
 public class DataLoader implements ApplicationRunner {
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
     private final DietaryRepo dietaryRepo;
     private final AllergyRepo allergyRepo;
-    private final CookingMethodRepo cookingMethodRepo;
-
-    public DataLoader(UserRepo userRepo, DietaryRepo dietaryRepo, AllergyRepo allergyRepo, CookingMethodRepo cookingMethodRepo) {
-        this.userRepo = userRepo;
-        this.dietaryRepo = dietaryRepo;
-        this.allergyRepo = allergyRepo;
-        this.cookingMethodRepo = cookingMethodRepo;
-    }
 
     @Override
     public void run(ApplicationArguments args) {
@@ -57,40 +47,6 @@ public class DataLoader implements ApplicationRunner {
                     .build();
             userRepo.save(user1);
             userRepo.save(user2);
-        }
-
-        //DIETARY
-        if (cookingMethodRepo.count() == 0) {
-            String[] methodCooking = {
-                    "Chiên-Dùng nhiều dầu mỡ, món ăn thường có lớp vỏ ngoài giòn.",
-                    "Xào-Sử dụng ít dầu, nguyên liệu được đảo nhanh trên lửa lớn.",
-                    "Hấp-Nấu bằng hơi nước, giữ được độ ẩm và chất dinh dưỡng.",
-                    "Luộc-Nấu trong nước sôi, không dùng dầu mỡ, giữ nguyên vị tự nhiên của nguyên liệu.",
-                    "Kho-Nấu chín trong lửa nhỏ với nước mắm, đường, tiêu và các gia vị khác.",
-                    "Nướng-Chế biến trên lửa than, lò nướng hoặc bếp nướng, món ăn có lớp ngoài thơm giòn.",
-                    "Hầm-Nấu trong thời gian dài với lửa nhỏ để nguyên liệu mềm và thấm gia vị.",
-                    "Quay-Dùng nhiệt khô để làm chín thực phẩm (trong lò quay hoặc quay trên bếp).",
-                    "Áp chảo-Sử dụng ít dầu, chiên trên lửa lớn trong thời gian ngắn, giữ mặt ngoài giòn.",
-                    "Xông khói-Làm chín và bảo quản thực phẩm bằng khói.",
-                    "Hơ lửa-Làm chín sơ thực phẩm trên lửa trực tiếp, thường để khử mùi.",
-                    "Phơi khô/Sấy khô-Loại bỏ nước khỏi thực phẩm để bảo quản hoặc sử dụng lâu dài.",
-                    "Ngâm muối/Ướp mặn-Ngâm thực phẩm với muối để bảo quản hoặc làm đậm hương vị.",
-                    "Muối chua/Lên men-Dùng vi sinh tự nhiên hoặc gia vị để làm chín thực phẩm.",
-                    "Chần/Trụng-Nhúng nguyên liệu vào nước sôi trong thời gian ngắn để làm mềm hoặc làm sạch.",
-                    "Trộn/Gỏi-Kết hợp nguyên liệu sống hoặc chín, sử dụng gia vị để làm nổi bật hương vị.",
-                    "Ủ/Chôn đất-Dùng nhiệt từ tro hoặc đất để làm chín thực phẩm.",
-                    "Rim-Chế biến giống kho nhưng nước ít hơn, gia vị cô đặc vào nguyên liệu.",
-                    "Làm đông/lạnh-Dùng nhiệt độ thấp để bảo quản hoặc làm món ăn đặc biệt."
-
-            };
-            List<CookingMethod> cookingMethodList = Arrays.stream(methodCooking).map(entry -> {
-                String[] parts = entry.split("-", 2);
-                return CookingMethod.builder()
-                        .name(parts[0])
-                        .description(parts[1])
-                        .build();
-            }).toList();
-            cookingMethodRepo.saveAll(cookingMethodList);
         }
 
         if (dietaryRepo.count() == 0) {

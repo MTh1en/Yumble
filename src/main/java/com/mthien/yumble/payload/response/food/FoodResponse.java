@@ -16,4 +16,5 @@ public class FoodResponse {
     private String name;
     private String description;
     private Meal meal;
+    private String cookingMethod;
 }

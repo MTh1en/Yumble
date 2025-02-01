@@ -1,4 +1,4 @@
-package com.mthien.yumble.payload.response.cookingmethod;
+package com.mthien.yumble.payload.response.ingredient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CookingMethodResponse {
+public class FoodIngredientResponse {
     private String id;
-    private String name;
-    private String description;
+    private String ingredientName;
+    private Float usage;
+    private Boolean isCore;
 }
