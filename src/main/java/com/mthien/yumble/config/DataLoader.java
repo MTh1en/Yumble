@@ -10,7 +10,8 @@ import com.mthien.yumble.repository.AllergyRepo;
 import com.mthien.yumble.repository.DietaryRepo;
 import com.mthien.yumble.repository.CookingMethodRepo;
 import com.mthien.yumble.repository.UserRepo;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-public class DataLoader implements CommandLineRunner {
+public class DataLoader implements ApplicationRunner {
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
     private final DietaryRepo dietaryRepo;
@@ -35,7 +36,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
+    public void run(ApplicationArguments args) {
         //USER
         if (userRepo.count() == 0) {
             Users user1 = Users.builder()

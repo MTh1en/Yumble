@@ -15,6 +15,8 @@ public enum ErrorCode {
     ACCOUNT_NOT_VERIFIED(1006, "Tài khoản của bạn chưa được xác thực", HttpStatus.FORBIDDEN),
     INVALID_RE_PASSWORD(1007, "Mật khẩu nhập lần 2 không gioống mật khẩu mới", HttpStatus.BAD_REQUEST),
     DUPLICATE_PASSWORD(1008, "Mật khẩu mới và mật khẩu cũ không được trùng nhau", HttpStatus.BAD_REQUEST),
+    UNAUTHENTICATED(1009, "Unauthenticated", HttpStatus.UNAUTHORIZED),
+    UNAUTHORIZED(1010, "You don't have permission", HttpStatus.UNAUTHORIZED),
 
     //FIREBASE
     FILE_NOT_FOUND(1050, "Hình ảnh không tồn tại trên firebase", HttpStatus.NOT_FOUND),
