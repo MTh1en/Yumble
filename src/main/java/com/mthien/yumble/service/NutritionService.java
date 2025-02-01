@@ -10,21 +10,17 @@ import com.mthien.yumble.payload.request.nutrition.UpdateNutritionRequest;
 import com.mthien.yumble.payload.response.nutrition.NutritionResponse;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.NutritionRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class NutritionService {
     private final NutritionRepo nutritionRepo;
     private final NutritionMapper nutritionMapper;
     private final FoodRepo foodRepo;
-
-    public NutritionService(NutritionRepo nutritionRepo, NutritionMapper nutritionMapper, FoodRepo foodRepo) {
-        this.nutritionRepo = nutritionRepo;
-        this.nutritionMapper = nutritionMapper;
-        this.foodRepo = foodRepo;
-    }
 
     public NutritionResponse create(String id, CreateNutritionRequest request) {
         Food food = foodRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));

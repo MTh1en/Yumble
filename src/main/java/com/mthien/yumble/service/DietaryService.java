@@ -8,19 +8,16 @@ import com.mthien.yumble.payload.request.dietary.CreateDietaryRequest;
 import com.mthien.yumble.payload.request.dietary.UpdateDietaryRequest;
 import com.mthien.yumble.payload.response.dietary.DietaryResponse;
 import com.mthien.yumble.repository.DietaryRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class DietaryService {
     private final DietaryRepo dietaryRepo;
     private final DietaryMapper dietaryMapper;
-
-    public DietaryService(DietaryRepo dietaryRepo, DietaryMapper dietaryMapper) {
-        this.dietaryRepo = dietaryRepo;
-        this.dietaryMapper = dietaryMapper;
-    }
 
     public DietaryResponse create(CreateDietaryRequest request) {
         Dietary dietary = dietaryMapper.createDietary(request);

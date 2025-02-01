@@ -14,8 +14,8 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import jakarta.mail.internet.MimeMessage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -28,21 +28,16 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class AuthService {
-    private final JavaMailSenderImpl mailSender;
     @Value("${jwt.signerKey}")
     protected String signerKey;
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
 
-    private static final Logger log = LoggerFactory.getLogger(AuthService.class);
     private final UserMapper userMapper;
     private final UserRepo userRepo;
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
-
-    public AuthService(UserMapper userMapper, UserRepo userRepo, JavaMailSenderImpl mailSender) {
-        this.userMapper = userMapper;
-        this.userRepo = userRepo;
-        this.mailSender = mailSender;
-    }
+    private final JavaMailSenderImpl mailSender;
 
     public void register(RegisterRequest request) {
         request.setPassword(passwordEncoder.encode(request.getPassword()));

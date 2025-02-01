@@ -5,67 +5,56 @@ import com.mthien.yumble.payload.request.nutrition.UpdateNutritionRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.nutrition.NutritionResponse;
 import com.mthien.yumble.service.NutritionService;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("foods")
+@RequiredArgsConstructor
 public class NutritionController {
     private final NutritionService nutritionService;
 
-    public NutritionController(NutritionService nutritionService) {
-        this.nutritionService = nutritionService;
-    }
-
-    @PostMapping("foods/{foodId}/nutrition")
-    public ResponseEntity<ApiResponse<NutritionResponse>> create(@PathVariable("foodId") String id,
-                                                                 @RequestBody CreateNutritionRequest request) {
-        var data = nutritionService.create(id, request);
-        return ResponseEntity.ok(ApiResponse.<NutritionResponse>builder()
-                .code(200)
+    @PostMapping("/{foodId}/nutrition")
+    public ApiResponse<NutritionResponse> create(@PathVariable("foodId") String id,
+                                                 @RequestBody CreateNutritionRequest request) {
+        return ApiResponse.<NutritionResponse>builder()
                 .message("Tạo thông tin dinh dưỡng cho món ăn thành công")
-                .data(data)
-                .build());
+                .data(nutritionService.create(id, request))
+                .build();
     }
 
-    @PutMapping("foods/{foodId}/nutrition")
-    public ResponseEntity<ApiResponse<NutritionResponse>> update(@PathVariable("foodId") String id,
-                                                                 @RequestBody UpdateNutritionRequest request) {
-        var data = nutritionService.update(id, request);
-        return ResponseEntity.ok(ApiResponse.<NutritionResponse>builder()
-                .code(200)
+    @PutMapping("/{foodId}/nutrition")
+    public ApiResponse<NutritionResponse> update(@PathVariable("foodId") String id,
+                                                 @RequestBody UpdateNutritionRequest request) {
+        return ApiResponse.<NutritionResponse>builder()
                 .message("Cập nhật thông tin dinh dưỡng cho món ăn thành công")
-                .data(data)
-                .build());
+                .data(nutritionService.update(id, request))
+                .build();
     }
 
-    @GetMapping("foods/{foodId}/nutrition")
-    public ResponseEntity<ApiResponse<NutritionResponse>> viewOne(@PathVariable("foodId") String id) {
-        var data = nutritionService.viewByFood(id);
-        return ResponseEntity.ok(ApiResponse.<NutritionResponse>builder()
-                .code(200)
+    @GetMapping("/{foodId}/nutrition")
+    public ApiResponse<NutritionResponse> viewOne(@PathVariable("foodId") String id) {
+        return ApiResponse.<NutritionResponse>builder()
                 .message("thông tin dinh dưỡng cho món ăn")
-                .data(data)
-                .build());
+                .data(nutritionService.viewByFood(id))
+                .build();
     }
 
-    @GetMapping("foods/nutrition")
-    public ResponseEntity<ApiResponse<List<NutritionResponse>>> viewAll() {
-        var data = nutritionService.viewAll();
-        return ResponseEntity.ok(ApiResponse.<List<NutritionResponse>>builder()
-                .code(200)
+    @GetMapping("/nutrition")
+    public ApiResponse<List<NutritionResponse>> viewAll() {
+        return ApiResponse.<List<NutritionResponse>>builder()
                 .message("thông tin dinh dưỡng cho món ăn")
-                .data(data)
-                .build());
+                .data(nutritionService.viewAll())
+                .build();
     }
 
-    @DeleteMapping("foods/{foodId}/nutrition")
-    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable("foodId") String id) {
+    @DeleteMapping("/{foodId}/nutrition")
+    public ApiResponse<Void> delete(@PathVariable("foodId") String id) {
         nutritionService.delete(id);
-        return ResponseEntity.ok(ApiResponse.<Void>builder()
-                .code(200)
+        return ApiResponse.<Void>builder()
                 .message("Xóa thông tin dinh dưỡng thành công")
-                .build());
+                .build();
     }
 }

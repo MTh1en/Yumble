@@ -11,21 +11,16 @@ import com.mthien.yumble.payload.response.favorite.FavoriteResponse;
 import com.mthien.yumble.repository.FavoriteRepo;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.UserRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class FavoriteService {
     private final FavoriteMapper favoriteMapper;
     private final FavoriteRepo favoriteRepo;
     private final UserRepo userRepo;
     private final FoodRepo foodRepo;
-
-    public FavoriteService(FavoriteMapper favoriteMapper, FavoriteRepo favoriteRepo, UserRepo userRepo, FoodRepo foodRepo) {
-        this.favoriteMapper = favoriteMapper;
-        this.favoriteRepo = favoriteRepo;
-        this.userRepo = userRepo;
-        this.foodRepo = foodRepo;
-    }
 
     public FavoriteResponse addFavorite(String userId, AddFavoriteRequest request) {
         Users user = userRepo.findById(userId)

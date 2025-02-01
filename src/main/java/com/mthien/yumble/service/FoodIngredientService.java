@@ -12,24 +12,21 @@ import com.mthien.yumble.payload.response.food.ingredient.FoodIngredientResponse
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.IngredientRepo;
 import com.mthien.yumble.repository.FoodIngredientRepo;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class FoodIngredientService {
     private final FoodIngredientMapper foodIngredientMapper;
     private final FoodIngredientRepo foodIngredientRepo;
     private final FoodRepo foodRepo;
     private final IngredientRepo ingredientRepo;
 
-    public FoodIngredientService(FoodIngredientMapper foodIngredientMapper, FoodIngredientRepo foodIngredientRepo, FoodRepo foodRepo, IngredientRepo ingredientRepo) {
-        this.foodIngredientMapper = foodIngredientMapper;
-        this.foodIngredientRepo = foodIngredientRepo;
-        this.foodRepo = foodRepo;
-        this.ingredientRepo = ingredientRepo;
-    }
 
     public FoodIngredientDetailResponse addFoodIngredient(String foodId, AddIngredientRequest request) {
         Food food = foodRepo.findById(foodId)

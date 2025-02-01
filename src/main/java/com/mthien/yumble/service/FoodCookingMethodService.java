@@ -14,24 +14,19 @@ import com.mthien.yumble.payload.response.food.cookingmethod.FoodCookingMethodRe
 import com.mthien.yumble.repository.CookingMethodRepo;
 import com.mthien.yumble.repository.FoodCookingMethodRepo;
 import com.mthien.yumble.repository.FoodRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class FoodCookingMethodService {
     private final FoodCookingMethodRepo foodCookingMethodRepo;
     private final FoodCookingMethodMapper foodCookingMethodMapper;
     private final FoodRepo foodRepo;
     private final CookingMethodRepo cookingMethodRepo;
-
-    public FoodCookingMethodService(FoodCookingMethodRepo foodCookingMethodRepo, FoodCookingMethodMapper foodCookingMethodMapper, FoodRepo foodRepo, CookingMethodRepo cookingMethodRepo) {
-        this.foodCookingMethodRepo = foodCookingMethodRepo;
-        this.foodCookingMethodMapper = foodCookingMethodMapper;
-        this.foodRepo = foodRepo;
-        this.cookingMethodRepo = cookingMethodRepo;
-    }
 
     public FoodCookingMethodDetailResponse addFoodCookingMethod(String foodId, AddFoodCookingMethodRequest request) {
         Food food = foodRepo.findById(foodId)

@@ -5,67 +5,55 @@ import com.mthien.yumble.payload.request.allergy.UpdateAllergyRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.allergy.AllergyResponse;
 import com.mthien.yumble.service.AllergyService;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("allergies")
+@RequiredArgsConstructor
 public class AllergyController {
     private final AllergyService allergyService;
 
-    public AllergyController(AllergyService allergyService) {
-        this.allergyService = allergyService;
-    }
-
     @PostMapping()
-    public ResponseEntity<ApiResponse<AllergyResponse>> create(@RequestBody CreateAllergyRequest request) {
-        var data = allergyService.create(request);
-        return ResponseEntity.ok(ApiResponse.<AllergyResponse>builder()
-                .code(200)
+    public ApiResponse<AllergyResponse> create(@RequestBody CreateAllergyRequest request) {
+        return ApiResponse.<AllergyResponse>builder()
                 .message("Tạo Thành phần dị ứng thành công")
-                .data(data)
-                .build());
+                .data(allergyService.create(request))
+                .build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ApiResponse<AllergyResponse>> update(@PathVariable("id") String id,
-                                                               @RequestBody UpdateAllergyRequest request) {
-        var data = allergyService.update(id, request);
-        return ResponseEntity.ok(ApiResponse.<AllergyResponse>builder()
-                .code(200)
+    public ApiResponse<AllergyResponse> update(@PathVariable("id") String id,
+                                               @RequestBody UpdateAllergyRequest request) {
+        return ApiResponse.<AllergyResponse>builder()
                 .message("Cập nhật thông tin thành phần dị ứng thành công")
-                .data(data)
-                .build());
+                .data(allergyService.update(id, request))
+                .build();
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ApiResponse<AllergyResponse>> viewOne(@PathVariable("id") String id) {
-        var data = allergyService.viewOne(id);
-        return ResponseEntity.ok(ApiResponse.<AllergyResponse>builder()
-                .code(200)
+    public ApiResponse<AllergyResponse> viewOne(@PathVariable("id") String id) {
+        return ApiResponse.<AllergyResponse>builder()
                 .message("Thông tin của thành phần dịch ứng")
-                .data(data)
-                .build());
+                .data(allergyService.viewOne(id))
+                .build();
     }
 
     @GetMapping()
-    public ResponseEntity<ApiResponse<List<AllergyResponse>>> viewAll() {
-        var data = allergyService.viewAll();
-        return ResponseEntity.ok(ApiResponse.<List<AllergyResponse>>builder()
-                .code(200)
+    public ApiResponse<List<AllergyResponse>> viewAll() {
+        return ApiResponse.<List<AllergyResponse>>builder()
                 .message("Danh sách tất cả thành phần dị dứng")
-                .data(data)
-                .build());
+                .data(allergyService.viewAll())
+                .build();
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable("id") String id) {
+    public ApiResponse<Void> delete(@PathVariable("id") String id) {
         allergyService.delete(id);
-        return ResponseEntity.ok(ApiResponse.<Void>builder()
-                .code(200)
+        return ApiResponse.<Void>builder()
                 .message("Xóa thông tin thành phần dị ứng thành công")
-                .build());
+                .build();
     }
 }

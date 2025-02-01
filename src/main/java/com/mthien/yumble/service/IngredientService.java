@@ -8,19 +8,16 @@ import com.mthien.yumble.payload.request.ingredient.CreateIngredientRequest;
 import com.mthien.yumble.payload.request.ingredient.UpdateIngredientRequest;
 import com.mthien.yumble.payload.response.ingredient.IngredientResponse;
 import com.mthien.yumble.repository.IngredientRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class IngredientService {
     private final IngredientRepo ingredientRepo;
     private final IngredientMapper ingredientMapper;
-
-    public IngredientService(IngredientRepo ingredientRepo, IngredientMapper ingredientMapper) {
-        this.ingredientRepo = ingredientRepo;
-        this.ingredientMapper = ingredientMapper;
-    }
 
     public IngredientResponse create(CreateIngredientRequest request) {
         Ingredient ingredient = ingredientMapper.createIngredient(request);

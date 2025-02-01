@@ -3,6 +3,7 @@ package com.mthien.yumble.service;
 import com.google.cloud.storage.*;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,16 +14,13 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class FirebaseService {
     @Value("${firebase.bucket-name}")
     protected String firebaseBucketName;
 
     private final Storage storage;
-
-    public FirebaseService(Storage storage) {
-        this.storage = storage;
-    }
 
     public String uploadFile(String fileName, MultipartFile file) {
         try {

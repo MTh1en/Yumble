@@ -3,6 +3,7 @@ package com.mthien.yumble.service;
 import java.util.List;
 import java.util.Map;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,13 +16,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class ChatGPTService {
 
     @Value("${openai.api.key}")
-    private String apiKey;
+    protected String apiKey;
     @Value("${openai.api.url}")
-    private String apiUrl; // URL của ChatGPT API
+    protected String apiUrl; // URL của ChatGPT API
 
     public String getChatGPTResponse(String question) {
         WebClient webClient = WebClient.builder()

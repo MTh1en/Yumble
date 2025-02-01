@@ -26,6 +26,7 @@ public class SecurityConfig {
     protected String signerKey;
 
     private final String[] PUBLIC_ENDPOINTS = {
+            "auth/**",
             "/swagger-ui/**",
             "/v3/api-docs/**",
     };

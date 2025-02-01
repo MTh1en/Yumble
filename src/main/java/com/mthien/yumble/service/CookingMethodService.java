@@ -8,19 +8,16 @@ import com.mthien.yumble.payload.request.cookingmethod.CreateCookingMethodReques
 import com.mthien.yumble.payload.request.cookingmethod.UpdateCookingMethodRequest;
 import com.mthien.yumble.payload.response.cookingmethod.CookingMethodResponse;
 import com.mthien.yumble.repository.CookingMethodRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CookingMethodService {
     private final CookingMethodRepo cookingMethodRepo;
     private final CookingMethodMapper cookingMethodMapper;
-
-    public CookingMethodService(CookingMethodRepo cookingMethodRepo, CookingMethodMapper cookingMethodMapper) {
-        this.cookingMethodRepo = cookingMethodRepo;
-        this.cookingMethodMapper = cookingMethodMapper;
-    }
 
     public CookingMethodResponse create(CreateCookingMethodRequest request) {
         CookingMethod cookingMethod = cookingMethodMapper.createMethodCooking(request);

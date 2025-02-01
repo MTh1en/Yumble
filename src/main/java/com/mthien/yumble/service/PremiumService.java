@@ -9,22 +9,18 @@ import com.mthien.yumble.payload.request.premium.CreatePremiumRequest;
 import com.mthien.yumble.payload.response.premium.PremiumResponse;
 import com.mthien.yumble.repository.PremiumRepo;
 import com.mthien.yumble.repository.UserRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 @Service
+@RequiredArgsConstructor
 public class PremiumService {
     private final PremiumRepo premiumRepo;
     private final PremiumMapper premiumMapper;
     private final UserRepo userRepo;
-
-    public PremiumService(PremiumRepo premiumRepo, PremiumMapper premiumMapper, UserRepo userRepo) {
-        this.premiumRepo = premiumRepo;
-        this.premiumMapper = premiumMapper;
-        this.userRepo = userRepo;
-    }
 
     public PremiumResponse createPremium(String id, CreatePremiumRequest request) {
         Users users = userRepo.findById(id)

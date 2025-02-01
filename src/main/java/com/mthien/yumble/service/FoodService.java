@@ -14,6 +14,7 @@ import com.mthien.yumble.payload.response.food.ingredient.FoodIngredientResponse
 import com.mthien.yumble.payload.response.nutrition.NutritionResponse;
 import com.mthien.yumble.payload.response.step.StepResponse;
 import com.mthien.yumble.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,16 +24,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class FoodService {
     private final FoodRepo foodRepo;
     private final FoodMapper foodMapper;
     private final FirebaseService firebaseService;
-
-    public FoodService(FoodRepo foodRepo, FoodMapper foodMapper, FirebaseService firebaseService) {
-        this.foodRepo = foodRepo;
-        this.foodMapper = foodMapper;
-        this.firebaseService = firebaseService;
-    }
 
     public FoodResponse create(CreateFoodRequest request) {
         Food food = foodMapper.createFood(request);

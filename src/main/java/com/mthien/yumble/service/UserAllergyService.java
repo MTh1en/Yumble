@@ -12,24 +12,19 @@ import com.mthien.yumble.payload.response.user.allergy.UserAllergyResponse;
 import com.mthien.yumble.repository.AllergyRepo;
 import com.mthien.yumble.repository.UserAllergyRepo;
 import com.mthien.yumble.repository.UserRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserAllergyService {
     private final UserAllergyMapper userAllergyMapper;
     private final UserAllergyRepo userAllergyRepo;
     private final UserRepo userRepo;
     private final AllergyRepo allergyRepo;
-
-    public UserAllergyService(UserAllergyMapper userAllergyMapper, UserAllergyRepo userAllergyRepo, UserRepo userRepo, AllergyRepo allergyRepo) {
-        this.userAllergyMapper = userAllergyMapper;
-        this.userAllergyRepo = userAllergyRepo;
-        this.userRepo = userRepo;
-        this.allergyRepo = allergyRepo;
-    }
 
     public UserAllergyDetailResponse addUserAllergy(String userId, AddUserAllergyRequest request) {
         Users users = userRepo.findById(userId)

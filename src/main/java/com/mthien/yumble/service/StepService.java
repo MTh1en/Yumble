@@ -11,6 +11,7 @@ import com.mthien.yumble.payload.response.step.StepDetailResponse;
 import com.mthien.yumble.payload.response.step.StepResponse;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.StepRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,18 +21,13 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class StepService {
     private final StepRepo stepRepo;
     private final StepMapper stepMapper;
     private final FoodRepo foodRepo;
     private final FirebaseService firebaseService;
 
-    public StepService(StepRepo stepRepo, StepMapper stepMapper, FoodRepo foodRepo, FirebaseService firebaseService) {
-        this.stepRepo = stepRepo;
-        this.stepMapper = stepMapper;
-        this.foodRepo = foodRepo;
-        this.firebaseService = firebaseService;
-    }
 
     public StepDetailResponse addStepToFood(String foodId, CreateStepRequest request) {
         Food food = foodRepo.findById(foodId).orElseThrow(() -> new AppException(ErrorCode.FOOD_NOT_FOUND));

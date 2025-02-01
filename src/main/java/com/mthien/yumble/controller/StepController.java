@@ -6,8 +6,8 @@ import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.step.StepDetailResponse;
 import com.mthien.yumble.payload.response.step.StepResponse;
 import com.mthien.yumble.service.StepService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,62 +15,50 @@ import java.util.List;
 
 @RestController
 @RequestMapping("foods")
+@RequiredArgsConstructor
 public class StepController {
     private final StepService stepService;
 
-    public StepController(StepService stepService) {
-        this.stepService = stepService;
-    }
-
     @PostMapping(value = "{foodId}/steps", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ApiResponse<StepDetailResponse>> addStepToFood(@PathVariable("foodId") String id,
-                                                                         @ModelAttribute CreateStepRequest request) {
-        var data = stepService.addStepToFood(id, request);
-        return ResponseEntity.ok(ApiResponse.<StepDetailResponse>builder()
-                .code(200)
+    public ApiResponse<StepDetailResponse> addStepToFood(@PathVariable("foodId") String id,
+                                                         @ModelAttribute CreateStepRequest request) {
+        return ApiResponse.<StepDetailResponse>builder()
                 .message("Đã thêm bước vào món ăn thành công")
-                .data(data)
-                .build());
+                .data(stepService.addStepToFood(id, request))
+                .build();
     }
 
     @PatchMapping("/steps/{stepId}")
-    public ResponseEntity<ApiResponse<StepDetailResponse>> updateStepInformation(@PathVariable("stepId") String id,
-                                                                                 @RequestBody UpdateStepRequest request) {
-        var data = stepService.updateStepInformation(id, request);
-        return ResponseEntity.ok(ApiResponse.<StepDetailResponse>builder()
-                .code(200)
+    public ApiResponse<StepDetailResponse> updateStepInformation(@PathVariable("stepId") String id,
+                                                                 @RequestBody UpdateStepRequest request) {
+        return ApiResponse.<StepDetailResponse>builder()
                 .message("Cập nhật thông tin các bước thành công")
-                .data(data)
-                .build());
+                .data(stepService.updateStepInformation(id, request))
+                .build();
     }
 
     @PatchMapping(value = "/steps/{stepId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ApiResponse<StepDetailResponse>> updateStepImage(@PathVariable("stepId") String stepId,
-                                                                           @RequestParam("file") MultipartFile file) {
-        var data = stepService.updateStepImage(stepId, file);
-        return ResponseEntity.ok(ApiResponse.<StepDetailResponse>builder()
-                .code(200)
+    public ApiResponse<StepDetailResponse> updateStepImage(@PathVariable("stepId") String stepId,
+                                                           @RequestParam("file") MultipartFile file) {
+        return ApiResponse.<StepDetailResponse>builder()
                 .message("Cập nhật hình ảnh các bước thành công")
-                .data(data)
-                .build());
+                .data(stepService.updateStepImage(stepId, file))
+                .build();
     }
 
     @GetMapping("/{foodId}/steps")
-    public ResponseEntity<ApiResponse<List<StepResponse>>> viewStepByFood(@PathVariable("foodId") String id) {
-        var data = stepService.viewStepsByFood(id);
-        return ResponseEntity.ok(ApiResponse.<List<StepResponse>>builder()
-                .code(200)
+    public ApiResponse<List<StepResponse>> viewStepByFood(@PathVariable("foodId") String id) {
+        return ApiResponse.<List<StepResponse>>builder()
                 .message("Thông tin các bước nấu ăn của món")
-                .data(data)
-                .build());
+                .data(stepService.viewStepsByFood(id))
+                .build();
     }
 
     @DeleteMapping("/steps/{stepId}")
-    public ResponseEntity<ApiResponse<Void>> deleteStep(@PathVariable("stepId") String id) {
+    public ApiResponse<Void> deleteStep(@PathVariable("stepId") String id) {
         stepService.deleteStep(id);
-        return ResponseEntity.ok(ApiResponse.<Void>builder()
-                .code(200)
+        return ApiResponse.<Void>builder()
                 .message("Đã xóa bước nấu món ăn thành công")
-                .build());
+                .build();
     }
 }

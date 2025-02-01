@@ -5,67 +5,55 @@ import com.mthien.yumble.payload.request.cookingmethod.UpdateCookingMethodReques
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.cookingmethod.CookingMethodResponse;
 import com.mthien.yumble.service.CookingMethodService;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("cooking-methods")
+@RequiredArgsConstructor
 public class CookingMethodController {
     private final CookingMethodService cookingMethodService;
 
-    public CookingMethodController(CookingMethodService cookingMethodService) {
-        this.cookingMethodService = cookingMethodService;
-    }
-
     @PostMapping()
-    public ResponseEntity<ApiResponse<CookingMethodResponse>> create(@RequestBody CreateCookingMethodRequest request) {
-        var data = cookingMethodService.create(request);
-        return ResponseEntity.ok(ApiResponse.<CookingMethodResponse>builder()
-                .code(200)
+    public ApiResponse<CookingMethodResponse> create(@RequestBody CreateCookingMethodRequest request) {
+        return ApiResponse.<CookingMethodResponse>builder()
                 .message("Tạo phương pháp chế biến mới thành công")
-                .data(data)
-                .build());
+                .data(cookingMethodService.create(request))
+                .build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ApiResponse<CookingMethodResponse>> update(@PathVariable("id") String id,
-                                                                     @RequestBody UpdateCookingMethodRequest request) {
-        var data = cookingMethodService.update(id, request);
-        return ResponseEntity.ok(ApiResponse.<CookingMethodResponse>builder()
-                .code(200)
+    public ApiResponse<CookingMethodResponse> update(@PathVariable("id") String id,
+                                                     @RequestBody UpdateCookingMethodRequest request) {
+        return ApiResponse.<CookingMethodResponse>builder()
                 .message("Cập nhật thông tin phương pháp chế biến thàng công")
-                .data(data)
-                .build());
+                .data(cookingMethodService.update(id, request))
+                .build();
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ApiResponse<CookingMethodResponse>> viewOne(@PathVariable("id") String id) {
-        var data = cookingMethodService.viewOne(id);
-        return ResponseEntity.ok(ApiResponse.<CookingMethodResponse>builder()
-                .code(200)
+    public ApiResponse<CookingMethodResponse> viewOne(@PathVariable("id") String id) {
+        return ApiResponse.<CookingMethodResponse>builder()
                 .message("Thông tin của phương pháp chế biến")
-                .data(data)
-                .build());
+                .data(cookingMethodService.viewOne(id))
+                .build();
     }
 
     @GetMapping()
-    public ResponseEntity<ApiResponse<List<CookingMethodResponse>>> viewAll() {
-        var data = cookingMethodService.viewAll();
-        return ResponseEntity.ok(ApiResponse.<List<CookingMethodResponse>>builder()
-                .code(200)
+    public ApiResponse<List<CookingMethodResponse>> viewAll() {
+        return ApiResponse.<List<CookingMethodResponse>>builder()
                 .message("Thông tin tất cả các phương pháp chế biến")
-                .data(data)
-                .build());
+                .data(cookingMethodService.viewAll())
+                .build();
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable("id") String id) {
+    public ApiResponse<Void> delete(@PathVariable("id") String id) {
         cookingMethodService.delete(id);
-        return ResponseEntity.ok(ApiResponse.<Void>builder()
-                .code(200)
+        return ApiResponse.<Void>builder()
                 .message("Đã xóa phương pháp chế biến thành công")
-                .build());
+                .build();
     }
 }

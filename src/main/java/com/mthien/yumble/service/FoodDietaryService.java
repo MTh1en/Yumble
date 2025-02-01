@@ -12,24 +12,20 @@ import com.mthien.yumble.payload.response.food.dietary.FoodDietaryResponse;
 import com.mthien.yumble.repository.DietaryRepo;
 import com.mthien.yumble.repository.FoodDietaryRepo;
 import com.mthien.yumble.repository.FoodRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class FoodDietaryService {
     private final FoodDietaryRepo foodDietaryRepo;
     private final FoodDietaryMapper foodDietaryMapper;
     private final FoodRepo foodRepo;
     private final DietaryRepo dietaryRepo;
 
-    public FoodDietaryService(FoodDietaryRepo foodDietaryRepo, FoodDietaryMapper foodDietaryMapper, FoodRepo foodRepo, DietaryRepo dietaryRepo) {
-        this.foodDietaryRepo = foodDietaryRepo;
-        this.foodDietaryMapper = foodDietaryMapper;
-        this.foodRepo = foodRepo;
-        this.dietaryRepo = dietaryRepo;
-    }
 
     public FoodDietaryDetailResponse addFoodDietary(String foodId, AddFoodDietaryRequest request) {
         Food food = foodRepo.findById(foodId)

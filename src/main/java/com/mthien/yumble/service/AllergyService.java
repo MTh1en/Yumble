@@ -8,19 +8,17 @@ import com.mthien.yumble.payload.request.allergy.CreateAllergyRequest;
 import com.mthien.yumble.payload.request.allergy.UpdateAllergyRequest;
 import com.mthien.yumble.payload.response.allergy.AllergyResponse;
 import com.mthien.yumble.repository.AllergyRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class AllergyService {
     private final AllergyMapper allergyMapper;
     private final AllergyRepo allergyRepo;
 
-    public AllergyService(AllergyMapper allergyMapper, AllergyRepo allergyRepo) {
-        this.allergyMapper = allergyMapper;
-        this.allergyRepo = allergyRepo;
-    }
 
     public AllergyResponse create(CreateAllergyRequest request) {
         Allergy allergy = allergyMapper.createAllergy(request);

@@ -6,46 +6,40 @@ import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.auth.AuthResponse;
 import com.mthien.yumble.service.AuthService;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @CrossOrigin
 @RestController
 @RequestMapping("auth")
+@RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
 
-    public AuthController(AuthService authService) {
-        this.authService = authService;
-    }
 
     @PostMapping("register")
-    public ResponseEntity<ApiResponse<String>> register(@Valid @RequestBody RegisterRequest request) {
+    public ApiResponse<String> register(@Valid @RequestBody RegisterRequest request) {
         authService.register(request);
-        return ResponseEntity.ok(ApiResponse.<String>builder()
-                .code(200)
+        return ApiResponse.<String>builder()
                 .message("Đăng ký tài khoản thành công")
-                .build());
+                .build();
     }
 
     @PostMapping("login")
-    public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request) {
-        var data = authService.login(request);
-        return ResponseEntity.ok(ApiResponse.<AuthResponse>builder()
-                .code(200)
+    public ApiResponse<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        return ApiResponse.<AuthResponse>builder()
                 .message("Đăng nhập thành công")
-                .data(data)
-                .build());
+                .data(authService.login(request))
+                .build();
     }
 
     @PostMapping("send-verification-email/{email}")
-    public ResponseEntity<ApiResponse<String>> sendVerificationEmail(@PathVariable("email") String email) {
+    public ApiResponse<String> sendVerificationEmail(@PathVariable("email") String email) {
         authService.sendVerificationEmail(email);
-        return ResponseEntity.ok(ApiResponse.<String>builder()
-                .code(200)
+        return ApiResponse.<String>builder()
                 .message("Mail xác thực tài khoản đã được gửi đến email: " + email + "Vui lòng vào email của bạn để xác nhận")
-                .build());
+                .build();
     }
 
     @GetMapping("verify")
