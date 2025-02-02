@@ -11,5 +11,4 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AddFoodAllergyRequest {
     private String allergyId;
-    private String severity;
 }

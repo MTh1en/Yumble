@@ -8,6 +8,7 @@ import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.AllergyMapper;
 import com.mthien.yumble.mapper.FoodAllergyMapper;
 import com.mthien.yumble.payload.request.food.allergy.AddFoodAllergyRequest;
+import com.mthien.yumble.payload.response.allergy.AllergyResponse;
 import com.mthien.yumble.payload.response.food.allergy.FoodAllergyDetailResponse;
 import com.mthien.yumble.payload.response.food.allergy.FoodAllergyResponse;
 import com.mthien.yumble.repository.AllergyRepo;
@@ -35,7 +36,7 @@ public class FoodAllergyService {
         foodAllergyRepo.findByAllergyAndFood(allergy, food).ifPresent(existingAllergy -> {
             throw new AppException(ErrorCode.FOOD_ALLERGY_IS_EXISTED);
         });
-        FoodAllergy foodAllergy = foodAllergyMapper.createFoodAllergy(food, allergy, request.getSeverity());
+        FoodAllergy foodAllergy = foodAllergyMapper.createFoodAllergy(food, allergy);
         return foodAllergyMapper.toFoodAllergyDetailResponse(foodAllergyRepo.save(foodAllergy));
     }
 

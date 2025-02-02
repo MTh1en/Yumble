@@ -2,6 +2,7 @@ package com.mthien.yumble.controller;
 
 import com.mthien.yumble.payload.request.food.allergy.AddFoodAllergyRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
+import com.mthien.yumble.payload.response.allergy.AllergyResponse;
 import com.mthien.yumble.payload.response.food.allergy.FoodAllergyDetailResponse;
 import com.mthien.yumble.payload.response.food.allergy.FoodAllergyResponse;
 import com.mthien.yumble.service.FoodAllergyService;

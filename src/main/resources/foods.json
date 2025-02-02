@@ -1,0 +1,2022 @@
+[
+  {
+    "name": "Bún chả",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bun-cha-Hanoi.JPG/375px-Bun-cha-Hanoi.JPG",
+    "description": "Món ăn nổi tiếng của Hà Nội với thịt heo nướng ăn kèm bún và nước mắm chua ngọt.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nướng thịt, pha nước mắm, chuẩn bị bún và rau.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 100, "isCore": true },
+      { "name": "Thịt ba chỉ và thịt nạc vai", "usage": 100, "isCore": true },
+      { "name": "Nước mắm, đường, giấm", "usage": -1, "isCore": true },
+      { "name": "Rau sống, tỏi, ớt", "usage": 20, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp thịt với gia vị và nướng than hoa.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Pha nước chấm chua ngọt.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Chuẩn bị bún và rau sống.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 500,
+      "protein": 25,
+      "fat": 20,
+      "carb": 60,
+      "fiber": 5,
+      "sugar": 10,
+      "sodium": 2,
+      "cholesterol": 0.7
+    },
+    "allergies": ["Gluten", "Hạt cây"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Gỏi cuốn",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Goi_cuon_%28Summer_rolls%29.jpg/375px-Goi_cuon_%28Summer_rolls%29.jpg",
+    "description": "Món cuốn tươi mát với tôm, thịt và rau xanh, chấm cùng nước mắm hoặc tương đậu phộng.",
+    "meal": "APPETIZER_LUNCH",
+    "cookingMethod": "Luộc nguyên liệu, cuốn bánh tráng, pha nước chấm.",
+    "ingredients": [
+      { "name": "Bánh tráng", "usage": 2, "isCore": true },
+      { "name": "Tôm, thịt heo", "usage": 50, "isCore": true },
+      { "name": "Rau sống, bún", "usage": 30, "isCore": true },
+      { "name": "Nước mắm, đậu phộng", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Luộc tôm và thịt, thái mỏng.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Ngâm mềm bánh tráng, xếp nguyên liệu và cuốn chặt tay.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Pha nước chấm hoặc tương đậu phộng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 200,
+      "protein": 15,
+      "fat": 5,
+      "carb": 25,
+      "fiber": 3,
+      "sugar": 2,
+      "sodium": 1,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Tôm", "Đậu phộng"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  },
+  {
+    "name": "Bánh xèo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Banh_xeo_Saigon.jpg/375px-Banh_xeo_Saigon.jpg",
+    "description": "Bánh mỏng giòn từ bột gạo, nhân tôm thịt và giá đỗ, ăn kèm rau sống và nước mắm chua ngọt.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Pha bột, chiên bánh, chuẩn bị nhân và rau.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Tôm, thịt heo", "usage": 50, "isCore": true },
+      { "name": "Giá đỗ, hành lá", "usage": 30, "isCore": true },
+      { "name": "Rau sống, nước mắm", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Pha bột với nước và nghệ.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Chiên bánh trên chảo nóng với nhân tôm thịt.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Gập đôi bánh và ăn kèm rau sống, nước chấm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 18,
+      "fat": 15,
+      "carb": 40,
+      "fiber": 4,
+      "sugar": 3,
+      "sodium": 1.2,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Tôm"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Bánh mì",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Banh_Mi_Thit.jpg/375px-Banh_Mi_Thit.jpg",
+    "description": "Bánh mì Việt Nam với nhân thịt, pate, rau ngò, đồ chua và nước sốt đặc trưng.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nướng bánh mì, chuẩn bị nhân, lắp ráp bánh.",
+    "ingredients": [
+      { "name": "Bánh mì baguette", "usage": 1, "isCore": true },
+      { "name": "Thịt nguội, pate", "usage": 50, "isCore": true },
+      { "name": "Rau ngò, đồ chua", "usage": 20, "isCore": true },
+      { "name": "Nước sốt, ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nướng giòn bánh mì.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Phết pate và thêm nhân thịt, rau.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Thêm nước sốt và thưởng thức.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 12,
+      "fat": 10,
+      "carb": 40,
+      "fiber": 2,
+      "sugar": 5,
+      "sodium": 1.5,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Thịt động vật"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Cơm tấm",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/C%C6%A1m_t%E1%BA%A5m_-_C%C3%A1_s%C6%B0%E1%BB%9Dn_b%C3%AC_ch%E1%BA%A3.jpg/375px-C%C6%A1m_t%E1%BA%A5m_-_C%C3%A1_s%C6%B0%E1%BB%9Dn_b%C3%AC_ch%E1%BA%A3.jpg",
+    "description": "Cơm từ hạt gạo tấm, ăn kèm sườn nướng, bì, chả trứng và nước mắm.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nấu cơm tấm, nướng sườn, chuẩn bị bì và chả.",
+    "ingredients": [
+      { "name": "Gạo tấm", "usage": 150, "isCore": true },
+      { "name": "Sườn heo", "usage": 100, "isCore": true },
+      { "name": "Bì, chả trứng", "usage": 50, "isCore": true },
+      { "name": "Nước mắm, dưa chuột", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu cơm tấm.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Ướp và nướng sườn.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Chuẩn bị bì và chả trứng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 600,
+      "protein": 30,
+      "fat": 25,
+      "carb": 70,
+      "fiber": 3,
+      "sugar": 8,
+      "sodium": 2,
+      "cholesterol": 0.8
+    },
+    "allergies": ["Gluten", "Trứng"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Bánh cuốn",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Banh_cuon_Thanh_Tri.jpg/375px-Banh_cuon_Thanh_Tri.jpg",
+    "description": "Bánh mỏng từ bột gạo hấp, cuộn nhân thịt băm và mộc nhĩ, ăn kèm chả lụa và nước mắm.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Pha bột, tráng bánh, cuộn nhân.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Thịt heo băm, mộc nhĩ", "usage": 50, "isCore": true },
+      { "name": "Hành phi, chả lụa", "usage": 30, "isCore": false },
+      { "name": "Nước mắm, rau thơm", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Pha bột với nước.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Tráng bánh trên nồi hấp, thêm nhân và cuộn lại.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Rắc hành phi, ăn kèm chả lụa và nước chấm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein": 10,
+      "fat": 5,
+      "carb": 40,
+      "fiber": 2,
+      "sugar": 2,
+      "sodium": 1,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Gluten", "Thịt động vật"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  },
+  {
+    "name": "Chả giò",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Cha_gio_Ho_Chi_Minh_City.JPG/375px-Cha_gio_Ho_Chi_Minh_City.JPG",
+    "description": "Món rán giòn từ bánh tráng cuốn nhân thịt, tôm và rau củ, ăn kèm rau sống và nước mắm.",
+    "meal": "APPETIZER_LUNCH",
+    "cookingMethod": "Chuẩn bị nhân, cuốn bánh tráng, chiên giòn.",
+    "ingredients": [
+      { "name": "Bánh tráng", "usage": 5, "isCore": true },
+      { "name": "Thịt heo, tôm, mộc nhĩ", "usage": 100, "isCore": true },
+      { "name": "Cà rốt, khoai môn", "usage": 50, "isCore": true },
+      { "name": "Nước mắm, rau sống", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Trộn nguyên liệu nhân.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Cuốn nhân trong bánh tráng.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Chiên vàng giòn chả giò.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 15,
+      "fat": 25,
+      "carb": 30,
+      "fiber": 3,
+      "sugar": 2,
+      "sodium": 1.2,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Tôm"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Cá kho tộ",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Ca_kho_to.jpg/375px-Ca_kho_to.jpg",
+    "description": "Cá được kho trong nồi đất với nước mắm, đường, tiêu và hành, tạo nên hương vị đậm đà.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Ướp cá, kho lửa nhỏ trong tộ đất.",
+    "ingredients": [
+      { "name": "Cá lóc hoặc cá basa", "usage": 200, "isCore": true },
+      { "name": "Nước mắm, đường, hành tím", "usage": -1, "isCore": true },
+      { "name": "Tiêu đen, ớt tươi", "usage": 5, "isCore": false },
+      { "name": "Dầu ăn, nước màu", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp cá với gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Cho cá vào tộ đất, kho lửa nhỏ.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Thêm hành, tiêu và hoàn thành món ăn.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 30,
+      "fat": 15,
+      "carb": 10,
+      "fiber": 1,
+      "sugar": 5,
+      "sodium": 2.5,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Cá"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein", "Ít tinh bột"]
+  },
+  {
+    "name": "Bánh khọt",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Banh_Khot.jpg/375px-Banh_Khot.jpg",
+    "description": "Bánh nhỏ chiên giòn từ bột gạo, với nhân tôm, ăn kèm rau sống và nước mắm chua ngọt.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Pha bột, đổ bánh vào khuôn, thêm nhân tôm.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Tôm tươi", "usage": 50, "isCore": true },
+      { "name": "Nước cốt dừa", "usage": 20, "isCore": true },
+      { "name": "Rau sống, nước mắm", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Pha bột với nước và nước cốt dừa.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Đổ bột vào khuôn, thêm tôm và chiên vàng.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Ăn kèm rau sống và nước chấm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 12,
+      "fat": 15,
+      "carb": 30,
+      "fiber": 2,
+      "sugar": 3,
+      "sodium": 1.1,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Tôm", "Đậu nành"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Cao lầu",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Cao_lau_Hoi_An.jpg/375px-Cao_lau_Hoi_An.jpg",
+    "description": "Đặc sản Hội An với mì đặc biệt, thịt xá xíu, rau sống và nước sốt đậm đà.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Chuẩn bị mì, thịt xá xíu, nước sốt.",
+    "ingredients": [
+      { "name": "Mì cao lầu", "usage": 100, "isCore": true },
+      { "name": "Thịt heo xá xíu", "usage": 50, "isCore": true },
+      { "name": "Rau sống, giá đỗ", "usage": 30, "isCore": true },
+      { "name": "Nước sốt đặc biệt", "usage": -1, "isCore": true }
+    ],
+    "steps": [
+      { "order": 1, "description": "Chế biến thịt xá xíu.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Trụng mì và chuẩn bị rau.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Kết hợp tất cả nguyên liệu với nước sốt.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 20,
+      "fat": 15,
+      "carb": 60,
+      "fiber": 4,
+      "sugar": 5,
+      "sodium": 1.8,
+      "cholesterol": 0.4
+    },
+    "allergies": ["Gluten", "Thịt động vật"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bún bò Huế",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Bun_Bo_Hue.jpg/375px-Bun_Bo_Hue.jpg",
+    "description": "Món bún cay đặc trưng của Huế, với nước dùng từ xương bò và mắm ruốc, ăn kèm thịt bò, giò heo và rau sống.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Ninh xương, chế biến nước dùng, luộc bún, chuẩn bị thịt và gia vị.",
+    "ingredients": [
+      { "name": "Bún sợi lớn", "usage": 60, "isCore": true },
+      { "name": "Thịt bò, giò heo", "usage": 80, "isCore": true },
+      { "name": "Mắm ruốc, sả, ớt", "usage": -1, "isCore": true },
+      { "name": "Rau sống, hành lá", "usage": 20, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ninh xương bò với sả và mắm ruốc để tạo nước dùng.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Luộc bún và chuẩn bị thịt bò, giò heo.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Cho bún và thịt vào tô, chan nước dùng và thêm rau sống.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 550,
+      "protein": 35,
+      "fat": 20,
+      "carb": 60,
+      "fiber": 4,
+      "sugar": 3,
+      "sodium": 2,
+      "cholesterol": 0.6
+    },
+    "allergies": ["Gluten", "Mắm ruốc"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Mì Quảng",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Mi_Quang.jpg/375px-Mi_Quang.jpg",
+    "description": "Món mì đặc trưng của Quảng Nam với sợi mì vàng, nước dùng đậm đà, ăn kèm tôm, thịt và bánh tráng mè.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Chế biến nước dùng, luộc mì, chuẩn bị nhân và rau.",
+    "ingredients": [
+      { "name": "Mì Quảng", "usage": 70, "isCore": true },
+      { "name": "Tôm, thịt heo", "usage": 60, "isCore": true },
+      { "name": "Bánh tráng mè, đậu phộng", "usage": 20, "isCore": false },
+      { "name": "Rau sống, hành ngò", "usage": 20, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng từ xương và gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Luộc mì và xào chín tôm, thịt.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày mì, nhân và nước dùng vào tô, thêm rau và bánh tráng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 480,
+      "protein": 25,
+      "fat": 15,
+      "carb": 60,
+      "fiber": 5,
+      "sugar": 4,
+      "sodium": 1.8,
+      "cholesterol": 0.4
+    },
+    "allergies": ["Gluten", "Tôm", "Đậu phộng"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Lẩu mắm",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Lau_Mam.jpg/375px-Lau_Mam.jpg",
+    "description": "Món lẩu đậm chất miền Tây, với nước dùng từ mắm cá linh hoặc cá sặc, ăn kèm đa dạng hải sản và rau đồng.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nấu nước lẩu từ mắm, chuẩn bị nguyên liệu nhúng lẩu.",
+    "ingredients": [
+      { "name": "Mắm cá linh/cá sặc", "usage": -1, "isCore": true },
+      { "name": "Cá, tôm, mực", "usage": 100, "isCore": true },
+      { "name": "Rau muống, bông điên điển, rau nhút", "usage": 50, "isCore": true },
+      { "name": "Bún tươi hoặc cơm", "usage": 60, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu mắm với nước, lọc bỏ xương để lấy nước dùng.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Thêm sả, ớt và gia vị vào nước lẩu.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Dọn lẩu cùng hải sản và rau, nhúng chín khi ăn.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 650,
+      "protein": 40,
+      "fat": 25,
+      "carb": 70,
+      "fiber": 6,
+      "sugar": 5,
+      "sodium": 3,
+      "cholesterol": 0.7
+    },
+    "allergies": ["Hải sản", "Mắm cá"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh đa cua",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Banh_Da_Cua_Hai_Phong.jpg/375px-Banh_Da_Cua_Hai_Phong.jpg",
+    "description": "Đặc sản Hải Phòng với bánh đa đỏ, nước dùng từ cua đồng, ăn kèm chả lá lốt, rau muống.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nấu nước dùng cua, luộc bánh đa, chuẩn bị topping.",
+    "ingredients": [
+      { "name": "Bánh đa đỏ", "usage": 70, "isCore": true },
+      { "name": "Cua đồng xay", "usage": 50, "isCore": true },
+      { "name": "Giò, chả lá lốt", "usage": 30, "isCore": false },
+      { "name": "Rau muống, hành phi", "usage": 20, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng từ cua đồng.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Luộc bánh đa đỏ và rau.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày bánh đa, topping và chan nước dùng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 500,
+      "protein": 25,
+      "fat": 15,
+      "carb": 65,
+      "fiber": 5,
+      "sugar": 3,
+      "sodium": 1.5,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Cua"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Cháo lươn",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Chao_Luon.jpg/375px-Chao_Luon.jpg",
+    "description": "Món cháo từ Nghệ An với thịt lươn mềm thơm, hạt cháo nhuyễn, thêm hành lá và rau thơm.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nấu cháo, xào lươn với gia vị, kết hợp.",
+    "ingredients": [
+      { "name": "Gạo tẻ", "usage": 50, "isCore": true },
+      { "name": "Thịt lươn", "usage": 60, "isCore": true },
+      { "name": "Hành tím, nghệ", "usage": -1, "isCore": true },
+      { "name": "Hành lá, rau răm", "usage": 10, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu cháo từ gạo và nước dùng.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Xào lươn với hành, nghệ và gia vị.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Cho lươn vào cháo, thêm rau thơm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 20,
+      "fat": 10,
+      "carb": 55,
+      "fiber": 2,
+      "sugar": 1,
+      "sodium": 1.2,
+      "cholesterol": 0.25
+    },
+    "allergies": ["Cá"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  },
+  {
+    "name": "Nem chua",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Nem_Chua.jpg/375px-Nem_Chua.jpg",
+    "description": "Món ăn lên men từ thịt heo sống xay nhuyễn, bì heo, tỏi ớt, gói trong lá chuối.",
+    "meal": "APPETIZER_SNACK",
+    "cookingMethod": "Xay thịt, trộn gia vị, gói và lên men.",
+    "ingredients": [
+      { "name": "Thịt heo nạc", "usage": 100, "isCore": true },
+      { "name": "Bì heo", "usage": 30, "isCore": true },
+      { "name": "Tỏi, ớt, tiêu", "usage": -1, "isCore": true },
+      { "name": "Lá chuối, dây buộc", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Xay nhuyễn thịt heo.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Trộn thịt với bì và gia vị.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Gói hỗn hợp trong lá chuối và để lên men.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein": 18,
+      "fat": 15,
+      "carb": 5,
+      "fiber": 0,
+      "sugar": 1,
+      "sodium": 1.5,
+      "cholesterol": 0.4
+    },
+    "allergies": ["Thịt động vật"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein", "Ít carb"]
+  },
+  {
+    "name": "Bún thang",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Bun_Thang_Hanoi.jpg/375px-Bun_Thang_Hanoi.jpg",
+    "description": "Món bún tinh tế của Hà Nội với nước dùng trong, ăn kèm trứng tráng, giò lụa, gà xé và tôm khô.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nấu nước dùng từ xương gà, chuẩn bị các topping, luộc bún.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 60, "isCore": true },
+      { "name": "Thịt gà, giò lụa, trứng", "usage": 70, "isCore": true },
+      { "name": "Tôm khô, nấm hương", "usage": 20, "isCore": false },
+      { "name": "Hành lá, rau răm", "usage": 10, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng từ xương gà và tôm khô.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Chuẩn bị trứng tráng thái sợi, giò lụa và gà xé.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày bún và các topping vào tô, chan nước dùng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 25,
+      "fat": 15,
+      "carb": 55,
+      "fiber": 3,
+      "sugar": 2,
+      "sodium": 1.8,
+      "cholesterol": 0.5
+    },
+    "allergies": ["Gluten", "Trứng", "Tôm"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Bánh gai",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Banh_Gai.jpg/375px-Banh_Gai.jpg",
+    "description": "Bánh ngọt truyền thống làm từ bột nếp và lá gai, nhân đậu xanh, gói trong lá chuối.",
+    "meal": "SNACK_DESSERT",
+    "cookingMethod": "Nhào bột với lá gai, chuẩn bị nhân, gói và hấp chín.",
+    "ingredients": [
+      { "name": "Bột nếp", "usage": 100, "isCore": true },
+      { "name": "Lá gai xay", "usage": 50, "isCore": true },
+      { "name": "Đậu xanh, đường", "usage": 60, "isCore": true },
+      { "name": "Dầu ăn, lá chuối", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nhào bột nếp với lá gai và đường.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Chuẩn bị nhân đậu xanh xay nhuyễn.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Gói bánh trong lá chuối và hấp chín.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 6,
+      "fat": 5,
+      "carb": 60,
+      "fiber": 4,
+      "sugar": 20,
+      "sodium": 0.3,
+      "cholesterol": 0
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Chay"]
+  },
+  {
+    "name": "Xôi gấc",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Xoi_Gac.jpg/375px-Xoi_Gac.jpg",
+    "description": "Xôi nếp dẻo thơm màu đỏ cam từ quả gấc, thường xuất hiện trong các dịp lễ tết.",
+    "meal": "SNACK_BREAKFAST",
+    "cookingMethod": "Trộn nếp với gấc, hấp chín.",
+    "ingredients": [
+      { "name": "Gạo nếp", "usage": 100, "isCore": true },
+      { "name": "Thịt quả gấc", "usage": 50, "isCore": true },
+      { "name": "Dầu ăn, muối", "usage": -1, "isCore": false },
+      { "name": "Đường, dừa nạo", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ngâm nếp và trộn với thịt gấc.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Hấp xôi cho đến khi chín dẻo.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Trộn xôi với dầu ăn, thêm dừa nạo nếu thích.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 7,
+      "fat": 10,
+      "carb": 60,
+      "fiber": 3,
+      "sugar": 10,
+      "sodium": 0.5,
+      "cholesterol": 0
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Chay", "Thực vật"]
+  },
+  {
+    "name": "Ốc luộc",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Oc_Luoc.jpg/375px-Oc_Luoc.jpg",
+    "description": "Ốc nước ngọt luộc với sả, lá chanh, chấm mắm gừng, món ăn vặt phổ biến ở miền Bắc.",
+    "meal": "SNACK_DINNER",
+    "cookingMethod": "Rửa sạch ốc, luộc với gia vị.",
+    "ingredients": [
+      { "name": "Ốc bươu hoặc ốc mít", "usage": 200, "isCore": true },
+      { "name": "Sả, lá chanh", "usage": -1, "isCore": true },
+      { "name": "Nước mắm, gừng, ớt", "usage": -1, "isCore": false },
+      { "name": "Chanh, đường", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Rửa sạch ốc, ngâm với nước gạo cho nhả bùn.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Luộc ốc với sả và lá chanh.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Pha nước chấm mắm gừng, ăn kèm ốc.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 200,
+      "protein": 15,
+      "fat": 5,
+      "carb": 10,
+      "fiber": 0,
+      "sugar": 2,
+      "sodium": 1.5,
+      "cholesterol": 0.1
+    },
+    "allergies": ["Hải sản"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein", "Ít carb"]
+  },
+  {
+    "name": "Phở bò",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg/375px-Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg",
+    "description": "Món nước đặc trưng với nước dùng từ xương bò và các loại thảo mộc.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Ninh xương bò với thảo mộc, trụng phở, thêm gia vị.",
+    "ingredients": [
+      { "name": "Bánh phở", "usage": 60, "isCore": true },
+      { "name": "Thịt bò", "usage": 60, "isCore": true },
+      { "name": "Hành lá, rau thơm", "usage": 10, "isCore": false },
+      { "name": "Gia vị: quế, hồi, đinh hương", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ninh xương bò với thảo mộc để tạo nước dùng đậm đà.", "image": "https://example.com/pho-bo-step1.jpg" },
+      { "order": 2, "description": "Trụng bánh phở và thái thịt bò.", "image": "https://example.com/pho-bo-step2.jpg" },
+      { "order": 3, "description": "Cho phở và thịt vào tô, chan nước dùng, thêm rau thơm.", "image": "https://example.com/pho-bo-step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 30,
+      "fat": 10,
+      "carb": 55,
+      "fiber": 2,
+      "sugar": 3,
+      "sodium": 1.5,
+      "cholesterol": 0.5
+    },
+    "allergies": ["Gluten", "Thảo mộc"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Phở gà",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Ph%E1%BB%9F_g%C3%A0.jpg/375px-Ph%E1%BB%9F_g%C3%A0.jpg",
+    "description": "Phở với nước dùng thanh nhẹ từ xương gà, thịt gà thơm ngon.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Ninh xương gà, trụng phở, thêm gia vị.",
+    "ingredients": [
+      { "name": "Bánh phở", "usage": 60, "isCore": true },
+      { "name": "Thịt gà", "usage": 60, "isCore": true },
+      { "name": "Hành lá, rau thơm", "usage": 10, "isCore": false },
+      { "name": "Gia vị: gừng, hành khô", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ninh xương gà với gừng, hành khô để lấy nước dùng trong.", "image": "https://example.com/pho-ga-step1.jpg" },
+      { "order": 2, "description": "Trụng bánh phở và xé thịt gà.", "image": "https://example.com/pho-ga-step2.jpg" },
+      { "order": 3, "description": "Bày phở và thịt gà vào tô, chan nước dùng, thêm rau thơm.", "image": "https://example.com/pho-ga-step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 28,
+      "fat": 8,
+      "carb": 55,
+      "fiber": 2,
+      "sugar": 3,
+      "sodium": 1.4,
+      "cholesterol": 0.45
+    },
+    "allergies": ["Gluten", "Thảo mộc"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Bún chả",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bun-cha-Hanoi.JPG/375px-Bun-cha-Hanoi.JPG",
+    "description": "Món ăn với thịt heo nướng thơm lừng, ăn kèm bún tươi và nước mắm chua ngọt.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Ướp và nướng thịt, pha nước mắm, chuẩn bị bún và rau.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 100, "isCore": true },
+      { "name": "Thịt ba chỉ, thịt nạc vai", "usage": 100, "isCore": true },
+      { "name": "Nước mắm, đường, giấm", "usage": -1, "isCore": true },
+      { "name": "Rau sống, tỏi, ớt", "usage": 20, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp thịt với gia vị và nướng trên than hoa.", "image": "https://example.com/bun-cha-step1.jpg" },
+      { "order": 2, "description": "Pha nước chấm chua ngọt.", "image": "https://example.com/bun-cha-step2.jpg" },
+      { "order": 3, "description": "Chuẩn bị bún và rau sống, thưởng thức cùng thịt nướng.", "image": "https://example.com/bun-cha-step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 520,
+      "protein": 26,
+      "fat": 22,
+      "carb": 60,
+      "fiber": 5,
+      "sugar": 10,
+      "sodium": 2.2,
+      "cholesterol": 0.7
+    },
+    "allergies": ["Gluten", "Hạt cây"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Hủ tiếu Nam Vang",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Hu_Tieu_Nam_Vang.jpg/375px-Hu_Tieu_Nam_Vang.jpg",
+    "description": "Món hủ tiếu nổi tiếng tại miền Nam, với nước dùng ngọt thanh từ xương heo, tôm, mực và thịt bằm.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Ninh nước dùng, luộc hủ tiếu, chuẩn bị topping.",
+    "ingredients": [
+      { "name": "Hủ tiếu sợi", "usage": 70, "isCore": true },
+      { "name": "Tôm, mực, thịt heo bằm", "usage": 80, "isCore": true },
+      { "name": "Hẹ, giá đỗ", "usage": 20, "isCore": true },
+      { "name": "Hành phi, chanh, ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ninh nước dùng từ xương heo và mực khô.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Luộc hủ tiếu và chuẩn bị các nguyên liệu.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày hủ tiếu, topping vào tô, chan nước dùng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 480,
+      "protein": 28,
+      "fat": 12,
+      "carb": 65,
+      "fiber": 3,
+      "sugar": 4,
+      "sodium": 1.6,
+      "cholesterol": 0.4
+    },
+    "allergies": ["Gluten", "Hải sản"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh bột lọc",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Banh_Bot_Loc.jpg/375px-Banh_Bot_Loc.jpg",
+    "description": "Món bánh Huế với lớp vỏ trong suốt từ bột năng, nhân tôm thịt, ăn kèm nước mắm chua ngọt.",
+    "meal": "APPETIZER_SNACK",
+    "cookingMethod": "Nhào bột, gói nhân, hấp hoặc luộc chín.",
+    "ingredients": [
+      { "name": "Bột năng", "usage": 100, "isCore": true },
+      { "name": "Tôm, thịt heo", "usage": 50, "isCore": true },
+      { "name": "Hành lá, dầu ăn", "usage": -1, "isCore": false },
+      { "name": "Nước mắm, đường, ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Xào nhân tôm thịt với gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Nhào bột và gói bánh với nhân.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Hấp hoặc luộc bánh cho đến khi chín trong.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein": 10,
+      "fat": 5,
+      "carb": 45,
+      "fiber": 1,
+      "sugar": 3,
+      "sodium": 1,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Tôm"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  },
+  {
+    "name": "Bún riêu cua",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Bun_Rieu_Cua.jpg/375px-Bun_Rieu_Cua.jpg",
+    "description": "Món bún với nước dùng từ cua đồng, cà chua, ăn kèm đậu phụ chiên và rau sống.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nấu nước dùng từ cua, luộc bún, chuẩn bị topping.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 70, "isCore": true },
+      { "name": "Cua đồng xay", "usage": 60, "isCore": true },
+      { "name": "Cà chua, đậu phụ", "usage": 40, "isCore": true },
+      { "name": "Rau sống, mắm tôm", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng từ cua đồng và gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Luộc bún và chuẩn bị đậu phụ chiên.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày bún, topping vào tô, chan nước dùng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 20,
+      "fat": 15,
+      "carb": 60,
+      "fiber": 4,
+      "sugar": 5,
+      "sodium": 1.8,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Cua", "Đậu nành"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Nem lụi",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Nem_Lui.jpg/375px-Nem_Lui.jpg",
+    "description": "Thịt heo xay ướp gia vị, quấn quanh que sả, nướng trên than hồng, ăn kèm bánh tráng và rau sống.",
+    "meal": "APPETIZER_LUNCH",
+    "cookingMethod": "Ướp thịt, quấn que sả, nướng chín.",
+    "ingredients": [
+      { "name": "Thịt heo xay", "usage": 100, "isCore": true },
+      { "name": "Sả cây", "usage": 5, "isCore": true },
+      { "name": "Bánh tráng, rau sống", "usage": 50, "isCore": true },
+      { "name": "Nước mắm, gia vị", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Trộn thịt với gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Quấn thịt quanh que sả.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Nướng nem lụi trên than hồng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 18,
+      "fat": 15,
+      "carb": 25,
+      "fiber": 2,
+      "sugar": 2,
+      "sodium": 1.2,
+      "cholesterol": 0.4
+    },
+    "allergies": ["Gluten", "Thịt động vật"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Chả cá Lã Vọng",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Cha_Ca_La_Vong.jpg/375px-Cha_Ca_La_Vong.jpg",
+    "description": "Món đặc sản Hà Nội với cá ướp nghệ, thì là, nướng chín, ăn kèm bún và mắm tôm.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Ướp cá, nướng chín, xào với thì là và hành.",
+    "ingredients": [
+      { "name": "Cá lăng hoặc cá quả", "usage": 100, "isCore": true },
+      { "name": "Thì là, hành lá", "usage": 20, "isCore": true },
+      { "name": "Bún tươi, lạc rang", "usage": 60, "isCore": false },
+      { "name": "Mắm tôm, mỡ nước", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp cá với nghệ và gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Nướng cá trên than hoa.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Xào cá với thì là, hành trên chảo.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 500,
+      "protein": 25,
+      "fat": 20,
+      "carb": 55,
+      "fiber": 3,
+      "sugar": 2,
+      "sodium": 1.6,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Cá", "Gluten", "Đậu phộng"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Gỏi cuốn tôm thịt",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Goi_cuon_%28Summer_rolls%29.jpg/375px-Goi_cuon_%28Summer_rolls%29.jpg",
+    "description": "Món cuốn tươi với tôm, thịt heo, bún và rau sống, chấm cùng nước mắm chua ngọt.",
+    "meal": "APPETIZER_LUNCH",
+    "cookingMethod": "Luộc tôm, thịt, cuốn bánh tráng, pha nước chấm.",
+    "ingredients": [
+      { "name": "Bánh tráng", "usage": 2, "isCore": true },
+      { "name": "Tôm, thịt heo", "usage": 60, "isCore": true },
+      { "name": "Bún tươi, rau sống", "usage": 30, "isCore": true },
+      { "name": "Nước mắm, đường, tỏi, ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Luộc tôm, thịt và thái lát mỏng.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Ngâm mềm bánh tráng, xếp nguyên liệu và cuốn chặt.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Pha nước chấm chua ngọt.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 220,
+      "protein": 15,
+      "fat": 5,
+      "carb": 30,
+      "fiber": 3,
+      "sugar": 4,
+      "sodium": 1,
+      "cholesterol": 0.25
+    },
+    "allergies": ["Gluten", "Tôm"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  },
+  {
+    "name": "Lẩu cá kèo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Lau_Ca_Keo.jpg/375px-Lau_Ca_Keo.jpg",
+    "description": "Món lẩu miền Nam với cá kèo tươi sống, nước lẩu chua ngọt, ăn kèm rau đắng và bún.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nấu nước lẩu, chuẩn bị cá và rau.",
+    "ingredients": [
+      { "name": "Cá kèo", "usage": 200, "isCore": true },
+      { "name": "Cà chua, me chua", "usage": -1, "isCore": true },
+      { "name": "Rau đắng, rau muống", "usage": 50, "isCore": true },
+      { "name": "Bún tươi", "usage": 60, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước lẩu chua ngọt từ me và cà chua.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Làm sạch cá kèo.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Dọn lẩu cùng cá và rau, nhúng chín khi ăn.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 520,
+      "protein": 35,
+      "fat": 15,
+      "carb": 60,
+      "fiber": 5,
+      "sugar": 4,
+      "sodium": 2,
+      "cholesterol": 0.5
+    },
+    "allergies": ["Cá"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Cơm cháy chà bông",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Com_Chay_Ninh_Binh.jpg/375px-Com_Chay_Ninh_Binh.jpg",
+    "description": "Món ăn vặt giòn tan từ cơm nếp chiên giòn, phủ chà bông và mỡ hành.",
+    "meal": "SNACK_APPETIZER",
+    "cookingMethod": "Ép cơm, chiên giòn, thêm topping.",
+    "ingredients": [
+      { "name": "Cơm nếp", "usage": 100, "isCore": true },
+      { "name": "Chà bông (ruốc heo)", "usage": 30, "isCore": true },
+      { "name": "Hành lá, dầu ăn", "usage": -1, "isCore": false },
+      { "name": "Nước mắm, đường", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ép cơm thành miếng mỏng, phơi khô.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Chiên cơm cho đến khi vàng giòn.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Phủ chà bông và mỡ hành lên trên.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 10,
+      "fat": 15,
+      "carb": 45,
+      "fiber": 1,
+      "sugar": 5,
+      "sodium": 1.2,
+      "cholesterol": 0.1
+    },
+    "allergies": ["Gluten", "Thịt động vật"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bún mắm",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Bun_Mam.jpg/375px-Bun_Mam.jpg",
+    "description": "Món bún đặc sản miền Tây với nước dùng từ mắm cá linh, kèm theo tôm, mực, heo quay và rau sống.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nấu nước dùng từ mắm, luộc bún, chuẩn bị topping.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 70, "isCore": true },
+      { "name": "Mắm cá linh", "usage": -1, "isCore": true },
+      { "name": "Tôm, mực, heo quay", "usage": 80, "isCore": true },
+      { "name": "Rau sống, cà tím", "usage": 30, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng từ mắm cá linh, lọc bỏ cặn.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Chuẩn bị tôm, mực và heo quay.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày bún, topping vào tô, chan nước dùng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 550,
+      "protein": 30,
+      "fat": 20,
+      "carb": 65,
+      "fiber": 4,
+      "sugar": 3,
+      "sodium": 2.5,
+      "cholesterol": 0.6
+    },
+    "allergies": ["Gluten", "Hải sản", "Mắm cá"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Chè ba màu",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Che_Ba_Mau.jpg/375px-Che_Ba_Mau.jpg",
+    "description": "Món chè ngọt với ba lớp màu sắc từ đậu xanh, đậu đỏ và thạch lá dứa, thêm nước cốt dừa.",
+    "meal": "SNACK_DESSERT",
+    "cookingMethod": "Nấu các loại đậu, chuẩn bị thạch, kết hợp.",
+    "ingredients": [
+      { "name": "Đậu đỏ, đậu xanh", "usage": 50, "isCore": true },
+      { "name": "Thạch lá dứa", "usage": 30, "isCore": true },
+      { "name": "Nước cốt dừa", "usage": -1, "isCore": true },
+      { "name": "Đường, đá bào", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu chín đậu đỏ và đậu xanh với đường.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Chuẩn bị thạch lá dứa.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày các nguyên liệu vào ly, thêm nước cốt dừa và đá bào.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 8,
+      "fat": 10,
+      "carb": 45,
+      "fiber": 5,
+      "sugar": 25,
+      "sodium": 0.3,
+      "cholesterol": 0
+    },
+    "allergies": ["Đậu", "Dừa"],
+    "dietaries": ["Truyền thống Việt", "Chay", "Thực vật"]
+  },
+  {
+    "name": "Ốc xào me",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Oc_Xao_Me.jpg/375px-Oc_Xao_Me.jpg",
+    "description": "Món ăn vặt hấp dẫn với ốc xào cùng sốt me chua ngọt, thêm sả, ớt và rau răm.",
+    "meal": "SNACK_DINNER",
+    "cookingMethod": "Sơ chế ốc, xào với sốt me và gia vị.",
+    "ingredients": [
+      { "name": "Ốc hương hoặc ốc len", "usage": 200, "isCore": true },
+      { "name": "Me chua, đường, nước mắm", "usage": -1, "isCore": true },
+      { "name": "Sả, tỏi, ớt", "usage": -1, "isCore": false },
+      { "name": "Rau răm", "usage": 10, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Rửa sạch ốc, luộc sơ.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Phi thơm tỏi, sả, xào ốc với sốt me.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Thêm rau răm và dọn món.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein": 15,
+      "fat": 8,
+      "carb": 25,
+      "fiber": 1,
+      "sugar": 10,
+      "sodium": 1.4,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Hải sản"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh bèo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/B%C3%A1nh_b%C3%A8o.png/375px-B%C3%A1nh_b%C3%A8o.png",
+    "description": "Bánh nhỏ từ bột gạo hấp, ăn kèm tôm khô, hành lá và nước mắm chua ngọt.",
+    "meal": "SNACK_APPETIZER",
+    "cookingMethod": "Hấp bột gạo, thêm nhân và gia vị.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Tôm khô", "usage": 20, "isCore": true },
+      { "name": "Hành lá, mỡ hành", "usage": 10, "isCore": true },
+      { "name": "Nước mắm, ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Pha bột gạo với nước và hấp chín trong chén nhỏ.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Rắc tôm khô xay và mỡ hành lên bánh.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Dùng kèm với nước mắm chua ngọt.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 200,
+      "protein": 6,
+      "fat": 4,
+      "carb": 35,
+      "fiber": 1,
+      "sugar": 2,
+      "sodium": 1,
+      "cholesterol": 0.1
+    },
+    "allergies": ["Gluten", "Tôm"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  },
+  {
+    "name": "Bò kho",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/B%C3%B2_kho_.jpg/375px-B%C3%B2_kho_.jpg",
+    "description": "Món thịt bò hầm với gia vị đậm đà, cà rốt, ăn kèm bánh mì hoặc hủ tiếu.",
+    "meal": "BREAKFAST_LUNCH_DINNER",
+    "cookingMethod": "Hầm thịt bò với gia vị lâu trên lửa nhỏ.",
+    "ingredients": [
+      { "name": "Thịt bò", "usage": 150, "isCore": true },
+      { "name": "Cà rốt", "usage": 50, "isCore": true },
+      { "name": "Sả, quế, hồi", "usage": -1, "isCore": true },
+      { "name": "Bánh mì hoặc hủ tiếu", "usage": 60, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp thịt bò với gia vị và sả.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Xào thịt, thêm nước và hầm với cà rốt.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Ăn kèm với bánh mì hoặc hủ tiếu.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 600,
+      "protein": 35,
+      "fat": 25,
+      "carb": 60,
+      "fiber": 4,
+      "sugar": 5,
+      "sodium": 1.8,
+      "cholesterol": 0.7
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Cháo lòng",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Chao_Long.jpg/375px-Chao_Long.jpg",
+    "description": "Cháo nấu từ nước xương và tiết heo, ăn kèm lòng heo luộc thái miếng.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nấu cháo, luộc và sơ chế lòng heo.",
+    "ingredients": [
+      { "name": "Gạo tẻ", "usage": 50, "isCore": true },
+      { "name": "Lòng heo, tiết heo", "usage": 100, "isCore": true },
+      { "name": "Hành lá, rau mùi", "usage": 10, "isCore": false },
+      { "name": "Gia vị: muối, tiêu", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu cháo từ gạo và nước dùng xương.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Luộc lòng heo, thái miếng.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Cho lòng heo vào cháo, thêm hành và gia vị.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 20,
+      "fat": 10,
+      "carb": 55,
+      "fiber": 2,
+      "sugar": 1,
+      "sodium": 1.2,
+      "cholesterol": 0.25
+    },
+    "allergies": ["Thịt động vật"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bún đậu mắm tôm",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Bun_Dau_Mam_Tom.jpg/375px-Bun_Dau_Mam_Tom.jpg",
+    "description": "Món ăn dân dã với bún tươi, đậu phụ chiên, thịt luộc, chả cốm, ăn kèm mắm tôm.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Chuẩn bị nguyên liệu, pha mắm tôm.",
+    "ingredients": [
+      { "name": "Bún lá", "usage": 70, "isCore": true },
+      { "name": "Đậu phụ, thịt ba chỉ", "usage": 80, "isCore": true },
+      { "name": "Mắm tôm, chanh, ớt", "usage": -1, "isCore": true },
+      { "name": "Rau sống", "usage": 20, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Chiên giòn đậu phụ, luộc thịt ba chỉ.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Pha mắm tôm với chanh, ớt và đường.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày bún, đậu, thịt và rau sống ra mẹt, ăn kèm mắm tôm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 500,
+      "protein": 25,
+      "fat": 20,
+      "carb": 60,
+      "fiber": 5,
+      "sugar": 4,
+      "sodium": 2.5,
+      "cholesterol": 0.5
+    },
+    "allergies": ["Gluten", "Đậu nành", "Mắm tôm"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh căn",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Banh_Can.jpg/375px-Banh_Can.jpg",
+    "description": "Bánh nhỏ làm từ bột gạo nướng trong khuôn đất, ăn kèm mỡ hành và nước mắm chua ngọt.",
+    "meal": "SNACK_BREAKFAST",
+    "cookingMethod": "Pha bột, đổ bánh vào khuôn, nướng chín.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Trứng cút hoặc tôm", "usage": 50, "isCore": false },
+      { "name": "Hành lá, dầu ăn", "usage": -1, "isCore": true },
+      { "name": "Nước mắm, đồ chua", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Pha bột gạo với nước.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Đổ bột vào khuôn, thêm trứng hoặc tôm, nướng chín.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Ăn kèm mỡ hành và nước chấm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 8,
+      "fat": 10,
+      "carb": 45,
+      "fiber": 1,
+      "sugar": 3,
+      "sodium": 1,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh hỏi thịt nướng",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Banh_Hoi_Thit_Nuong.jpg/375px-Banh_Hoi_Thit_Nuong.jpg",
+    "description": "Bánh hỏi mềm mịn, ăn kèm thịt nướng, rau sống và nước mắm chua ngọt.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Ướp thịt, nướng chín, chuẩn bị bánh hỏi.",
+    "ingredients": [
+      { "name": "Bánh hỏi", "usage": 70, "isCore": true },
+      { "name": "Thịt heo hoặc bò", "usage": 80, "isCore": true },
+      { "name": "Hành lá, dầu ăn", "usage": -1, "isCore": true },
+      { "name": "Rau sống, nước mắm", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp thịt với gia vị và nướng chín.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Phết mỡ hành lên bánh hỏi.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Ăn kèm thịt nướng, rau sống và nước chấm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 25,
+      "fat": 15,
+      "carb": 55,
+      "fiber": 3,
+      "sugar": 4,
+      "sodium": 1.5,
+      "cholesterol": 0.4
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Canh chua cá lóc",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Canh_Chua_Ca_Loc.jpg/375px-Canh_Chua_Ca_Loc.jpg",
+    "description": "Canh chua miền Nam với cá lóc, dọc mùng, thơm, giá đỗ, đậu bắp, vị chua ngọt thanh mát.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nấu canh với cá và rau củ.",
+    "ingredients": [
+      { "name": "Cá lóc", "usage": 150, "isCore": true },
+      { "name": "Me chua, thơm", "usage": -1, "isCore": true },
+      { "name": "Dọc mùng, đậu bắp, giá đỗ", "usage": 50, "isCore": true },
+      { "name": "Ngò om, ngò gai", "usage": 10, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng với me chua và thơm.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Cho cá và rau củ vào nấu chín.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Thêm rau thơm và nêm gia vị.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 25,
+      "fat": 10,
+      "carb": 30,
+      "fiber": 5,
+      "sugar": 5,
+      "sodium": 1.2,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Cá"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  },
+  {
+    "name": "Gỏi gà xé phay",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Goi_Ga.jpg/375px-Goi_Ga.jpg",
+    "description": "Món gỏi tươi ngon với thịt gà xé, bắp cải, hành tây, rau răm, trộn cùng nước mắm chua ngọt.",
+    "meal": "APPETIZER_LUNCH",
+    "cookingMethod": "Luộc gà, trộn gỏi với rau và gia vị.",
+    "ingredients": [
+      { "name": "Thịt gà", "usage": 100, "isCore": true },
+      { "name": "Bắp cải, hành tây", "usage": 50, "isCore": true },
+      { "name": "Rau răm, đậu phộng rang", "usage": 20, "isCore": false },
+      { "name": "Nước mắm, chanh, đường", "usage": -1, "isCore": true }
+    ],
+    "steps": [
+      { "order": 1, "description": "Luộc chín thịt gà, xé nhỏ.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Trộn gà với rau và gia vị.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Rắc đậu phộng và thưởng thức.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 20,
+      "fat": 12,
+      "carb": 25,
+      "fiber": 3,
+      "sugar": 5,
+      "sodium": 1.5,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Thịt động vật", "Đậu phộng"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Bánh đập",
+    "image": "https://example.com/banh-dap.jpg",
+    "description": "Món ăn nhẹ từ miền Trung, kết hợp giữa bánh ướt mềm và bánh tráng nướng giòn, ăn kèm mỡ hành và nước mắm chua ngọt.",
+    "meal": "SNACK_LUNCH",
+    "cookingMethod": "Chuẩn bị bánh ướt và bánh tráng, kết hợp với mỡ hành.",
+    "ingredients": [
+      { "name": "Bánh ướt", "usage": 50, "isCore": true },
+      { "name": "Bánh tráng nướng", "usage": 1, "isCore": true },
+      { "name": "Hành lá, dầu ăn", "usage": -1, "isCore": true },
+      { "name": "Nước mắm, đường, tỏi, ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Chuẩn bị bánh ướt và bánh tráng nướng.", "image": "https://example.com/banh-dap-step1.jpg" },
+      { "order": 2, "description": "Phết mỡ hành lên bánh.", "image": "https://example.com/banh-dap-step2.jpg" },
+      { "order": 3, "description": "Kẹp bánh ướt giữa hai lớp bánh tráng, đập nhẹ cho bánh dính vào nhau, ăn kèm nước chấm.", "image": "https://example.com/banh-dap-step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein": 5,
+      "fat": 8,
+      "carb": 40,
+      "fiber": 1,
+      "sugar": 3,
+      "sodium": 1,
+      "cholesterol": 0
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Chay"]
+  },
+  {
+    "name": "Bánh canh cua",
+    "image": "https://example.com/banh-canh-cua.jpg",
+    "description": "Món bánh canh với sợi bánh to, nước dùng sệt từ cua, thịt heo và tôm, thường ăn kèm hành phi và ngò gai.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nấu nước dùng từ cua, luộc bánh canh, kết hợp nguyên liệu.",
+    "ingredients": [
+      { "name": "Bánh canh", "usage": 70, "isCore": true },
+      { "name": "Thịt cua, tôm, thịt heo", "usage": 80, "isCore": true },
+      { "name": "Hành lá, ngò gai", "usage": 10, "isCore": false },
+      { "name": "Hành phi, tiêu", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng từ xương và thịt cua.", "image": "https://example.com/banh-canh-cua-step1.jpg" },
+      { "order": 2, "description": "Luộc bánh canh cho mềm.", "image": "https://example.com/banh-canh-cua-step2.jpg" },
+      { "order": 3, "description": "Kết hợp bánh canh, nước dùng và các nguyên liệu, thêm hành ngò.", "image": "https://example.com/banh-canh-cua-step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 500,
+      "protein": 30,
+      "fat": 15,
+      "carb": 60,
+      "fiber": 2,
+      "sugar": 4,
+      "sodium": 2,
+      "cholesterol": 0.5
+    },
+    "allergies": ["Gluten", "Hải sản"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh tét",
+    "image": "https://example.com/banh-tet.jpg",
+    "description": "Món bánh truyền thống trong dịp Tết Nguyên Đán, làm từ gạo nếp, nhân đậu xanh và thịt mỡ, gói trong lá chuối và nấu chín bằng cách luộc.",
+    "meal": "SNACK_DINNER",
+    "cookingMethod": "Gói bánh với lá chuối, luộc chín trong nhiều giờ.",
+    "ingredients": [
+      { "name": "Gạo nếp", "usage": 200, "isCore": true },
+      { "name": "Đậu xanh", "usage": 50, "isCore": true },
+      { "name": "Thịt mỡ", "usage": 30, "isCore": true },
+      { "name": "Lá chuối, dây buộc", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ngâm gạo nếp và đậu xanh, sơ chế nguyên liệu.", "image": "https://example.com/banh-tet-step1.jpg" },
+      { "order": 2, "description": "Gói bánh trong lá chuối theo hình trụ dài.", "image": "https://example.com/banh-tet-step2.jpg" },
+      { "order": 3, "description": "Luộc bánh trong 6-8 giờ cho đến khi chín.", "image": "https://example.com/banh-tet-step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 600,
+      "protein": 12,
+      "fat": 20,
+      "carb": 90,
+      "fiber": 5,
+      "sugar": 2,
+      "sodium": 0.8,
+      "cholesterol": 0.1
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh mì thịt nướng",
+    "image": "https://example.com/banh-mi-thit-nuong.jpg",
+    "description": "Bánh mì kẹp thịt nướng thơm lừng, kèm đồ chua, rau ngò và nước sốt đặc trưng.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nướng thịt, chuẩn bị bánh mì và các loại rau.",
+    "ingredients": [
+      { "name": "Bánh mì baguette", "usage": 1, "isCore": true },
+      { "name": "Thịt heo nướng", "usage": 80, "isCore": true },
+      { "name": "Đồ chua (cà rốt, củ cải trắng)", "usage": 20, "isCore": false },
+      { "name": "Rau ngò, nước sốt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp và nướng thịt heo.", "image": "https://example.com/banh-mi-thit-nuong-step1.jpg" },
+      { "order": 2, "description": "Nướng giòn bánh mì, rạch đôi.", "image": "https://example.com/banh-mi-thit-nuong-step2.jpg" },
+      { "order": 3, "description": "Kẹp thịt nướng, đồ chua và rau vào bánh mì, thêm nước sốt.", "image": "https://example.com/banh-mi-thit-nuong-step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 20,
+      "fat": 15,
+      "carb": 50,
+      "fiber": 2,
+      "sugar": 5,
+      "sodium": 1.5,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Lẩu dê",
+    "image": "https://example.com/lau-de.jpg",
+    "description": "Món lẩu bổ dưỡng với thịt dê, thuốc bắc, rau củ, ăn kèm bún hoặc mì.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Nấu nước lẩu với gia vị và thuốc bắc, chuẩn bị thịt dê và rau.",
+    "ingredients": [
+      { "name": "Thịt dê", "usage": 200, "isCore": true },
+      { "name": "Thuốc bắc", "usage": -1, "isCore": true },
+      { "name": "Rau cải, nấm", "usage": 50, "isCore": true },
+      { "name": "Bún hoặc mì", "usage": 60, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước lẩu với thuốc bắc và gia vị.", "image": "https://example.com/lau-de-step1.jpg" },
+      { "order": 2, "description": "Sơ chế thịt dê, cắt miếng vừa ăn.", "image": "https://example.com/lau-de-step2.jpg" },
+      { "order": 3, "description": "Dọn lẩu cùng thịt dê và rau, nhúng chín khi ăn.", "image": "https://example.com/lau-de-step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 650,
+      "protein": 35,
+      "fat": 25,
+      "carb": 70,
+      "fiber": 5,
+      "sugar": 4,
+      "sodium": 2,
+      "cholesterol": 0.6
+    },
+    "allergies": ["Thịt động vật"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh tráng trộn",
+    "image": "https://example.com/banh-trang-tron.jpg",
+    "description": "Món ăn vặt phổ biến, kết hợp bánh tráng cắt sợi với tôm khô, bò khô, trứng cút, rau răm và sốt chua ngọt.",
+    "meal": "SNACK",
+    "cookingMethod": "Trộn các nguyên liệu với nhau, không cần nấu.",
+    "ingredients": [
+      { "name": "Bánh tráng", "usage": 50, "isCore": true },
+      { "name": "Tôm khô, bò khô", "usage": 30, "isCore": true },
+      { "name": "Trứng cút", "usage": 20, "isCore": false },
+      { "name": "Rau răm, xoài xanh bào sợi", "usage": 15, "isCore": false },
+      { "name": "Sốt me, sa tế", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Cắt bánh tráng thành sợi nhỏ.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Trộn bánh tráng với các nguyên liệu và sốt.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Thêm rau răm và thưởng thức.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 12,
+      "fat": 10,
+      "carb": 40,
+      "fiber": 2,
+      "sugar": 5,
+      "sodium": 1.2,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Gluten", "Tôm", "Trứng"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bún chả cá",
+    "image": "https://example.com/bun-cha-ca.jpg",
+    "description": "Món bún đặc sản từ Đà Nẵng và Nha Trang, với chả cá dai ngon, nước dùng thanh ngọt từ xương cá và cà chua.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nấu nước dùng, luộc bún, chuẩn bị chả cá.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 70, "isCore": true },
+      { "name": "Chả cá", "usage": 80, "isCore": true },
+      { "name": "Cà chua, thơm", "usage": 30, "isCore": true },
+      { "name": "Hành lá, thì là", "usage": 10, "isCore": false },
+      { "name": "Rau sống", "usage": 20, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng từ xương cá, thêm cà chua và thơm.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Luộc bún, chiên hoặc hấp chả cá.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Bày bún, chả cá vào tô, chan nước dùng, thêm hành và rau.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 25,
+      "fat": 8,
+      "carb": 60,
+      "fiber": 3,
+      "sugar": 4,
+      "sodium": 1.5,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Cá"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Bánh cuốn Thanh Trì",
+    "image": "https://example.com/banh-cuon-thanh-tri.jpg",
+    "description": "Đặc sản của Hà Nội, bánh cuốn mỏng không nhân, ăn kèm hành phi, chả quế và nước mắm chua ngọt.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Tráng bánh từ bột gạo, hấp chín, thêm hành phi.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Hành khô, dầu ăn", "usage": -1, "isCore": true },
+      { "name": "Chả quế", "usage": 50, "isCore": false },
+      { "name": "Nước mắm, chanh, ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Pha bột gạo với nước.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Tráng bánh mỏng trên nồi hấp, cuộn lại.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Rắc hành phi, ăn kèm chả và nước chấm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 8,
+      "fat": 5,
+      "carb": 55,
+      "fiber": 1,
+      "sugar": 2,
+      "sodium": 1,
+      "cholesterol": 0.1
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  },
+  {
+    "name": "Chè trôi nước",
+    "image": "https://example.com/che-troi-nuoc.jpg",
+    "description": "Món chè truyền thống với viên bột nếp nhân đậu xanh, nấu trong nước đường gừng, ăn kèm nước cốt dừa.",
+    "meal": "SNACK_DESSERT",
+    "cookingMethod": "Nhào bột, làm nhân, nấu chín trong nước đường.",
+    "ingredients": [
+      { "name": "Bột nếp", "usage": 100, "isCore": true },
+      { "name": "Đậu xanh", "usage": 50, "isCore": true },
+      { "name": "Đường, gừng", "usage": -1, "isCore": true },
+      { "name": "Nước cốt dừa", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nhào bột nếp với nước.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Làm nhân đậu xanh, vo viên và bao bột nếp bên ngoài.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Nấu viên chè trong nước đường gừng cho đến khi nổi lên.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 7,
+      "fat": 5,
+      "carb": 70,
+      "fiber": 2,
+      "sugar": 30,
+      "sodium": 0.2,
+      "cholesterol": 0
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Chay", "Thực vật"]
+  },
+  {
+    "name": "Bánh đa kê",
+    "image": "https://example.com/banh-da-ke.jpg",
+    "description": "Món ăn vặt Hà Nội với bánh đa giòn, phủ lớp kê nấu chín, đậu xanh và đường kính.",
+    "meal": "SNACK",
+    "cookingMethod": "Nấu kê, phết lên bánh đa, thêm topping.",
+    "ingredients": [
+      { "name": "Bánh đa", "usage": 1, "isCore": true },
+      { "name": "Hạt kê", "usage": 50, "isCore": true },
+      { "name": "Đậu xanh", "usage": 30, "isCore": false },
+      { "name": "Đường kính", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu chín hạt kê cho đến khi mềm.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Phết kê lên bánh đa giòn.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Rắc đậu xanh và đường lên trên.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein": 6,
+      "fat": 3,
+      "carb": 50,
+      "fiber": 2,
+      "sugar": 15,
+      "sodium": 0.1,
+      "cholesterol": 0
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Chay"]
+  },
+  {
+    "name": "Bánh khoái",
+    "image": "https://example.com/banh-khoai.jpg",
+    "description": "Món bánh giòn rụm từ Huế, tương tự bánh xèo nhưng nhỏ hơn, nhân tôm, thịt và giá đỗ.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Pha bột, đổ bánh trong chảo nhỏ, chiên giòn.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Tôm, thịt heo", "usage": 50, "isCore": true },
+      { "name": "Giá đỗ, hành lá", "usage": 30, "isCore": true },
+      { "name": "Nước mắm, rau sống", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Pha bột với nước và nghệ.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Đổ bột vào chảo nhỏ, thêm nhân và chiên giòn.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Ăn kèm rau sống và nước chấm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 15,
+      "fat": 15,
+      "carb": 40,
+      "fiber": 3,
+      "sugar": 2,
+      "sodium": 1.2,
+      "cholesterol": 0.25
+    },
+    "allergies": ["Gluten", "Tôm"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bún mọc",
+    "image": "https://example.com/bun-moc.jpg",
+    "description": "Món bún với nước dùng trong, viên mọc (thịt heo xay và mộc nhĩ), ăn kèm bún tươi và hành lá.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nấu nước dùng, làm mọc, luộc bún.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 70, "isCore": true },
+      { "name": "Thịt heo xay, mộc nhĩ", "usage": 60, "isCore": true },
+      { "name": "Xương heo", "usage": 100, "isCore": true },
+      { "name": "Hành lá, rau mùi", "usage": 10, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nấu nước dùng từ xương heo.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Trộn thịt heo xay với mộc nhĩ, viên thành mọc.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Cho mọc vào nước dùng, bày bún và chan nước dùng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 20,
+      "fat": 10,
+      "carb": 55,
+      "fiber": 2,
+      "sugar": 2,
+      "sodium": 1.3,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Chả mực Hạ Long",
+    "image": "https://example.com/cha-muc-ha-long.jpg",
+    "description": "Đặc sản Quảng Ninh với chả mực giã tay, chiên vàng giòn, hương vị độc đáo khó quên.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Giã mực tươi, nêm gia vị, viên tròn, chiên vàng.",
+    "ingredients": [
+      { "name": "Mực tươi", "usage": 200, "isCore": true },
+      { "name": "Hành tím, tỏi", "usage": -1, "isCore": true },
+      { "name": "Tiêu, nước mắm", "usage": -1, "isCore": false },
+      { "name": "Dầu ăn", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Làm sạch mực, giã nhuyễn với hành, tỏi và gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Viên chả mực thành miếng vừa ăn.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Chiên chả mực trong dầu nóng đến khi vàng giòn.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 25,
+      "fat": 20,
+      "carb": 5,
+      "fiber": 0,
+      "sugar": 1,
+      "sodium": 1.2,
+      "cholesterol": 0.5
+    },
+    "allergies": ["Hải sản"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein", "Ít carb"]
+  },
+  {
+    "name": "Bánh nậm",
+    "image": "https://example.com/banh-nam.jpg",
+    "description": "Bánh truyền thống Huế với lớp bột gạo mỏng, nhân tôm thịt, gói trong lá dong hoặc lá chuối, hấp chín.",
+    "meal": "SNACK",
+    "cookingMethod": "Pha bột, làm nhân, gói bánh, hấp chín.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Tôm, thịt heo", "usage": 50, "isCore": true },
+      { "name": "Hành lá, dầu ăn", "usage": -1, "isCore": false },
+      { "name": "Lá dong hoặc lá chuối", "usage": -1, "isCore": true }
+    ],
+    "steps": [
+      { "order": 1, "description": "Xào tôm, thịt với gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Pha bột gạo với nước, quét mỏng lên lá, thêm nhân.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Gói bánh và hấp chín.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 200,
+      "protein": 8,
+      "fat": 4,
+      "carb": 35,
+      "fiber": 1,
+      "sugar": 2,
+      "sodium": 0.8,
+      "cholesterol": 0.15
+    },
+    "allergies": ["Gluten", "Tôm"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Cơm hến",
+    "image": "https://example.com/com-hen.jpg",
+    "description": "Đặc sản Huế với cơm trộn hến xào, rau thơm, lạc rang, mắm ruốc, tạo hương vị đậm đà.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Xào hến với gia vị, trộn cơm và các nguyên liệu.",
+    "ingredients": [
+      { "name": "Cơm trắng", "usage": 150, "isCore": true },
+      { "name": "Hến", "usage": 100, "isCore": true },
+      { "name": "Rau thơm, lạc rang", "usage": 20, "isCore": false },
+      { "name": "Mắm ruốc, ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Xào hến với hành, mắm ruốc và gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Trộn cơm với hến xào và rau thơm.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Rắc lạc rang, ăn kèm nước hến nóng.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 20,
+      "fat": 10,
+      "carb": 70,
+      "fiber": 3,
+      "sugar": 2,
+      "sodium": 1.5,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Hải sản", "Hạt cây"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh đúc",
+    "image": "https://example.com/banh-duc.jpg",
+    "description": "Món bánh từ bột gạo mềm mịn, ăn kèm nước mắm chua ngọt hoặc mắm tôm, phổ biến ở miền Bắc.",
+    "meal": "SNACK_APPETIZER",
+    "cookingMethod": "Pha bột và nước, khuấy đều trên lửa nhỏ cho đến khi chín.",
+    "ingredients": [
+      { "name": "Bột gạo", "usage": 100, "isCore": true },
+      { "name": "Nước vôi trong", "usage": -1, "isCore": true },
+      { "name": "Lạc rang giã nhỏ", "usage": 20, "isCore": false },
+      { "name": "Nước mắm, mỡ hành", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Pha bột gạo với nước vôi trong.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Khuấy bột trên lửa nhỏ đến khi sánh mịn.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Đổ ra khuôn, để nguội, cắt miếng, ăn kèm mắm và mỡ hành.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 250,
+      "protein": 5,
+      "fat": 8,
+      "carb": 40,
+      "fiber": 1,
+      "sugar": 2,
+      "sodium": 0.9,
+      "cholesterol": 0
+    },
+    "allergies": ["Gluten", "Hạt cây"],
+    "dietaries": ["Truyền thống Việt", "Chay"]
+  },
+  {
+    "name": "Nem nướng Nha Trang",
+    "image": "https://example.com/nem-nuong-nha-trang.jpg",
+    "description": "Thịt heo xay quấn quanh que tre, nướng trên than hồng, ăn kèm bánh tráng, rau sống và nước chấm đặc biệt.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Ướp thịt, quấn que tre, nướng chín.",
+    "ingredients": [
+      { "name": "Thịt heo xay", "usage": 150, "isCore": true },
+      { "name": "Hành tím, tỏi, gia vị", "usage": -1, "isCore": true },
+      { "name": "Bánh tráng, rau sống", "usage": 50, "isCore": false },
+      { "name": "Nước chấm đặc biệt", "usage": -1, "isCore": true }
+    ],
+    "steps": [
+      { "order": 1, "description": "Trộn thịt heo với gia vị.", "image": "https://example.com/step1.jpg" },
+      { "order": 2, "description": "Quấn thịt quanh que tre, nướng trên than hồng.", "image": "https://example.com/step2.jpg" },
+      { "order": 3, "description": "Cuốn nem với bánh tráng, rau sống, chấm nước chấm.", "image": "https://example.com/step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 25,
+      "fat": 20,
+      "carb": 40,
+      "fiber": 3,
+      "sugar": 5,
+      "sodium": 1.8,
+      "cholesterol": 0.4
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Bánh mì thập cẩm",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Banh_Mi_Thit.jpg/375px-Banh_Mi_Thit.jpg",
+    "description": "Bánh mì Việt Nam với nhân đa dạng như thịt nguội, chả lụa, pate, kèm rau và nước sốt.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Nướng bánh mì, chuẩn bị nhân, lắp ráp bánh.",
+    "ingredients": [
+      { "name": "Bánh mì baguette", "usage": 1, "isCore": true },
+      { "name": "Thịt nguội, chả lụa, pate", "usage": 70, "isCore": true },
+      { "name": "Dưa leo, đồ chua (cà rốt, củ cải trắng)", "usage": 30, "isCore": true },
+      { "name": "Rau ngò, ớt", "usage": 5, "isCore": false },
+      { "name": "Nước sốt mayonnaise hoặc tương ớt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Nướng bánh mì cho giòn.", "image": "https://example.com/banhmi_step1.jpg" },
+      { "order": 2, "description": "Cắt bánh mì, phết pate, xếp các loại thịt và rau.", "image": "https://example.com/banhmi_step2.jpg" },
+      { "order": 3, "description": "Thêm nước sốt, đóng bánh và thưởng thức.", "image": "https://example.com/banhmi_step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 20,
+      "fat": 15,
+      "carb": 45,
+      "fiber": 2,
+      "sugar": 5,
+      "sodium": 1.5,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Thịt động vật"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bún chả Hà Nội",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bun-cha-Hanoi.JPG/375px-Bun-cha-Hanoi.JPG",
+    "description": "Món ăn nổi tiếng với thịt heo nướng ăn kèm bún và nước mắm chua ngọt.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Ướp thịt, nướng chín, pha nước chấm, chuẩn bị bún và rau.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 100, "isCore": true },
+      { "name": "Thịt ba chỉ, thịt nạc vai", "usage": 100, "isCore": true },
+      { "name": "Nước mắm, đường, giấm", "usage": -1, "isCore": true },
+      { "name": "Rau sống, tỏi, ớt", "usage": 20, "isCore": false },
+      { "name": "Đu đủ xanh bào sợi", "usage": 10, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp thịt với gia vị, nướng trên than hoa.", "image": "https://example.com/buncha_step1.jpg" },
+      { "order": 2, "description": "Pha nước mắm chua ngọt, thêm đu đủ xanh.", "image": "https://example.com/buncha_step2.jpg" },
+      { "order": 3, "description": "Bày bún, thịt nướng, rau sống, ăn kèm nước chấm.", "image": "https://example.com/buncha_step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 500,
+      "protein": 25,
+      "fat": 20,
+      "carb": 60,
+      "fiber": 5,
+      "sugar": 10,
+      "sodium": 2,
+      "cholesterol": 0.7
+    },
+    "allergies": ["Gluten"],
+    "dietaries": ["Truyền thống Việt", "Giàu protein"]
+  },
+  {
+    "name": "Bún thịt nướng",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Bun_Thit_Nuong.jpg/375px-Bun_Thit_Nuong.jpg",
+    "description": "Món bún tươi ăn kèm thịt heo nướng, rau sống, đậu phộng rang và nước mắm chua ngọt.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Ướp và nướng thịt, chuẩn bị bún và rau, pha nước chấm.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 100, "isCore": true },
+      { "name": "Thịt heo nướng", "usage": 80, "isCore": true },
+      { "name": "Rau sống (xà lách, dưa leo, giá đỗ)", "usage": 50, "isCore": true },
+      { "name": "Đậu phộng rang", "usage": 10, "isCore": false },
+      { "name": "Nước mắm chua ngọt", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ướp thịt heo với sả, tỏi, gia vị và nướng chín.", "image": "https://example.com/bunthitnuong_step1.jpg" },
+      { "order": 2, "description": "Chuẩn bị bún tươi và rau sống.", "image": "https://example.com/bunthitnuong_step2.jpg" },
+      { "order": 3, "description": "Bày bún, thịt nướng, rau và đậu phộng vào tô, thêm nước chấm.", "image": "https://example.com/bunthitnuong_step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 480,
+      "protein": 22,
+      "fat": 18,
+      "carb": 60,
+      "fiber": 4,
+      "sugar": 6,
+      "sodium": 1.6,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Gluten", "Đậu phộng"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Cháo ấu tẩu",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chao_Au_Tau.jpg/375px-Chao_Au_Tau.jpg",
+    "description": "Đặc sản Hà Giang với cháo nấu từ củ ấu tẩu, gạo nếp, thịt heo, có tác dụng bổ dưỡng và giải cảm.",
+    "meal": "DINNER",
+    "cookingMethod": "Ngâm và nấu củ ấu tẩu cho hết độc, nấu cháo cùng gạo và thịt.",
+    "ingredients": [
+      { "name": "Củ ấu tẩu", "usage": 20, "isCore": true },
+      { "name": "Gạo nếp và gạo tẻ", "usage": 60, "isCore": true },
+      { "name": "Thịt heo băm", "usage": 50, "isCore": true },
+      { "name": "Hành lá, rau thơm", "usage": 10, "isCore": false },
+      { "name": "Gia vị", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Ngâm củ ấu tẩu qua đêm, nấu chín mềm.", "image": "https://example.com/chaoautau_step1.jpg" },
+      { "order": 2, "description": "Nấu cháo từ gạo và củ ấu tẩu, thêm thịt heo.", "image": "https://example.com/chaoautau_step2.jpg" },
+      { "order": 3, "description": "Thêm hành lá, rau thơm và nêm gia vị.", "image": "https://example.com/chaoautau_step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 15,
+      "fat": 8,
+      "carb": 55,
+      "fiber": 2,
+      "sugar": 1,
+      "sodium": 1.0,
+      "cholesterol": 0.2
+    },
+    "allergies": ["Thịt động vật"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bún suông",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bun_Suong.jpg/375px-Bun_Suong.jpg",
+    "description": "Đặc sản Trà Vinh với sợi suông làm từ tôm giã nhuyễn, nước dùng ngọt thanh, ăn kèm bún và rau sống.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Chuẩn bị suông tôm, nấu nước dùng, luộc bún.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 70, "isCore": true },
+      { "name": "Tôm tươi", "usage": 100, "isCore": true },
+      { "name": "Xương heo", "usage": 100, "isCore": true },
+      { "name": "Rau sống (giá đỗ, hẹ)", "usage": 30, "isCore": false },
+      { "name": "Gia vị", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Giã nhuyễn tôm, tạo hình suông dài.", "image": "https://example.com/bunsuong_step1.jpg" },
+      { "order": 2, "description": "Nấu nước dùng từ xương heo, thả suông tôm vào nấu chín.", "image": "https://example.com/bunsuong_step2.jpg" },
+      { "order": 3, "description": "Bày bún, suông tôm vào tô, chan nước dùng, thêm rau sống.", "image": "https://example.com/bunsuong_step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 420,
+      "protein": 25,
+      "fat": 10,
+      "carb": 55,
+      "fiber": 3,
+      "sugar": 2,
+      "sodium": 1.4,
+      "cholesterol": 0.35
+    },
+    "allergies": ["Gluten", "Tôm"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bánh chuối hấp",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Banh_Chuoi_Hap.jpg/375px-Banh_Chuoi_Hap.jpg",
+    "description": "Món tráng miệng ngọt ngào với chuối xiêm chín, bột năng, hấp chín, ăn kèm nước cốt dừa và mè rang.",
+    "meal": "SNACK_DESSERT",
+    "cookingMethod": "Pha bột với chuối, hấp chín, chuẩn bị nước cốt dừa.",
+    "ingredients": [
+      { "name": "Chuối chín", "usage": 200, "isCore": true },
+      { "name": "Bột năng", "usage": 50, "isCore": true },
+      { "name": "Đường", "usage": 30, "isCore": true },
+      { "name": "Nước cốt dừa", "usage": -1, "isCore": false },
+      { "name": "Mè rang", "usage": 5, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Trộn chuối cắt lát với bột năng và đường.", "image": "https://example.com/banhchuoi_step1.jpg" },
+      { "order": 2, "description": "Đổ hỗn hợp vào khuôn, hấp chín.", "image": "https://example.com/banhchuoi_step2.jpg" },
+      { "order": 3, "description": "Cắt bánh, chan nước cốt dừa và rắc mè rang.", "image": "https://example.com/banhchuoi_step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein": 4,
+      "fat": 8,
+      "carb": 55,
+      "fiber": 3,
+      "sugar": 25,
+      "sodium": 0.1,
+      "cholesterol": 0
+    },
+    "allergies": ["Dừa", "Mè"],
+    "dietaries": ["Truyền thống Việt", "Chay", "Thực vật"]
+  },
+  {
+    "name": "Cơm gà Hội An",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Com_Ga_Hoi_An.jpg/375px-Com_Ga_Hoi_An.jpg",
+    "description": "Món cơm đặc sản với gà xé phay, cơm nấu từ nước luộc gà, ăn kèm rau thơm và nước mắm chua ngọt.",
+    "meal": "LUNCH_DINNER",
+    "cookingMethod": "Luộc gà, nấu cơm từ nước luộc, xé gà trộn gỏi.",
+    "ingredients": [
+      { "name": "Gà ta", "usage": 150, "isCore": true },
+      { "name": "Gạo dẻo", "usage": 150, "isCore": true },
+      { "name": "Hành tây, rau răm", "usage": 30, "isCore": false },
+      { "name": "Nước mắm chua ngọt", "usage": -1, "isCore": false },
+      { "name": "Dưa leo, cà chua", "usage": 20, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Luộc gà cho chín, giữ lại nước dùng.", "image": "https://example.com/comga_step1.jpg" },
+      { "order": 2, "description": "Nấu cơm bằng nước luộc gà, thêm ít nghệ để cơm vàng.", "image": "https://example.com/comga_step2.jpg" },
+      { "order": 3, "description": "Xé thịt gà, trộn với hành tây, rau răm và gia vị.", "image": "https://example.com/comga_step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 550,
+      "protein": 25,
+      "fat": 15,
+      "carb": 70,
+      "fiber": 3,
+      "sugar": 4,
+      "sodium": 1.5,
+      "cholesterol": 0.3
+    },
+    "allergies": ["Thịt động vật"],
+    "dietaries": ["Truyền thống Việt"]
+  },
+  {
+    "name": "Bún quậy Phú Quốc",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Bun_Quay_Phu_Quoc.jpg/375px-Bun_Quay_Phu_Quoc.jpg",
+    "description": "Món bún độc đáo với chả tôm, chả cá tươi làm tại chỗ, nước dùng trong, ăn kèm nước chấm tự pha.",
+    "meal": "BREAKFAST_LUNCH",
+    "cookingMethod": "Chuẩn bị chả tôm, chả cá, nấu nước dùng, luộc bún.",
+    "ingredients": [
+      { "name": "Bún tươi", "usage": 70, "isCore": true },
+      { "name": "Tôm tươi, cá tươi", "usage": 100, "isCore": true },
+      { "name": "Hành lá, tiêu", "usage": 10, "isCore": false },
+      { "name": "Gia vị", "usage": -1, "isCore": false },
+      { "name": "Nước chấm tự pha (muối, ớt, chanh)", "usage": -1, "isCore": false }
+    ],
+    "steps": [
+      { "order": 1, "description": "Xay tôm và cá, cho vào tô.", "image": "https://example.com/bunquay_step1.jpg" },
+      { "order": 2, "description": "Đổ nước dùng sôi vào tô để chín chả.", "image": "https://example.com/bunquay_step2.jpg" },
+      { "order": 3, "description": "Thêm bún, hành lá, tiêu và thưởng thức với nước chấm tự pha.", "image": "https://example.com/bunquay_step3.jpg" }
+    ],
+    "nutrition": {
+      "calories": 380,
+      "protein": 25,
+      "fat": 5,
+      "carb": 55,
+      "fiber": 2,
+      "sugar": 2,
+      "sodium": 1.2,
+      "cholesterol": 0.35
+    },
+    "allergies": ["Gluten", "Hải sản"],
+    "dietaries": ["Truyền thống Việt", "Ít chất béo"]
+  }
+]

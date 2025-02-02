@@ -3,14 +3,15 @@ package com.mthien.yumble.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.checkerframework.checker.units.qual.A;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Step {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -19,7 +20,7 @@ public class Step {
     @Column(name = "step_order", nullable = false)
     private Integer stepOrder;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, columnDefinition = "NVARCHAR(255)")
     private String description;
 
     @Column(name = "image")

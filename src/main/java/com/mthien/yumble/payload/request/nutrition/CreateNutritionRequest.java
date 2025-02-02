@@ -18,5 +18,4 @@ public class CreateNutritionRequest {
     private Float sugar;
     private Float sodium;
     private Float cholesterol;
-    private String other;
 }

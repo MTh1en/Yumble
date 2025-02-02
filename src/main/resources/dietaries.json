@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Truyền thống Việt",
+    "description": "Sử dụng gạo, rau xanh, thực phẩm tươi, ít chất béo; cân bằng dinh dưỡng giữa protein động vật và thực vật."
+  },
+  {
+    "name": "Thực vật",
+    "description": "Tập trung vào thực phẩm từ thực vật như rau, củ, quả, hạt, và đậu; không sử dụng hoặc hạn chế thực phẩm động vật."
+  },
+  {
+    "name": "Chay",
+    "description": "Không sử dụng thịt, cá, hải sản; sử dụng thực phẩm từ trứng, sữa và các sản phẩm thực vật."
+  },
+  {
+    "name": "Thuần chay",
+    "description": "Không sử dụng bất kỳ sản phẩm nào từ động vật, bao gồm thịt, trứng, sữa, mật ong."
+  },
+  {
+    "name": "Ít tinh bột",
+    "description": "Hạn chế tinh bột từ gạo, bánh mì, mì, thay thế bằng thực phẩm giàu protein và chất béo tốt."
+  },
+  {
+    "name": "Giàu protein",
+    "description": "Tăng cường thực phẩm giàu protein từ thịt, cá, trứng, đậu; giảm tinh bột và chất béo không lành mạnh."
+  },
+  {
+    "name": "Ít chất béo",
+    "description": "Giảm chất béo từ dầu mỡ, bơ; tăng cường thực phẩm tươi như rau xanh, trái cây, và thịt nạc."
+  },
+  {
+    "name": "Kiểu Địa Trung Hải",
+    "description": "Sử dụng dầu ô liu, cá, rau củ, ngũ cốc nguyên cám, hạt và trái cây; giảm thịt đỏ và thực phẩm chế biến."
+  },
+  {
+    "name": "Keto",
+    "description": "Hạn chế gần như hoàn toàn tinh bột, tăng cường chất béo tốt và protein; thúc đẩy trạng thái ketosis trong cơ thể."
+  },
+  {
+    "name": "Cho người tiểu đường",
+    "description": "Kiểm soát lượng đường và carbohydrate, sử dụng thực phẩm có chỉ số GI thấp, tăng cường rau xanh và protein nạc."
+  },
+  {
+    "name": "Không gây dị ứng",
+    "description": "Loại bỏ các thực phẩm gây dị ứng như gluten, sữa, đậu phộng, hải sản, hoặc trứng tùy thuộc vào nhu cầu cá nhân."
+  },
+  {
+    "name": "Bán chay",
+    "description": "Chủ yếu sử dụng thực phẩm thực vật nhưng thỉnh thoảng có thêm thịt, cá hoặc hải sản."
+  },
+  {
+    "name": "Nhịn ăn gián đoạn",
+    "description": "Không tập trung vào loại thực phẩm mà quản lý thời gian ăn (ví dụ: nhịn ăn 16 giờ và ăn trong 8 giờ)."
+  },
+  {
+    "name": "Không gluten",
+    "description": "Loại bỏ thực phẩm chứa gluten từ lúa mì, lúa mạch và ngũ cốc; sử dụng thực phẩm từ gạo, ngô, khoai, và sắn."
+  },
+  {
+    "name": "Ít carb",
+    "description": "hạn chế lượng carbohydrate (tinh bột và đường) trong khẩu phần ăn hàng ngày, đồng thời tăng cường protein và chất béo lành mạnh."
+  }
+]

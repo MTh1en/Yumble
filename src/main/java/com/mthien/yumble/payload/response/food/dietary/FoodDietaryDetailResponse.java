@@ -14,5 +14,4 @@ import lombok.NoArgsConstructor;
 public class FoodDietaryDetailResponse {
     private FoodResponse food;
     private DietaryResponse dietary;
-    private String priority;
 }

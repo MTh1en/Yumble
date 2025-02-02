@@ -3,6 +3,7 @@ package com.mthien.yumble.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Nutrition {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -39,10 +41,7 @@ public class Nutrition {
     @Column(name = "cholesterol", nullable = false)
     private Float cholesterol;
 
-    @Column(name = "other")
-    private String other;
-
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToOne
     @JoinColumn(name = "food_id", referencedColumnName = "id")
     @JsonBackReference
     private Food food;

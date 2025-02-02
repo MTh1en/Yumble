@@ -12,5 +12,4 @@ import lombok.NoArgsConstructor;
 @Builder
 public class FoodDietaryResponse {
     private DietaryResponse dietary;
-    private String priority;
 }

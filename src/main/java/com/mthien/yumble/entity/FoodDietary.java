@@ -26,7 +26,4 @@ public class FoodDietary {
     @JoinColumn(name = "dietary_id")
     @JsonBackReference
     private Dietary dietary;
-
-    @Column(name = "priority", columnDefinition = "NVARCHAR(255)")
-    private String priority;
 }

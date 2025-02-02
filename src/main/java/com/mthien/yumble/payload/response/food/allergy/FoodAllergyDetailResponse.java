@@ -14,5 +14,4 @@ import lombok.NoArgsConstructor;
 public class FoodAllergyDetailResponse {
     private FoodResponse food;
     private AllergyResponse allergy;
-    private String severity;
 }

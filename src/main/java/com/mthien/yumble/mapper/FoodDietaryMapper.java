@@ -13,8 +13,7 @@ public interface FoodDietaryMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "food", expression = "java(food)")
     @Mapping(target = "dietary", expression = "java(dietary)")
-    @Mapping(target = "priority", expression = "java(priority)")
-    FoodDietary createFoodDietary(Food food, Dietary dietary, String priority);
+    FoodDietary createFoodDietary(Food food, Dietary dietary);
 
     FoodDietaryDetailResponse toFoodDietaryDetailResponse(FoodDietary foodDietary);
 

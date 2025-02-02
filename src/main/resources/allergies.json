@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Đậu phộng",
+    "description": "Phản ứng miễn dịch với protein trong đậu phộng, thường nghiêm trọng, có thể gây sốc phản vệ."
+  },
+  {
+    "name": "Hạt cây",
+    "description": "Phản ứng với hạt từ cây, khác với đậu phộng, có thể nghiêm trọng như đậu phộng."
+  },
+  {
+    "name": "Sữa",
+    "description": "Phản ứng với protein trong sữa bò (casein hoặc whey), không phải không dung nạp lactose."
+  },
+  {
+    "name": "Trứng",
+    "description": "Phản ứng với protein trong lòng trắng hoặc lòng đỏ trứng, thường gặp ở trẻ nhỏ."
+  },
+  {
+    "name": "Gluten",
+    "description": "Phản ứng với gluten, một loại protein trong lúa mì, lúa mạch và lúa mạch đen."
+  },
+  {
+    "name": "Hải sản",
+    "description": "Phản ứng với protein trong hải sản, có thể gây sốc phản vệ nghiêm trọng."
+  },
+  {
+    "name": "Đậu nành",
+    "description": "Phản ứng với protein trong đậu nành, phổ biến ở trẻ em và có thể giảm khi trưởng thành."
+  },
+  {
+    "name": "Cá",
+    "description": "Phản ứng với protein trong cá, khác với dị ứng hải sản."
+  },
+  {
+    "name": "Trái cây",
+    "description": "Phản ứng với các protein trong trái cây, thường liên quan đến hội chứng dị ứng phấn hoa."
+  },
+  {
+    "name": "Mè",
+    "description": "Phản ứng với protein trong hạt mè, đang ngày càng phổ biến."
+  },
+  {
+    "name": "Bắp",
+    "description": "Phản ứng với protein trong ngô, ít phổ biến hơn nhưng vẫn gặp ở một số người."
+  },
+  {
+    "name": "Phẩm màu thực phẩm",
+    "description": "Phản ứng với các chất phụ gia hoặc phẩm màu nhân tạo trong thực phẩm."
+  },
+  {
+    "name": "Chất bảo quản",
+    "description": "Phản ứng với các chất bảo quản thực phẩm."
+  },
+  {
+    "name": "Thịt động vật",
+    "description": "Phản ứng với protein trong thịt đỏ hoặc thịt gia cầm, liên quan đến dị ứng alpha-gal."
+  },
+  {
+    "name": "Sữa ong chúa",
+    "description": "Phản ứng với mật ong hoặc sữa ong chúa, thường gây ngứa, sưng môi, và phát ban."
+  },
+  {
+    "name": "Thảo mộc",
+    "description": "Phản ứng với thảo mộc, cơ thể giải phóng histamin và các chất hóa học khác, gây ra các triệu chứng dị ứng."
+  },
+  {
+    "name": "Nước mắm",
+    "description": "Nước mắm theo cách hiểu thông thường là chắt phần nước rỉ được từ cá, tôm và xác động vật nhuyễn thể khác được ướp muối lâu ngày."
+  },
+  {
+    "name": "Mắm ruốc",
+    "description": "Mắm ruốc là một dạng mắm làm từ ruốc (một loài tôm nhỏ thuộc chi Acetes thuộc họ Sergestidae, bộ Decapoda)"
+  },
+  {
+    "name": "Mắm tôm",
+    "description": "Mắm tôm là loại mắm được làm chủ yếu từ tôm hoặc moi và muối ăn, qua quá trình lên men tạo mùi vị và màu sắc đặc trưng."
+  },
+  {
+    "name": "Tôm",
+    "description": "Dị ứng tôm là tình trạng xuất hiện các triệu chứng dị ứng khi hệ thống miễn dịch trong cơ thể con người phản ứng với loại protein này"
+  },
+  {
+    "name": "Cua",
+    "description": "Phản ứng bất thường của hệ thống miễn dịch với các chất có trong cua và protein là thành phần chính (omega 3, omega 6, vitamin B1, B2, B6, canxi, sắt, phốt pho, kali, đồng, protein và lipid)"
+  },
+  {
+    "name": "Đậu",
+    "description": "Dị ứng với tất cả các loại đậu"
+  },
+  {
+    "name": "Dừa",
+    "description": "phản ứng của hệ thống miễn dịch đối với các protein có trong dừa"
+  },
+  {
+    "name": "Mắm cá",
+    "description": "phản ứng của hệ thống miễn dịch đối với các protein có trong dừa"
+  }
+]

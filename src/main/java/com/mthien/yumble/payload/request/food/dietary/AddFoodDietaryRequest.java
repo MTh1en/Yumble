@@ -11,5 +11,4 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AddFoodDietaryRequest {
     private String dietaryId;
-    private String priority;
 }

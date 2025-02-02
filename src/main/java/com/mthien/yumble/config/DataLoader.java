@@ -1,29 +1,41 @@
 package com.mthien.yumble.config;
 
-import com.mthien.yumble.entity.Allergy;
-import com.mthien.yumble.entity.Dietary;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mthien.yumble.dataseed.AllergyDietarySeed;
+import com.mthien.yumble.dataseed.FoodSeed;
+import com.mthien.yumble.entity.*;
+import com.mthien.yumble.entity.Enum.Meal;
 import com.mthien.yumble.entity.Enum.Role;
 import com.mthien.yumble.entity.Enum.UserStatus;
-import com.mthien.yumble.entity.Users;
 import com.mthien.yumble.repository.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class DataLoader implements ApplicationRunner {
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
     private final DietaryRepo dietaryRepo;
     private final AllergyRepo allergyRepo;
+    private final FoodRepo foodRepo;
+    private final IngredientRepo ingredientRepo;
+    private final StepRepo stepRepo;
+    private final NutritionRepo nutritionRepo;
+    private final FoodAllergyRepo foodAllergyRepo;
+    private final FoodDietaryRepo foodDietaryRepo;
+    private final ObjectMapper objectMapper;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -48,60 +60,108 @@ public class DataLoader implements ApplicationRunner {
             userRepo.save(user1);
             userRepo.save(user2);
         }
-
-        if (dietaryRepo.count() == 0) {
-            String[] dietaries = {
-                    "Truyền thống Việt-Sử dụng gạo, rau xanh, thực phẩm tươi, ít chất béo; cân bằng dinh dưỡng giữa protein động vật và thực vật.",
-                    "Thực vật-Tập trung vào thực phẩm từ thực vật như rau, củ, quả, hạt, và đậu; không sử dụng hoặc hạn chế thực phẩm động vật.",
-                    "Chay-Không sử dụng thịt, cá, hải sản; sử dụng thực phẩm từ trứng, sữa và các sản phẩm thực vật.",
-                    "Thuần chay-Không sử dụng bất kỳ sản phẩm nào từ động vật, bao gồm thịt, trứng, sữa, mật ong.",
-                    "Ít tinh bột-Hạn chế tinh bột từ gạo, bánh mì, mì, thay thế bằng thực phẩm giàu protein và chất béo tốt.",
-                    "Giàu protein-Tăng cường thực phẩm giàu protein từ thịt, cá, trứng, đậu; giảm tinh bột và chất béo không lành mạnh.",
-                    "Ít chất béo-Giảm chất béo từ dầu mỡ, bơ; tăng cường thực phẩm tươi như rau xanh, trái cây, và thịt nạc.",
-                    "Kiểu Địa Trung Hải-Sử dụng dầu ô liu, cá, rau củ, ngũ cốc nguyên cám, hạt và trái cây; giảm thịt đỏ và thực phẩm chế biến.",
-                    "Keto-Hạn chế gần như hoàn toàn tinh bột, tăng cường chất béo tốt và protein; thúc đẩy trạng thái ketosis trong cơ thể.",
-                    "Cho người tiểu đường-Kiểm soát lượng đường và carbohydrate, sử dụng thực phẩm có chỉ số GI thấp, tăng cường rau xanh và protein nạc.",
-                    "Không gây dị ứng-Loại bỏ các thực phẩm gây dị ứng như gluten, sữa, đậu phộng, hải sản, hoặc trứng tùy thuộc vào nhu cầu cá nhân.",
-                    "Bán chay-Chủ yếu sử dụng thực phẩm thực vật nhưng thỉnh thoảng có thêm thịt, cá hoặc hải sản.",
-                    "Nhịn ăn gián đoạn-Không tập trung vào loại thực phẩm mà quản lý thời gian ăn (ví dụ: nhịn ăn 16 giờ và ăn trong 8 giờ).",
-                    "Không gluten-Loại bỏ thực phẩm chứa gluten từ lúa mì, lúa mạch và ngũ cốc; sử dụng thực phẩm từ gạo, ngô, khoai, và sắn.",
-            };
-            List<Dietary> dietaryList = Arrays.stream(dietaries).map(entry -> {
-                String[] parts = entry.split("-", 2);
-                return Dietary.builder()
-                        .name(parts[0])
-                        .description(parts[1])
-                        .build();
-            }).toList();
-            dietaryRepo.saveAll(dietaryList);
+        if (allergyRepo.count() == 0) {
+            try {
+                InputStream inputStream = getClass().getResourceAsStream("/allergies.json");
+                List<AllergyDietarySeed> allergySeeds = objectMapper.readValue(inputStream, new TypeReference<>() {
+                });
+                allergySeeds.forEach(allergySeed -> {
+                    Allergy allergy = Allergy.builder()
+                            .name(allergySeed.getName())
+                            .description(allergySeed.getDescription())
+                            .build();
+                    allergyRepo.save(allergy);
+                });
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         }
 
-        if (allergyRepo.count() == 0) {
-            String[] allergies = {
-                    "Đậu phộng-Phản ứng miễn dịch với protein trong đậu phộng, thường nghiêm trọng, có thể gây sốc phản vệ.",
-                    "Hạt cây-Phản ứng với hạt từ cây, khác với đậu phộng, có thể nghiêm trọng như đậu phộng.",
-                    "Sữa-Phản ứng với protein trong sữa bò (casein hoặc whey), không phải không dung nạp lactose.",
-                    "Trứng-Phản ứng với protein trong lòng trắng hoặc lòng đỏ trứng, thường gặp ở trẻ nhỏ.",
-                    "Gluten-Phản ứng với gluten, một loại protein trong lúa mì, lúa mạch và lúa mạch đen.",
-                    "Hải sản-Phản ứng với protein trong hải sản, có thể gây sốc phản vệ nghiêm trọng.",
-                    "Đậu nành-Phản ứng với protein trong đậu nành, phổ biến ở trẻ em và có thể giảm khi trưởng thành.",
-                    "Cá-Phản ứng với protein trong cá, khác với dị ứng hải sản.",
-                    "Trái cây-Phản ứng với các protein trong trái cây, thường liên quan đến hội chứng dị ứng phấn hoa.",
-                    "Hạt mè-Phản ứng với protein trong hạt mè, đang ngày càng phổ biến.",
-                    "Bắp-Phản ứng với protein trong ngô, ít phổ biến hơn nhưng vẫn gặp ở một số người.",
-                    "Phẩm màu thực phẩm-Phản ứng với các chất phụ gia hoặc phẩm màu nhân tạo trong thực phẩm.",
-                    "Chất bảo quản-Phản ứng với các chất bảo quản thực phẩm.",
-                    "Thịt động vật-Phản ứng với protein trong thịt đỏ hoặc thịt gia cầm, liên quan đến dị ứng alpha-gal.",
-                    "Sữa ong chúa-Phản ứng với mật ong hoặc sữa ong chúa, thường gây ngứa, sưng môi, và phát ban.",
-            };
-            List<Allergy> allergyList = Arrays.stream(allergies).map(entry -> {
-                String[] parts = entry.split("-", 2);
-                return Allergy.builder()
-                        .name(parts[0])
-                        .description(parts[1])
-                        .build();
-            }).toList();
-            allergyRepo.saveAll(allergyList);
+        if (dietaryRepo.count() == 0) {
+            try {
+                InputStream inputStream = getClass().getResourceAsStream("/dietaries.json");
+                List<AllergyDietarySeed> dietarySeeds = objectMapper.readValue(inputStream, new TypeReference<>() {
+                });
+                dietarySeeds.forEach(dietarySeed -> {
+                    Dietary dietary = Dietary.builder()
+                            .name(dietarySeed.getName())
+                            .description(dietarySeed.getDescription())
+                            .build();
+                    dietaryRepo.save(dietary);
+                });
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
+        }
+
+        if (foodRepo.count() == 0) {
+            try {
+                // Đọc file foods.json
+                InputStream inputStream = getClass().getResourceAsStream("/foods.json");
+                List<FoodSeed> foodSeeds = objectMapper.readValue(inputStream, new TypeReference<>() {
+                });
+
+                // Duyệt qua danh sách và thêm vào database
+                for (FoodSeed foodSeed : foodSeeds) {
+                    Food food = Food.builder()
+                            .name(foodSeed.getName())
+                            .image(foodSeed.getImage())
+                            .description(foodSeed.getDescription())
+                            .meal(Meal.valueOf(foodSeed.getMeal()))
+                            .cookingMethod(foodSeed.getCookingMethod())
+                            .build();
+                    foodRepo.save(food);
+
+                    Nutrition nutrition = Nutrition.builder()
+                            .food(food)
+                            .calories(foodSeed.getNutrition().getCalories())
+                            .protein(foodSeed.getNutrition().getProtein())
+                            .fat(foodSeed.getNutrition().getFat())
+                            .carb(foodSeed.getNutrition().getCarb())
+                            .fiber(foodSeed.getNutrition().getFiber())
+                            .sugar(foodSeed.getNutrition().getSugar())
+                            .sodium(foodSeed.getNutrition().getSodium())
+                            .cholesterol(foodSeed.getNutrition().getCholesterol())
+                            .build();
+                    nutritionRepo.save(nutrition);
+
+                    foodSeed.getIngredients().forEach(ingredientSeed -> {
+                        Ingredient ingredient = Ingredient.builder()
+                                .food(food)
+                                .ingredientName(ingredientSeed.getName())
+                                .usage(ingredientSeed.getUsage())
+                                .isCore(ingredientSeed.getIsCore())
+                                .build();
+                        ingredientRepo.save(ingredient);
+                    });
+
+                    foodSeed.getSteps().forEach(stepSeed -> {
+                        Step step = Step.builder()
+                                .food(food)
+                                .stepOrder(stepSeed.getOrder())
+                                .description(stepSeed.getDescription())
+                                .image(stepSeed.getImage())
+                                .build();
+                        stepRepo.save(step);
+                    });
+                    foodSeed.getAllergies().forEach(allergyName -> {
+                        FoodAllergy foodAllergy = FoodAllergy.builder()
+                                .food(food)
+                                .allergy(allergyRepo.findByName(allergyName))
+                                .build();
+                        foodAllergyRepo.save(foodAllergy);
+                    });
+                    foodSeed.getDietaries().forEach(dietaryName -> {
+                        FoodDietary foodDietary = FoodDietary.builder()
+                                .food(food)
+                                .dietary(dietaryRepo.findByName(dietaryName))
+                                .build();
+                        foodDietaryRepo.save(foodDietary);
+                    });
+                }
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
         }
     }
 }

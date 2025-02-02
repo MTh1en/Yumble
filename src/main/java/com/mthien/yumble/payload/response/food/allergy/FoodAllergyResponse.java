@@ -12,5 +12,4 @@ import lombok.NoArgsConstructor;
 @Builder
 public class FoodAllergyResponse {
     private AllergyResponse allergy;
-    private String severity;
 }

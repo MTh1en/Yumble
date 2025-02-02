@@ -35,7 +35,7 @@ public class FoodDietaryService {
         foodDietaryRepo.findByFoodAndDietary(food, dietary).ifPresent(existed -> {
             throw new AppException(ErrorCode.FOOD_DIETARY_IS_EXISTED);
         });
-        FoodDietary foodDietary = foodDietaryMapper.createFoodDietary(food, dietary, request.getPriority());
+        FoodDietary foodDietary = foodDietaryMapper.createFoodDietary(food, dietary);
         return foodDietaryMapper.toFoodDietaryDetailResponse(foodDietaryRepo.save(foodDietary));
     }
 
