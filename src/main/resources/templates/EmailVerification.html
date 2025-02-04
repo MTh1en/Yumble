@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác thực tài khoản</title>
+    <style>
+        /* General styles */
+        body.email-body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Email container */
+        table.email-container {
+            width: 600px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        td.email-header {
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        td.email-header.success {
+            background-color: #4CAF50;
+        }
+
+        /* Content */
+        td.email-content {
+            padding: 20px;
+            font-size: 16px;
+            color: #333333;
+        }
+
+        .email-button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        a.email-button {
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        a.email-button.success {
+            background-color: #4CAF50;
+        }
+
+        /* Footer */
+        td.email-footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #555555;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body class="email-body">
+<table class="email-container">
+    <tr>
+        <td class="email-header success">
+            <h2>Xác thực tài khoản của bạn</h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="email-content">
+            <p>Chào <strong th:text="${name}"></strong>,</p>
+            <p>Cảm ơn bạn đã đăng ký tài khoản với chúng tôi! Để hoàn tất quá trình đăng ký, vui lòng nhấn vào nút bên dưới để xác thực tài khoản của bạn:</p>
+            <p class="email-button-container">
+                <a th:href="${url}" class="email-button success">Xác thực tài khoản</a>
+            </p>
+            <p>Nếu bạn không đăng ký tài khoản này, vui lòng bỏ qua email này.</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="email-footer">
+            <p>Trân trọng,<br><strong>YUMBLE</strong></p>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
