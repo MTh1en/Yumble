@@ -3,9 +3,12 @@ package com.mthien.yumble.controller;
 import com.mthien.yumble.payload.request.favorite.AddFavoriteRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.favorite.FavoriteResponse;
+import com.mthien.yumble.payload.response.favorite.UserFavoriteResponse;
 import com.mthien.yumble.service.FavoriteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("users")
@@ -28,6 +31,14 @@ public class FavoriteController {
         favoriteService.deleteFavorite(userId, foodId);
         return ApiResponse.<Void>builder()
                 .message("Đã xóa món ăn khỏi mục yêu thích")
+                .build();
+    }
+
+    @GetMapping("/{userId}/foods")
+    public ApiResponse<List<UserFavoriteResponse>> viewFavoriteByUser(@PathVariable("userId") String userId) {
+        return ApiResponse.<List<UserFavoriteResponse>>builder()
+                .message("Món ăn yêu thích của người dùng")
+                .data(favoriteService.viewFavoriteByUser(userId))
                 .build();
     }
 }

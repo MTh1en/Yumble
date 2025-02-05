@@ -4,6 +4,7 @@ import com.mthien.yumble.entity.Favorite;
 import com.mthien.yumble.entity.Food;
 import com.mthien.yumble.entity.Users;
 import com.mthien.yumble.payload.response.favorite.FavoriteResponse;
+import com.mthien.yumble.payload.response.favorite.UserFavoriteResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,4 +16,6 @@ public interface FavoriteMapper {
     Favorite addFavorite(Users user, Food food);
 
     FavoriteResponse toFavoriteResponse(Favorite favorite);
+
+    UserFavoriteResponse toUserFavoriteResponse(Favorite favorite);
 }

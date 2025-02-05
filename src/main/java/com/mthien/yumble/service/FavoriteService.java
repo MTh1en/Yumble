@@ -8,11 +8,15 @@ import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FavoriteMapper;
 import com.mthien.yumble.payload.request.favorite.AddFavoriteRequest;
 import com.mthien.yumble.payload.response.favorite.FavoriteResponse;
+import com.mthien.yumble.payload.response.favorite.UserFavoriteResponse;
 import com.mthien.yumble.repository.FavoriteRepo;
 import com.mthien.yumble.repository.FoodRepo;
 import com.mthien.yumble.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -42,5 +46,11 @@ public class FavoriteService {
         Favorite favorite = favoriteRepo.findByUserAndFood(user, food)
                 .orElseThrow(() -> new AppException(ErrorCode.FAVORITE_NOT_FOUND));
         favoriteRepo.delete(favorite);
+    }
+
+    public List<UserFavoriteResponse> viewFavoriteByUser(String userId) {
+        Users user = userRepo.findById(userId)
+                .orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
+        return favoriteRepo.findByUser(user).stream().map(favoriteMapper::toUserFavoriteResponse).collect(Collectors.toList());
     }
 }
