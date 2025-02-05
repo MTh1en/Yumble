@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Báo Thanh Toán Thất Bại</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .email-header {
+            background-color: #d9534f;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .email-header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .email-content {
+            padding: 20px;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .email-content p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .email-footer {
+            background-color: #f1f1f1;
+            padding: 15px;
+            text-align: center;
+            color: #777777;
+            font-size: 14px;
+        }
+
+        .button-container {
+            text-align: center; /* Đặt phần tử con (nút) ở giữa */
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #d9534f;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="email-container">
+    <div class="email-header">
+        <h1>Thanh Toán Thất Bại</h1>
+    </div>
+
+    <div class="email-content">
+        <p>Chúng tôi rất tiếc phải thông báo rằng thanh toán của bạn đã không thành công.</p>
+        <p>Lý do có thể là thông tin thanh toán không chính xác hoặc vấn đề từ ngân hàng của bạn. Vui lòng kiểm tra lại
+            thông tin thanh toán và thử lại.</p>
+        <p>Để giúp bạn hoàn thành giao dịch, hãy liên hệ với chúng tôi nếu cần hỗ trợ thêm.</p>
+        <div class="button-container">
+            <a href="javascript:void(0)" class="button" onclick="goBackHomePage();">Quay lại trang chủ</a>
+        </div>
+    </div>
+
+    <div class="email-footer">
+        <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi. Chúng tôi luôn sẵn sàng hỗ trợ bạn!</p>
+    </div>
+</div>
+<script>
+    function goBackHomePage() {
+        window.open("http://localhost:8080/swagger-ui/index.html#/");
+        window.close();
+    }
+</script>
+</body>
+</html>

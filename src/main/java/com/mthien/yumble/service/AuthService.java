@@ -45,6 +45,8 @@ public class AuthService {
     protected long VALID_DURATION;
     @Value("${jwt.refreshableDuration}")
     protected long REFRESHABLE_DURATION;
+    @Value("${app.base-url}")
+    protected String BASE_URL;
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
 
@@ -53,6 +55,7 @@ public class AuthService {
     private final JavaMailSenderImpl mailSender;
     private final InvalidatedTokenRepo invalidatedTokenRepo;
     private final SpringTemplateEngine springTemplateEngine;
+    private final PremiumService premiumService;
 
     public void register(RegisterRequest request) {
         request.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -101,7 +104,7 @@ public class AuthService {
         try {
             Users users = userRepo.findByEmail(email).orElseThrow(() -> new AppException(ErrorCode.EMAIL_NOT_EXISTED));
             if (users.getStatus().equals(UserStatus.UNVERIFIED)) throw new AppException(ErrorCode.ACCOUNT_VERIFIED);
-            String url = "http://localhost:8081/auth/verify?token=" + generateToken(users);
+            String url = BASE_URL + "/auth/verify?token=" + generateToken(users);
             String subject = "Xác thực tài khoản Yumble";
             //Add SpringTemplateEngine vào message của email
             Context context = new Context();
@@ -124,7 +127,7 @@ public class AuthService {
         try {
             Users users = userRepo.findByEmail(email).orElseThrow(() -> new AppException(ErrorCode.EMAIL_NOT_EXISTED));
             if (users.getStatus().equals(UserStatus.UNVERIFIED)) throw new AppException(ErrorCode.ACCOUNT_NOT_VERIFIED);
-            String url = "http://localhost:8081/auth/reset-password?token=" + generateToken(users);
+            String url = BASE_URL + "/auth/reset-password?token=" + generateToken(users);
             String subject = "Quên mật khẩu tài khoản Yumble";
 
             Context context = new Context();
@@ -145,6 +148,7 @@ public class AuthService {
 
     public void verifyAccount(String token) {
         Users users = extractUserInformation(token);
+        premiumService.initPremium(users.getId());
         users.setStatus(UserStatus.VERIFIED);
         userRepo.save(users);
     }

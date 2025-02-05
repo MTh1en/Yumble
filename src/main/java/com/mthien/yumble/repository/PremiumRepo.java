@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface PremiumRepo extends JpaRepository<Premium, String> {
     Optional<Premium> findByUsers(Users users);
+
 }

@@ -1,6 +1,5 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.payload.request.premium.CreatePremiumRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.premium.PremiumResponse;
 import com.mthien.yumble.service.PremiumService;
@@ -14,11 +13,18 @@ public class PremiumController {
     private final PremiumService premiumService;
 
     @PostMapping("/{userId}/premium")
-    public ApiResponse<PremiumResponse> createPremium(@PathVariable("userId") String id,
-                                                      @RequestBody CreatePremiumRequest request) {
+    public ApiResponse<PremiumResponse> initPremium(@PathVariable("userId") String id) {
         return ApiResponse.<PremiumResponse>builder()
-                .message("Bạn đã đăng ký Premium thành công")
-                .data(premiumService.createPremium(id, request))
+                .message("Khởi tạo Premium thành công")
+                .data(premiumService.initPremium(id))
+                .build();
+    }
+
+    @PutMapping("{userId}/premium")
+    public ApiResponse<PremiumResponse> updatePremium(@PathVariable("userId") String id) {
+        return ApiResponse.<PremiumResponse>builder()
+                .message("Cập nhật Premium thành công")
+                .data(premiumService.updatePremium(id))
                 .build();
     }
 

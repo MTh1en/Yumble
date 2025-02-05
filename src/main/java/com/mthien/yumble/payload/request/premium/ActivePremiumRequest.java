@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatePremiumRequest {
+public class ActivePremiumRequest {
+    private String userId;
+
     private Long days;
 }

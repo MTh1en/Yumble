@@ -61,6 +61,9 @@ public enum ErrorCode {
     //FAVORITE
     FAVORITE_IS_EXISTED(1119, "Món ăn đã được thêm vào mục yêu thích", HttpStatus.BAD_REQUEST),
     FAVORITE_NOT_FOUND(1120, "Không tìm thấy món ăn trong mục yêu thích", HttpStatus.NOT_FOUND),
+
+    //PAYMENT
+    PAYMENT_NOT_FOUND(1121, "Không tìm thấy thông tin thanh toán của bạn", HttpStatus.NOT_FOUND),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {

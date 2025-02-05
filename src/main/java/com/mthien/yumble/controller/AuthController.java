@@ -15,13 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.ParseException;
 
-@CrossOrigin
 @RestController
 @RequestMapping("auth")
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
-
 
     @PostMapping("register")
     public ApiResponse<String> register(@Valid @RequestBody RegisterRequest request) {
