@@ -19,6 +19,7 @@ public enum ErrorCode {
     UNAUTHORIZED(1010, "You don't have permission", HttpStatus.UNAUTHORIZED),
     ACCOUNT_VERIFIED(1011, "Tài khoản của bạn đã được xác thực", HttpStatus.BAD_REQUEST),
     INVALID_PASSWORD_FORMAT(1012, "Mật khẩu phải có ít nhất 6 ký tự, bao gồm ít nhất một chữ cái và một số", HttpStatus.BAD_REQUEST),
+
     //FIREBASE
     FILE_NOT_FOUND(1050, "Hình ảnh không tồn tại trên firebase", HttpStatus.NOT_FOUND),
     FILE_UPLOAD_FAILED(1151, "Lỗi khi tải hình ảnh lên firebase", HttpStatus.INTERNAL_SERVER_ERROR),

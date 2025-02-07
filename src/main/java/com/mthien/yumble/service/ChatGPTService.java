@@ -2,13 +2,21 @@ package com.mthien.yumble.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.mthien.yumble.entity.Enum.PremiumStatus;
+import com.mthien.yumble.entity.Premium;
+import com.mthien.yumble.entity.Users;
+import com.mthien.yumble.exception.AppException;
+import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.mapper.FoodMapper;
 import com.mthien.yumble.payload.response.CustomOpenAIResponse;
 import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.repository.FoodRepo;
+import com.mthien.yumble.repository.PremiumRepo;
+import com.mthien.yumble.utils.AccountUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
@@ -27,10 +35,15 @@ public class ChatGPTService {
     private final ChatModel chatModel;
     private final FoodRepo foodRepo;
     private final FoodMapper foodMapper;
+    private final AccountUtils accountUtils;
+    private final PremiumRepo premiumRepo;
 
     public CustomOpenAIResponse chat(String question) {
         String message = generateAIResponse(question);
-        List<FoodResponse> foods = getFoodName(message).stream().map(foodRepo::findByNameIgnoreCase).map(foodMapper::toFoodResponse).toList();
+        List<FoodResponse> foods = getFoodName(message).stream()
+                .map(foodRepo::findByNameIgnoreCase)
+                .filter(Objects::nonNull)
+                .map(foodMapper::toFoodResponse).toList();
         return CustomOpenAIResponse.builder()
                 .message(message)
                 .foods(foods)
@@ -38,6 +51,10 @@ public class ChatGPTService {
     }
 
     public String generateAIResponse(String message) {
+        Users users = accountUtils.getMyInfo();
+        if (!premiumRepo.existsByUsersAndPremiumStatus(users, PremiumStatus.ACTIVE)) {
+            throw new AppException(ErrorCode.PREMIUM_NOT_REGISTERED);
+        }
         String systemMessage = "Bún chả, Gỏi cuốn, Bánh xèo, Bánh mì, Cơm tấm, Bánh cuốn, Chả giò, Cá kho tộ, Bánh khọt, Cao lầu, Bún bò Huế, Mì Quảng, Lẩu mắm, Bánh đa cua, " +
                 "Cháo lươn, Nem chua, Bún thang, Bánh gai, Xôi gấc, Ốc luộc, Phở bò, Phở gà, Hủ tiếu Nam Vang, " +
                 "Bánh bột lọc, Bún riêu cua, Nem lụi, Chả cá Lã Vọng, Gỏi cuốn tôm thịt, Lẩu cá kèo, Cơm cháy chà bông, " +
@@ -64,7 +81,8 @@ public class ChatGPTService {
         Prompt prompt = new Prompt(
                 List.of(
                         new SystemMessage("Bạn là một trợ lý chuyên gia về ẩm thực việt nam. dựa vào tên món ăn tôi cung cấp:" + systemMessage +
-                                "Hãy trả đề xuất món ăn dựa trên những cái tên trên" +
+                                "Hãy trả đề xuất món ăn dựa trên những tên món ăn tôi cung cấp, kết hợp với dữ liệu của bạn, để phân tích yêu cầu" +
+                                "Yêu cầu bắt buộc tên món ăn in đậm, còn lại tất cả thì không" +
                                 "Nếu câu hỏi không liên quan, hãy trả lời 'Hãy liên hệ với bộ phận hỗ trợ để biết thêm thông tin."),
                         new UserMessage(message)
                 )

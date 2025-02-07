@@ -180,7 +180,8 @@ public class AuthService {
                 .issuer("MThien")
                 .issueTime(new Date())
                 .expirationTime(new Date(Instant.now().plus(VALID_DURATION, ChronoUnit.HOURS).toEpochMilli()))
-                .jwtID(UUID.randomUUID().toString())                //Đặt id cho token
+                .jwtID(UUID.randomUUID().toString())//Đặt id cho token
+                .claim("name", users.getName())
                 .claim("scope", users.getRole().toString())   //Claim role của người dùng vào token để phân quyền
                 .build();
         Payload payload = new Payload(jwtClaimsSet.toJSONObject());
