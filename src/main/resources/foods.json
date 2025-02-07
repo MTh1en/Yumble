@@ -660,36 +660,6 @@
     "dietaries": ["Truyền thống Việt", "Giàu protein"]
   },
   {
-    "name": "Bún chả",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bun-cha-Hanoi.JPG/375px-Bun-cha-Hanoi.JPG",
-    "description": "Món ăn với thịt heo nướng thơm lừng, ăn kèm bún tươi và nước mắm chua ngọt.",
-    "meal": "LUNCH_DINNER",
-    "cookingMethod": "Ướp và nướng thịt, pha nước mắm, chuẩn bị bún và rau.",
-    "ingredients": [
-      { "name": "Bún tươi", "usage": 100, "isCore": true },
-      { "name": "Thịt ba chỉ, thịt nạc vai", "usage": 100, "isCore": true },
-      { "name": "Nước mắm, đường, giấm", "usage": -1, "isCore": true },
-      { "name": "Rau sống, tỏi, ớt", "usage": 20, "isCore": false }
-    ],
-    "steps": [
-      { "order": 1, "description": "Ướp thịt với gia vị và nướng trên than hoa.", "image": "https://example.com/bun-cha-step1.jpg" },
-      { "order": 2, "description": "Pha nước chấm chua ngọt.", "image": "https://example.com/bun-cha-step2.jpg" },
-      { "order": 3, "description": "Chuẩn bị bún và rau sống, thưởng thức cùng thịt nướng.", "image": "https://example.com/bun-cha-step3.jpg" }
-    ],
-    "nutrition": {
-      "calories": 520,
-      "protein": 26,
-      "fat": 22,
-      "carb": 60,
-      "fiber": 5,
-      "sugar": 10,
-      "sodium": 2.2,
-      "cholesterol": 0.7
-    },
-    "allergies": ["Gluten", "Hạt cây"],
-    "dietaries": ["Truyền thống Việt", "Giàu protein"]
-  },
-  {
     "name": "Hủ tiếu Nam Vang",
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Hu_Tieu_Nam_Vang.jpg/375px-Hu_Tieu_Nam_Vang.jpg",
     "description": "Món hủ tiếu nổi tiếng tại miền Nam, với nước dùng ngọt thanh từ xương heo, tôm, mực và thịt bằm.",
@@ -1801,37 +1771,6 @@
     },
     "allergies": ["Gluten", "Thịt động vật"],
     "dietaries": ["Truyền thống Việt"]
-  },
-  {
-    "name": "Bún chả Hà Nội",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bun-cha-Hanoi.JPG/375px-Bun-cha-Hanoi.JPG",
-    "description": "Món ăn nổi tiếng với thịt heo nướng ăn kèm bún và nước mắm chua ngọt.",
-    "meal": "LUNCH_DINNER",
-    "cookingMethod": "Ướp thịt, nướng chín, pha nước chấm, chuẩn bị bún và rau.",
-    "ingredients": [
-      { "name": "Bún tươi", "usage": 100, "isCore": true },
-      { "name": "Thịt ba chỉ, thịt nạc vai", "usage": 100, "isCore": true },
-      { "name": "Nước mắm, đường, giấm", "usage": -1, "isCore": true },
-      { "name": "Rau sống, tỏi, ớt", "usage": 20, "isCore": false },
-      { "name": "Đu đủ xanh bào sợi", "usage": 10, "isCore": false }
-    ],
-    "steps": [
-      { "order": 1, "description": "Ướp thịt với gia vị, nướng trên than hoa.", "image": "https://example.com/buncha_step1.jpg" },
-      { "order": 2, "description": "Pha nước mắm chua ngọt, thêm đu đủ xanh.", "image": "https://example.com/buncha_step2.jpg" },
-      { "order": 3, "description": "Bày bún, thịt nướng, rau sống, ăn kèm nước chấm.", "image": "https://example.com/buncha_step3.jpg" }
-    ],
-    "nutrition": {
-      "calories": 500,
-      "protein": 25,
-      "fat": 20,
-      "carb": 60,
-      "fiber": 5,
-      "sugar": 10,
-      "sodium": 2,
-      "cholesterol": 0.7
-    },
-    "allergies": ["Gluten"],
-    "dietaries": ["Truyền thống Việt", "Giàu protein"]
   },
   {
     "name": "Bún thịt nướng",
