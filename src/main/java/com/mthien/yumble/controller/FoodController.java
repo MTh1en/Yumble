@@ -5,9 +5,9 @@ import com.mthien.yumble.payload.request.food.UpdateFoodRequest;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.service.FoodService;
+import com.mthien.yumble.service.SuggestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FoodController {
     private final FoodService foodService;
+    private final SuggestService suggestService;
 
     @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ApiResponse<FoodResponse> create(@ModelAttribute CreateFoodRequest request) {
@@ -68,6 +69,14 @@ public class FoodController {
         foodService.delete(foodId);
         return ApiResponse.<Void>builder()
                 .message("Xóa món ăn thành công")
+                .build();
+    }
+
+    @GetMapping("/suggestion")
+    public ApiResponse<List<FoodResponse>> suggest() {
+        return ApiResponse.<List<FoodResponse>>builder()
+                .message("Dề xuất theo cá nhân")
+                .data(suggestService.suggestFoodByPersonalization())
                 .build();
     }
 }

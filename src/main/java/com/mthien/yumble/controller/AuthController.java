@@ -116,7 +116,7 @@ public class AuthController {
 
     //REFRESH TOKEN
     @PostMapping("/refresh")
-    public ApiResponse<AuthResponse> refresh(@RequestBody RefreshRequest request) throws ParseException, JOSEException {
+    public ApiResponse<AuthResponse> refresh(@RequestBody RefreshRequest request) throws ParseException {
         return ApiResponse.<AuthResponse>builder()
                 .message("Bạn đã refresh token thành công")
                 .data(authService.refreshToken(request))

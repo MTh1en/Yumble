@@ -6,7 +6,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -44,11 +45,11 @@ public class Food {
     @JsonManagedReference
     private Set<Ingredient> ingredients;
 
-    @OneToMany(mappedBy = "food")
+    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<FoodAllergy> foodAllergies;
 
-    @OneToMany(mappedBy = "food")
+    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<FoodDietary> foodDietaries;
 

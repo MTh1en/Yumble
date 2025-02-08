@@ -35,7 +35,7 @@ public class PremiumService {
         return premiumMapper.toPremiumResponse(premiumRepo.save(premium));
     }
 
-    public PremiumResponse updatePremium(String userId) {
+    public PremiumResponse activePremium(String userId) {
         Users users = userRepo.findById(userId)
                 .orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
         Premium premium = premiumRepo.findByUsers(users).orElseThrow(() -> new AppException(ErrorCode.PREMIUM_NOT_REGISTERED));

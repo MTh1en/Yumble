@@ -21,10 +21,10 @@ public class PremiumController {
     }
 
     @PutMapping("{userId}/premium")
-    public ApiResponse<PremiumResponse> updatePremium(@PathVariable("userId") String id) {
+    public ApiResponse<PremiumResponse> activePremium(@PathVariable("userId") String id) {
         return ApiResponse.<PremiumResponse>builder()
                 .message("Cập nhật Premium thành công")
-                .data(premiumService.updatePremium(id))
+                .data(premiumService.activePremium(id))
                 .build();
     }
 

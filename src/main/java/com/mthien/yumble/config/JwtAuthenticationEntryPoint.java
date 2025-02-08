@@ -3,7 +3,6 @@ package com.mthien.yumble.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.payload.response.ApiResponse;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,7 @@ import java.io.IOException;
 //vì unauthorized request bắt ngay trên filter nên không thể dùng Exception Handler
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
         ErrorCode errorCode = ErrorCode.UNAUTHENTICATED;
 
         response.setStatus(HttpStatus.UNAUTHORIZED.value());

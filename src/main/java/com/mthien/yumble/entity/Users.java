@@ -8,7 +8,8 @@ import lombok.*;
 
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -44,14 +45,14 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
-    @OneToOne(mappedBy = "users")
+    @OneToOne(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private Premium premium;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<UserAllergy> userAllergies;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<UserDietary> userDietaries;
 

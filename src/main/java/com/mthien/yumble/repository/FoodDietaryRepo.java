@@ -12,4 +12,6 @@ public interface FoodDietaryRepo extends JpaRepository<FoodDietary, String> {
     Optional<FoodDietary> findByFoodAndDietary(Food food, Dietary dietary);
 
     List<FoodDietary> findByFood(Food food);
+
+    List<FoodDietary> findByDietary(Dietary dietary);
 }

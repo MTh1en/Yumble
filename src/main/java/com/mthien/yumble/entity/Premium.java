@@ -3,15 +3,13 @@ package com.mthien.yumble.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mthien.yumble.entity.Enum.PremiumStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +19,7 @@ public class Premium {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Users users;
 

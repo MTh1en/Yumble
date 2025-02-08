@@ -44,13 +44,13 @@ public class PayOSController {
 
     @GetMapping("/success/{userId}")
     public ModelAndView paymentSuccess(@PathVariable("userId") String userId) {
-        premiumService.updatePremium(userId);
+        premiumService.activePremium(userId);
         return new ModelAndView("PaymentSuccess");
     }
 
     @GetMapping("/fail/{userId}")
     public ModelAndView paymentFail(@PathVariable("userId") String userId) {
-        premiumService.updatePremium(userId);
+        premiumService.activePremium(userId);
         return new ModelAndView("PaymentFail");
     }
 }

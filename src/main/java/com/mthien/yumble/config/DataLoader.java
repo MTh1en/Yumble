@@ -6,6 +6,7 @@ import com.mthien.yumble.dataseed.AllergyDietarySeed;
 import com.mthien.yumble.dataseed.FoodSeed;
 import com.mthien.yumble.entity.*;
 import com.mthien.yumble.entity.Enum.Meal;
+import com.mthien.yumble.entity.Enum.PremiumStatus;
 import com.mthien.yumble.entity.Enum.Role;
 import com.mthien.yumble.entity.Enum.UserStatus;
 import com.mthien.yumble.repository.*;
@@ -18,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,30 +38,12 @@ public class DataLoader implements ApplicationRunner {
     private final FoodAllergyRepo foodAllergyRepo;
     private final FoodDietaryRepo foodDietaryRepo;
     private final ObjectMapper objectMapper;
+    private final UserAllergyRepo userAllergyRepo;
+    private final UserDietaryRepo userDietaryRepo;
+    private final PremiumRepo premiumRepo;
 
     @Override
     public void run(ApplicationArguments args) {
-        //USER
-        if (userRepo.count() == 0) {
-            Users user1 = Users.builder()
-                    .id(UUID.randomUUID().toString())
-                    .name("Nguyen Yang")
-                    .email("dstnmtxii@gmail.com")
-                    .password(passwordEncoder.encode("tnmt12122003mt"))
-                    .role(Role.CUSTOMER)
-                    .status(UserStatus.VERIFIED)
-                    .build();
-            Users user2 = Users.builder()
-                    .id(UUID.randomUUID().toString())
-                    .name("Minh Thien")
-                    .email("mt121222003@gmail.com")
-                    .password(passwordEncoder.encode("tnmt12122003mt"))
-                    .role(Role.ADMIN)
-                    .status(UserStatus.VERIFIED)
-                    .build();
-            userRepo.save(user1);
-            userRepo.save(user2);
-        }
         if (allergyRepo.count() == 0) {
             try {
                 InputStream inputStream = getClass().getResourceAsStream("/allergies.json");
@@ -161,6 +145,44 @@ public class DataLoader implements ApplicationRunner {
                 }
             } catch (Exception e) {
                 log.error(e.getMessage());
+            }
+
+            if (userRepo.count() == 0) {
+                Users customer = Users.builder()
+                        .id(UUID.randomUUID().toString())
+                        .name("Nguyen Yang")
+                        .email("dstnmtxii@gmail.com")
+                        .password(passwordEncoder.encode("12345678"))
+                        .role(Role.CUSTOMER)
+                        .status(UserStatus.VERIFIED)
+                        .build();
+                userRepo.save(customer);
+                UserAllergy userAllergy = UserAllergy.builder()
+                        .user(userRepo.findByName("Nguyen Yang").get())
+                        .allergy(allergyRepo.findByName("Tôm"))
+                        .build();
+                userAllergyRepo.save(userAllergy);
+                UserDietary userDietary = UserDietary.builder()
+                        .user(userRepo.findByName("Nguyen Yang").get())
+                        .dietary(dietaryRepo.findByName("Giàu protein"))
+                        .build();
+                userDietaryRepo.save(userDietary);
+                Users admin = Users.builder()
+                        .id(UUID.randomUUID().toString())
+                        .name("Minh Thien")
+                        .email("mt12122003@gmail.com")
+                        .password(passwordEncoder.encode("12345678"))
+                        .role(Role.ADMIN)
+                        .status(UserStatus.VERIFIED)
+                        .build();
+                userRepo.save(admin);
+                Premium premium = Premium.builder()
+                        .users(userRepo.findByEmail("mt12122003@gmail.com").get())
+                        .start(LocalDateTime.now())
+                        .end(LocalDateTime.now().plusYears(3))
+                        .premiumStatus(PremiumStatus.ACTIVE)
+                        .build();
+                premiumRepo.save(premium);
             }
         }
     }
