@@ -43,7 +43,7 @@ public class UserService {
         return userMapper.toUserResponse(userRepo.save(users));
 
     }
-    @PostAuthorize("returnObject.name == authentication.name")
+    @PostAuthorize("returnObject.id == authentication.name")
     public UserResponse viewProfile(String id) {
         Users users = userRepo.findById(id).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
         String avatar = Optional.ofNullable(users.getAvatar())

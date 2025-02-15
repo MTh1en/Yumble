@@ -32,7 +32,7 @@ public class PayOSService {
     protected String API_KEY;
     @Value("${payos.checksumKey}")
     protected String CHECK_SUM_KEY;
-    @Value("${app.base-url}")
+    @Value("${app.base.url}")
     protected String BASE_URL;
     @Value("${jwt.signerKey}")
     protected String SIGNER_KEY;

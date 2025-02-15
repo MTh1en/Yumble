@@ -45,7 +45,7 @@ public class AuthService {
     protected long VALID_DURATION;
     @Value("${jwt.refreshableDuration}")
     protected long REFRESHABLE_DURATION;
-    @Value("${app.base-url}")
+    @Value("${app.base.url}")
     protected String BASE_URL;
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
@@ -67,6 +67,7 @@ public class AuthService {
     }
 
     public AuthResponse login(LoginRequest request) {
+        log.info("SIGNER_KEY {}", SIGNER_KEY);
         Users users = userRepo.findByEmail(request.getEmail()).orElseThrow(() -> new AppException(ErrorCode.EMAIL_NOT_EXISTED));
         if (users.getStatus().equals(UserStatus.UNVERIFIED)) {
             throw new AppException(ErrorCode.ACCOUNT_NOT_VERIFIED);
@@ -103,7 +104,7 @@ public class AuthService {
     public void sendVerificationEmail(String email) {
         try {
             Users users = userRepo.findByEmail(email).orElseThrow(() -> new AppException(ErrorCode.EMAIL_NOT_EXISTED));
-            if (users.getStatus().equals(UserStatus.UNVERIFIED)) throw new AppException(ErrorCode.ACCOUNT_VERIFIED);
+            if (users.getStatus().equals(UserStatus.VERIFIED)) throw new AppException(ErrorCode.ACCOUNT_VERIFIED);
             String url = BASE_URL + "/auth/verify?token=" + generateToken(users);
             String subject = "Xác thực tài khoản Yumble";
             //Add SpringTemplateEngine vào message của email

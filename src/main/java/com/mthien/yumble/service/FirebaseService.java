@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 @Slf4j
 public class FirebaseService {
-    @Value("${firebase.bucket-name}")
+    @Value("${firebase.bucket.name}")
     protected String firebaseBucketName;
 
     private final Storage storage;
