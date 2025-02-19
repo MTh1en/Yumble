@@ -12,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Food {
+public class Food{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

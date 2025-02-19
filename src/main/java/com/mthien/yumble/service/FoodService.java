@@ -11,6 +11,7 @@ import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.repository.*;
 import com.mthien.yumble.utils.AccountUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -49,6 +50,7 @@ public class FoodService {
     }
 
     public List<FoodResponse> viewAll() {
+        System.out.println("Fetching data from SQL Server...");
         return foodRepo.findAll().stream().map(food1 -> {
             String image = Optional.ofNullable(food1.getImage())
                     .filter(imageUrl -> imageUrl.contains("food"))

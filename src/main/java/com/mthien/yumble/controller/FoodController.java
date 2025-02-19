@@ -7,6 +7,8 @@ import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.service.FoodService;
 import com.mthien.yumble.service.SuggestService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +31,7 @@ public class FoodController {
                 .build();
     }
 
+    @CacheEvict(value = "foods", allEntries = true)
     @PatchMapping("{foodId}")
     public ApiResponse<FoodResponse> update(@PathVariable("foodId") String foodId,
                                             @RequestBody UpdateFoodRequest request) {
@@ -39,6 +42,7 @@ public class FoodController {
                 .build();
     }
 
+    @CacheEvict(value = "foods", allEntries = true)
     @PatchMapping(value = "/{foodId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ApiResponse<FoodResponse> uploadImage(@PathVariable("foodId") String foodId,
                                                  @RequestParam("image") MultipartFile image) {
@@ -56,6 +60,7 @@ public class FoodController {
                 .build();
     }
 
+    @CacheEvict(value = "foods", allEntries = true)
     @GetMapping()
     public ApiResponse<List<FoodResponse>> viewAll() {
         return ApiResponse.<List<FoodResponse>>builder()
@@ -64,6 +69,7 @@ public class FoodController {
                 .build();
     }
 
+    @CacheEvict(value = "foods", allEntries = true)
     @DeleteMapping("/{foodId}")
     public ApiResponse<Void> delete(@PathVariable("foodId") String foodId) {
         foodService.delete(foodId);
@@ -72,6 +78,7 @@ public class FoodController {
                 .build();
     }
 
+    @Cacheable(value = "foods", key = "'suggestion'")
     @GetMapping("/suggestion")
     public ApiResponse<List<FoodResponse>> suggest() {
         return ApiResponse.<List<FoodResponse>>builder()

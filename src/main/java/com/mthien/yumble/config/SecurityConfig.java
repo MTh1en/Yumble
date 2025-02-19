@@ -25,6 +25,7 @@ public class SecurityConfig {
             "payos/**",
             "/swagger-ui/**",
             "/v3/api-docs/**",
+            "/**"
     };
 
     private final CustomJwtDecoder customJwtDecoder;
@@ -34,7 +35,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(request ->
                 request.requestMatchers(PUBLIC_ENDPOINTS).permitAll()
-                        .requestMatchers(HttpMethod.GET, "foods").permitAll()
+                        .requestMatchers(HttpMethod.GET, "foods/**").permitAll()
                         .anyRequest().authenticated());
 
         httpSecurity.oauth2ResourceServer(oauth2 ->

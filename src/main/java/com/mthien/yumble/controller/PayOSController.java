@@ -1,6 +1,5 @@
 package com.mthien.yumble.controller;
 
-import com.mthien.yumble.payload.request.auth.IntrospectRequest;
 import com.mthien.yumble.payload.request.payos.CreatePaymentLink;
 import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.service.PayOSService;
@@ -10,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import vn.payos.type.CheckoutResponseData;
 import vn.payos.type.PaymentLinkData;
+import vn.payos.type.Webhook;
+import vn.payos.type.WebhookData;
 
 @RestController
 @RequestMapping("payos")
@@ -34,11 +35,23 @@ public class PayOSController {
                 .build();
     }
 
-    @PostMapping("test")
-    public ApiResponse<String> test(@RequestBody IntrospectRequest request) throws Exception {
+    @PostMapping("/handle-webhook")
+    public ApiResponse<String> handleWebHook(@RequestBody Webhook webhookBody) throws Exception {
+        WebhookData webhookData = payOSService.verifyWebhookData(webhookBody);
         return ApiResponse.<String>builder()
-                .message("test")
-                .data(payOSService.confirmWebhook(request))
+                .message("Handle Webhook thành công")
+                .data("Webhook verified: " + webhookData.getOrderCode())
+                .build();
+
+    }
+
+    @PostMapping("/register")
+    public ApiResponse<String> registerWebhookUrl(@RequestBody String webhookUrl) throws Exception {
+        // URL webhook của bạn
+        String result = payOSService.confirmWebhookUrl(webhookUrl);
+        return ApiResponse.<String>builder()
+                .message("Đăng ký webhook thành công")
+                .data("Webhook URL registered successfully: " + result)
                 .build();
     }
 

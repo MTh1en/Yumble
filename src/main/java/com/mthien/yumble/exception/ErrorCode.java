@@ -65,6 +65,7 @@ public enum ErrorCode {
 
     //PAYMENT
     PAYMENT_NOT_FOUND(1121, "Không tìm thấy thông tin thanh toán của bạn", HttpStatus.NOT_FOUND),
+    WEBHOOK_ERROR(1122, "Lỗi WebHook", HttpStatus.BAD_REQUEST),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {

@@ -5,7 +5,6 @@ import com.mthien.yumble.entity.Payment;
 import com.mthien.yumble.entity.Users;
 import com.mthien.yumble.exception.AppException;
 import com.mthien.yumble.exception.ErrorCode;
-import com.mthien.yumble.payload.request.auth.IntrospectRequest;
 import com.mthien.yumble.payload.request.payos.CreatePaymentLink;
 import com.mthien.yumble.repository.PaymentRepo;
 import com.mthien.yumble.repository.PremiumRepo;
@@ -14,10 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import vn.payos.PayOS;
-import vn.payos.type.CheckoutResponseData;
-import vn.payos.type.ItemData;
-import vn.payos.type.PaymentData;
-import vn.payos.type.PaymentLinkData;
+import vn.payos.type.*;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
@@ -82,9 +78,13 @@ public class PayOSService {
         }
     }
 
-    public String confirmWebhook(IntrospectRequest request) throws Exception {
+    public WebhookData verifyWebhookData(Webhook webhookBody) throws Exception {
         PayOS payOS = new PayOS(CLIENT_ID, API_KEY, CHECK_SUM_KEY);
-        return payOS.confirmWebhook(request.getToken());
+        return payOS.verifyPaymentWebhookData(webhookBody);
     }
 
+    public String confirmWebhookUrl(String webhookUrl) throws Exception {
+        PayOS payOS = new PayOS(CLIENT_ID, API_KEY, CHECK_SUM_KEY);
+        return payOS.confirmWebhook(webhookUrl); // Kiểm tra tính hợp lệ của URL webhook
+    }
 }
