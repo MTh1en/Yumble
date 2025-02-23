@@ -38,6 +38,7 @@ public class PayOSController {
     @PostMapping("/handle-webhook")
     public ApiResponse<String> handleWebHook(@RequestBody Webhook webhookBody) throws Exception {
         WebhookData webhookData = payOSService.verifyWebhookData(webhookBody);
+        payOSService.updateWebHookPayment(webhookData);
         return ApiResponse.<String>builder()
                 .message("Handle Webhook thành công")
                 .data("Webhook verified: " + webhookData.getOrderCode())
@@ -47,7 +48,6 @@ public class PayOSController {
 
     @PostMapping("/register")
     public ApiResponse<String> registerWebhookUrl(@RequestBody String webhookUrl) throws Exception {
-        // URL webhook của bạn
         String result = payOSService.confirmWebhookUrl(webhookUrl);
         return ApiResponse.<String>builder()
                 .message("Đăng ký webhook thành công")
@@ -55,15 +55,14 @@ public class PayOSController {
                 .build();
     }
 
-    @GetMapping("/success/{userId}")
-    public ModelAndView paymentSuccess(@PathVariable("userId") String userId) {
-        premiumService.activePremium(userId);
+    @GetMapping("/success")
+    public ModelAndView paymentSuccess() {
         return new ModelAndView("PaymentSuccess");
     }
 
-    @GetMapping("/fail/{userId}")
-    public ModelAndView paymentFail(@PathVariable("userId") String userId) {
-        premiumService.activePremium(userId);
+    @GetMapping("/fail/{orderCode}")
+    public ModelAndView paymentFail(@PathVariable("orderCode") long orderCode) {
+        payOSService.cancelPayment(orderCode);
         return new ModelAndView("PaymentFail");
     }
 }

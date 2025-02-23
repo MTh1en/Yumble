@@ -9,8 +9,6 @@ import java.util.Optional;
 
 public interface PremiumRepo extends JpaRepository<Premium, String> {
     Optional<Premium> findByUsers(Users users);
-
-    Optional<Premium> findByUsersAndPremiumStatus(Users users, PremiumStatus premiumStatus);
-
+    
     boolean existsByUsersAndPremiumStatus(Users users, PremiumStatus premiumStatus);
 }

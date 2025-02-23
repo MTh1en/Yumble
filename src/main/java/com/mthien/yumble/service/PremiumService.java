@@ -23,7 +23,6 @@ public class PremiumService {
     private final PremiumRepo premiumRepo;
     private final PremiumMapper premiumMapper;
     private final UserRepo userRepo;
-    private final PaymentService paymentService;
 
     public PremiumResponse initPremium(String userId) {
         Users users = userRepo.findById(userId)
@@ -32,25 +31,6 @@ public class PremiumService {
                 .users(users)
                 .premiumStatus(PremiumStatus.INACTIVE)
                 .build();
-        return premiumMapper.toPremiumResponse(premiumRepo.save(premium));
-    }
-
-    public PremiumResponse activePremium(String userId) {
-        Users users = userRepo.findById(userId)
-                .orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
-        Premium premium = premiumRepo.findByUsers(users).orElseThrow(() -> new AppException(ErrorCode.PREMIUM_NOT_REGISTERED));
-        Payment payment = paymentService.checkPaymentStatus(premium.getId());
-        if (!Objects.isNull(payment)) {
-            if (payment.getAmount() == 59000) {
-                premium.setStart(payment.getTime());
-                premium.setEnd(payment.getTime().plusMonths(1));
-            } else if (payment.getAmount() == 599000) {
-                premium.setStart(payment.getTime());
-                premium.setEnd(payment.getTime().plusYears(1));
-            }
-            premium.setPremiumStatus(PremiumStatus.ACTIVE);
-            calculateRemaining(userId);
-        }
         return premiumMapper.toPremiumResponse(premiumRepo.save(premium));
     }
 
@@ -70,7 +50,9 @@ public class PremiumService {
     public PremiumResponse viewPremium(String userId) {
         Users users = userRepo.findById(userId).orElseThrow(() -> new AppException(ErrorCode.ACCOUNT_NOT_FOUND));
         Premium premium = premiumRepo.findByUsers(users).orElseThrow(() -> new AppException(ErrorCode.PREMIUM_NOT_REGISTERED));
-        calculateRemaining(userId);
+        if(premium.getStart() != null && premium.getEnd() != null ) {
+            calculateRemaining(userId);
+        }
         return premiumMapper.toPremiumResponse(premium);
     }
 }

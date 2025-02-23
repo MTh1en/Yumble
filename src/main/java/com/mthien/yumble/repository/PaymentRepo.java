@@ -12,4 +12,6 @@ public interface PaymentRepo extends JpaRepository<Payment, String> {
     Optional<Payment> findByPremiumAndStatusOrderByTimeDesc(Premium premium, PaymentStatus paymentStatus);
 
     List<Payment> findByPremiumAndStatus(Premium premium, PaymentStatus status);
+
+    Optional<Payment> findByCode(Long code);
 }

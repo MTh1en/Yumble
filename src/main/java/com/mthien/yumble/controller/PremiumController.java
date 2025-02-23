@@ -20,14 +20,6 @@ public class PremiumController {
                 .build();
     }
 
-    @PutMapping("{userId}/premium")
-    public ApiResponse<PremiumResponse> activePremium(@PathVariable("userId") String id) {
-        return ApiResponse.<PremiumResponse>builder()
-                .message("Cập nhật Premium thành công")
-                .data(premiumService.activePremium(id))
-                .build();
-    }
-
     @GetMapping("/{userId}/premium/remaining")
     public ApiResponse<PremiumResponse> calculateRemaining(@PathVariable("userId") String userId) {
         return ApiResponse.<PremiumResponse>builder()

@@ -60,7 +60,7 @@ public class FoodController {
                 .build();
     }
 
-    @CacheEvict(value = "foods", allEntries = true)
+    @Cacheable(value = "foods", key = "'viewAllFoods'")
     @GetMapping()
     public ApiResponse<List<FoodResponse>> viewAll() {
         return ApiResponse.<List<FoodResponse>>builder()

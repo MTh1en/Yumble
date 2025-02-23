@@ -6,6 +6,7 @@ import com.mthien.yumble.payload.response.user.dietary.UserDietaryDetailResponse
 import com.mthien.yumble.payload.response.user.dietary.UserDietaryResponse;
 import com.mthien.yumble.service.UserDietaryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class UserDietaryController {
     private final UserDietaryService userDietaryService;
 
+    @CacheEvict(value = "foods", key = "'suggestion'")
     @PostMapping("/{userId}/dietaries")
     public ApiResponse<UserDietaryDetailResponse> addUserDietary(@PathVariable("userId") String userId,
                                                                  @RequestBody AddUserDietaryRequest request) {
@@ -25,6 +27,7 @@ public class UserDietaryController {
                 .build();
     }
 
+    @CacheEvict(value = "foods", key = "'suggestion'")
     @DeleteMapping("/{userId}/dietaries/{dietaryId}")
     public ApiResponse<Void> deleteUserDietary(@PathVariable("userId") String userId,
                                                @PathVariable("dietaryId") String dietaryId) {

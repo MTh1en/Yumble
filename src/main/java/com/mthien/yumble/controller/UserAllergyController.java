@@ -6,6 +6,8 @@ import com.mthien.yumble.payload.response.user.allergy.UserAllergyDetailResponse
 import com.mthien.yumble.payload.response.user.allergy.UserAllergyResponse;
 import com.mthien.yumble.service.UserAllergyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 public class UserAllergyController {
     private final UserAllergyService userAllergyService;
 
+    @CacheEvict(value = "foods", key = "'suggestion'")
     @PostMapping("/{userId}/allergies")
     public ApiResponse<UserAllergyDetailResponse> addUserAllergy(@PathVariable("userId") String userId,
                                                                  @RequestBody AddUserAllergyRequest request) {
@@ -25,6 +28,7 @@ public class UserAllergyController {
                 .build();
     }
 
+    @CacheEvict(value = "foods", key = "'suggestion'")
     @DeleteMapping("/{userId}/allergies/{allergyId}")
     public ApiResponse<Void> deleteUserAllergy(@PathVariable("userId") String userId,
                                                @PathVariable("allergyId") String allergyId) {
