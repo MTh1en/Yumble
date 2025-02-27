@@ -17,6 +17,7 @@ import java.util.List;
 public class UserDietaryController {
     private final UserDietaryService userDietaryService;
 
+    @CacheEvict(value = "foods", allEntries = true)
     @PostMapping("/{userId}/dietaries")
     public ApiResponse<UserDietaryDetailResponse> addUserDietary(@PathVariable("userId") String userId,
                                                                  @RequestBody AddUserDietaryRequest request) {
@@ -26,6 +27,7 @@ public class UserDietaryController {
                 .build();
     }
 
+    @CacheEvict(value = "foods", allEntries = true)
     @DeleteMapping("/{userId}/dietaries/{dietaryId}")
     public ApiResponse<Void> deleteUserDietary(@PathVariable("userId") String userId,
                                                @PathVariable("dietaryId") String dietaryId) {

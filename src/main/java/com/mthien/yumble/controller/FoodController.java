@@ -7,7 +7,6 @@ import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.service.FoodService;
 import com.mthien.yumble.service.SuggestService;
 import com.mthien.yumble.utils.AccountUtils;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
