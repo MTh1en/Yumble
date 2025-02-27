@@ -12,6 +12,9 @@ import com.mthien.yumble.repository.*;
 import com.mthien.yumble.utils.AccountUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,7 +29,6 @@ public class FoodService {
     private final FoodRepo foodRepo;
     private final FoodMapper foodMapper;
     private final FirebaseService firebaseService;
-    private final AccountUtils accountUtils;
 
     public FoodResponse create(CreateFoodRequest request) {
         Food food = foodMapper.createFood(request);
@@ -49,9 +51,10 @@ public class FoodService {
         return foodMapper.toFoodResponse(food, image);
     }
 
-    public List<FoodResponse> viewAll() {
-        System.out.println("Fetching data from SQL Server...");
-        return foodRepo.findAll().stream().map(food1 -> {
+    public List<FoodResponse> viewAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Food> foodPage = foodRepo.findAll(pageable);
+        return foodPage.getContent().stream().map(food1 -> {
             String image = Optional.ofNullable(food1.getImage())
                     .filter(imageUrl -> imageUrl.contains("food"))
                     .map(firebaseService::getImageUrl)

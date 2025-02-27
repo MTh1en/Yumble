@@ -6,6 +6,8 @@ import com.mthien.yumble.payload.response.ApiResponse;
 import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.service.FoodService;
 import com.mthien.yumble.service.SuggestService;
+import com.mthien.yumble.utils.AccountUtils;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -22,6 +24,7 @@ import java.util.List;
 public class FoodController {
     private final FoodService foodService;
     private final SuggestService suggestService;
+    public final AccountUtils accountUtils;
 
     @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ApiResponse<FoodResponse> create(@ModelAttribute CreateFoodRequest request) {
@@ -60,12 +63,12 @@ public class FoodController {
                 .build();
     }
 
-    @Cacheable(value = "foods", key = "'viewAllFoods'")
     @GetMapping()
-    public ApiResponse<List<FoodResponse>> viewAll() {
+    public ApiResponse<List<FoodResponse>> viewAll( @RequestParam(defaultValue = "0") int page,
+                                                    @RequestParam(defaultValue = "10") int size) {
         return ApiResponse.<List<FoodResponse>>builder()
                 .message("thông tin cơ bản món ăn")
-                .data(foodService.viewAll())
+                .data(foodService.viewAll(page, size))
                 .build();
     }
 
@@ -78,6 +81,7 @@ public class FoodController {
                 .build();
     }
 
+    @Cacheable(value = "foods", key = "root.target.accountUtils.getMyInfo().getId()")
     @GetMapping("/suggestion")
     public ApiResponse<List<FoodResponse>> suggest() {
         return ApiResponse.<List<FoodResponse>>builder()
