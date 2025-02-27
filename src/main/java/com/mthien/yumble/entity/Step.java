@@ -20,7 +20,7 @@ public class Step {
     @Column(name = "step_order", nullable = false)
     private Integer stepOrder;
 
-    @Column(name = "description", nullable = false, columnDefinition = "NVARCHAR(255)")
+    @Column(name = "description", nullable = false, columnDefinition = "NVARCHAR(MAX)")
     private String description;
 
     @Column(name = "image")

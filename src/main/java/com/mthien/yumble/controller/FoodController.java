@@ -78,7 +78,6 @@ public class FoodController {
                 .build();
     }
 
-    @Cacheable(value = "foods", key = "'suggestion'")
     @GetMapping("/suggestion")
     public ApiResponse<List<FoodResponse>> suggest() {
         return ApiResponse.<List<FoodResponse>>builder()

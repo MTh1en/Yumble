@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Data
@@ -15,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Dietary {
+public class Dietary implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

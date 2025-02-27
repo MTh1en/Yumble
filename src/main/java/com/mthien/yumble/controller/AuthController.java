@@ -52,7 +52,7 @@ public class AuthController {
             authService.verifyAccount(token);
             authService.revokeToken(token);
             return new ModelAndView("VerifySuccess");
-        } catch (AppException e) {
+        } catch (Exception e) {
             return new ModelAndView("VerifyFail");
         }
     }

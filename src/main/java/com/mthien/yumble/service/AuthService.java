@@ -87,7 +87,7 @@ public class AuthService {
 
     public void resetPassword(String token, String newPassword, String confirmPassword) {
         Users users = extractUserInformation(token);
-        String passwordPattern = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$";
+        String passwordPattern = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
         if (newPassword == null || !newPassword.matches(passwordPattern)) {
             throw new AppException(ErrorCode.INVALID_PASSWORD_FORMAT); // Tạo mã lỗi phù hợp
         }

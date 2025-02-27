@@ -19,8 +19,8 @@ public class LoginRequest {
 
     @NotBlank(message = "Mật khẩu không thể bỏ trống")
     @Pattern(
-            regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$",
-            message = "Mật khẩu phải có ít nhất 6 ký tự, có ít nhất 1 số, có ít nhất 1 chữ cái"
+            regexp = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$",
+            message = "Mật khẩu phải chứa ít nhất 8 ký tự, ít nhất 1 số, 1 chữ thường, 1 chữ hoa và 1 ký tự đặc biệt"
     )
     private String password;
 }

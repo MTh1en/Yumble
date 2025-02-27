@@ -12,4 +12,5 @@ public interface UserAllergyRepo extends JpaRepository<UserAllergy, String> {
     Optional<UserAllergy> findByUserAndAllergy(Users user, Allergy allergy);
 
     List<UserAllergy> findByUser(Users user);
+
 }

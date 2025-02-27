@@ -117,7 +117,12 @@ public class PayOSService {
         }
     }
 
-    public void cancelPayment(long orderCode) {
+    public PaymentLinkData cancelPayOS(long orderCode) throws Exception {
+        PayOS payOS = new PayOS(CLIENT_ID, API_KEY, CHECK_SUM_KEY);
+        return payOS.cancelPaymentLink(orderCode, "Hủy đơn hàng");
+    }
+
+    public void cancelPayment(long orderCode){
         Payment payment = paymentRepo.findByCode(orderCode)
                 .orElseThrow(() -> new AppException(ErrorCode.PAYMENT_NOT_FOUND));
         payment.setStatus(PaymentStatus.FAIL);

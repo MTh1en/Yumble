@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Data
@@ -14,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Allergy {
+public class Allergy implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

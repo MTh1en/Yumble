@@ -89,12 +89,12 @@
 <div class="container">
     <h1><i class="fas fa-times-circle"></i>Xác thực không thành công</h1>
     <p>Rất tiếc! Có lỗi xảy ra trong quá trình xác thực tài khoản của bạn. Vui lòng thử lại sau hoặc liên hệ với hỗ trợ khách hàng.</p>
-    <a href="javascript:void(0)" class="btn" onclick="sendVerificationEmailAndRedirect();">Gửi lại email xác thực</a>
+    <a href="javascript:void(0)" class="btn" onclick="sendVerificationEmailAndRedirect();">Quay lại trang chủ</a>
 </div>
 
 <script>
     function sendVerificationEmailAndRedirect() {
-        window.open("http://localhost:8080/swagger-ui/index.html#/");
+        window.open("https://yumble.vercel.app/");
         window.close();
     }
 </script>

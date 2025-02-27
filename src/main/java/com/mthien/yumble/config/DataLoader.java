@@ -152,7 +152,7 @@ public class DataLoader implements ApplicationRunner {
                         .id(UUID.randomUUID().toString())
                         .name("Nguyen Yang")
                         .email("dstnmtxii@gmail.com")
-                        .password(passwordEncoder.encode("tnmt12122003mt"))
+                        .password(passwordEncoder.encode("Tnmt12122003mt:)"))
                         .role(Role.CUSTOMER)
                         .status(UserStatus.VERIFIED)
                         .build();
@@ -171,7 +171,7 @@ public class DataLoader implements ApplicationRunner {
                         .id(UUID.randomUUID().toString())
                         .name("Minh Thien")
                         .email("mt12122003@gmail.com")
-                        .password(passwordEncoder.encode("tnmt12122003mt"))
+                        .password(passwordEncoder.encode("Tnmt12122003mt:)"))
                         .role(Role.ADMIN)
                         .status(UserStatus.VERIFIED)
                         .build();

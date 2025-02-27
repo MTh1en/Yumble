@@ -31,15 +31,7 @@ public class SuggestService {
         List<Dietary> userDietaries = userDietaryRepo.findByUser(user).stream()
                 .map(UserDietary::getDietary)
                 .toList();
-        List<Food> recommendedFoods = foodRepo.findAll().stream()
-                .filter(food -> userAllergies.isEmpty() || food.getFoodAllergies().stream()
-                        .noneMatch(foodAllergy -> userAllergies.contains(foodAllergy.getAllergy()))
-                )
-                .filter(food -> userDietaries.isEmpty() || food.getFoodDietaries().stream()
-                        .anyMatch(foodDietary -> userDietaries.contains(foodDietary.getDietary()))
-                )
-                .toList();
-
+        List<Food> recommendedFoods = foodRepo.findRecommendedFoods(userAllergies, userDietaries);
         return recommendedFoods.stream().map(food -> {
             String image = Optional.ofNullable(food.getImage())
                     .filter(imageUrl -> imageUrl.contains("food"))

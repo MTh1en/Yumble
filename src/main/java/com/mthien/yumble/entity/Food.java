@@ -23,7 +23,7 @@ public class Food{
     @Column(name = "name", columnDefinition = "NVARCHAR(255)")
     private String name;
 
-    @Column(name = "description", columnDefinition = "NVARCHAR(255)")
+    @Column(name = "description", columnDefinition = "NVARCHAR(MAX)")
     private String description;
 
     @Column(name = "meal")

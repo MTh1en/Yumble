@@ -32,40 +32,16 @@
     "description": "Phản ứng với protein trong cá, khác với dị ứng hải sản."
   },
   {
-    "name": "Trái cây",
-    "description": "Phản ứng với các protein trong trái cây, thường liên quan đến hội chứng dị ứng phấn hoa."
-  },
-  {
     "name": "Mè",
     "description": "Phản ứng với protein trong hạt mè, đang ngày càng phổ biến."
-  },
-  {
-    "name": "Bắp",
-    "description": "Phản ứng với protein trong ngô, ít phổ biến hơn nhưng vẫn gặp ở một số người."
-  },
-  {
-    "name": "Phẩm màu thực phẩm",
-    "description": "Phản ứng với các chất phụ gia hoặc phẩm màu nhân tạo trong thực phẩm."
-  },
-  {
-    "name": "Chất bảo quản",
-    "description": "Phản ứng với các chất bảo quản thực phẩm."
   },
   {
     "name": "Thịt động vật",
     "description": "Phản ứng với protein trong thịt đỏ hoặc thịt gia cầm, liên quan đến dị ứng alpha-gal."
   },
   {
-    "name": "Sữa ong chúa",
-    "description": "Phản ứng với mật ong hoặc sữa ong chúa, thường gây ngứa, sưng môi, và phát ban."
-  },
-  {
     "name": "Thảo mộc",
     "description": "Phản ứng với thảo mộc, cơ thể giải phóng histamin và các chất hóa học khác, gây ra các triệu chứng dị ứng."
-  },
-  {
-    "name": "Nước mắm",
-    "description": "Nước mắm theo cách hiểu thông thường là chắt phần nước rỉ được từ cá, tôm và xác động vật nhuyễn thể khác được ướp muối lâu ngày."
   },
   {
     "name": "Mắm ruốc",
@@ -94,5 +70,9 @@
   {
     "name": "Mắm cá",
     "description": "phản ứng của hệ thống miễn dịch đối với các protein có trong dừa"
+  },
+  {
+    "name": "Ốc",
+    "description": "phản ứng của hệ thống miễn dịch đối với các chất có trong ốc"
   }
 ]
