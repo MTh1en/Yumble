@@ -7,6 +7,7 @@ import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.service.FoodService;
 import com.mthien.yumble.service.SuggestService;
 import com.mthien.yumble.utils.AccountUtils;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -23,6 +24,7 @@ import java.util.List;
 public class FoodController {
     private final FoodService foodService;
     private final SuggestService suggestService;
+    @Getter
     public final AccountUtils accountUtils;
 
     @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -63,8 +65,8 @@ public class FoodController {
     }
 
     @GetMapping()
-    public ApiResponse<List<FoodResponse>> viewAll( @RequestParam(defaultValue = "0") int page,
-                                                    @RequestParam(defaultValue = "10") int size) {
+    public ApiResponse<List<FoodResponse>> viewAll(@RequestParam(defaultValue = "0") int page,
+                                                   @RequestParam(defaultValue = "10") int size) {
         return ApiResponse.<List<FoodResponse>>builder()
                 .message("thông tin cơ bản món ăn")
                 .data(foodService.viewAll(page, size))
@@ -80,12 +82,12 @@ public class FoodController {
                 .build();
     }
 
-    @Cacheable(value = "foods", key = "root.target.accountUtils.getMyInfo().getId()")
     @GetMapping("/suggestion")
-    public ApiResponse<List<FoodResponse>> suggest() {
+    public ApiResponse<List<FoodResponse>> suggest(@RequestParam(defaultValue = "0") int page,
+                                                   @RequestParam(defaultValue = "10") int size) {
         return ApiResponse.<List<FoodResponse>>builder()
                 .message("Dề xuất theo cá nhân")
-                .data(suggestService.suggestFoodByPersonalization())
+                .data(suggestService.suggestFoodByPersonalization(page, size))
                 .build();
     }
 }

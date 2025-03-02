@@ -6,6 +6,9 @@ import com.mthien.yumble.payload.response.food.FoodResponse;
 import com.mthien.yumble.repository.*;
 import com.mthien.yumble.utils.AccountUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +26,9 @@ public class SuggestService {
     private final AccountUtils accountUtils;
     private final FirebaseService firebaseService;
 
-    public List<FoodResponse> suggestFoodByPersonalization() {
+    public List<FoodResponse> suggestFoodByPersonalization(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Food> recommendedFoods = foodRepo.findAll(pageable);
         Users user = accountUtils.getMyInfo();
         List<Allergy> userAllergies = userAllergyRepo.findByUser(user).stream()
                 .map(UserAllergy::getAllergy)
@@ -31,8 +36,10 @@ public class SuggestService {
         List<Dietary> userDietaries = userDietaryRepo.findByUser(user).stream()
                 .map(UserDietary::getDietary)
                 .toList();
-        List<Food> recommendedFoods = foodRepo.findRecommendedFoods(userAllergies, userDietaries);
-        return recommendedFoods.stream().map(food -> {
+        if (!userAllergies.isEmpty() && !userDietaries.isEmpty()) {
+            recommendedFoods = foodRepo.findRecommendedFoods(userAllergies, userDietaries, pageable);
+        }
+        return recommendedFoods.getContent().stream().map(food -> {
             String image = Optional.ofNullable(food.getImage())
                     .filter(imageUrl -> imageUrl.contains("food"))
                     .map(firebaseService::getImageUrl)
