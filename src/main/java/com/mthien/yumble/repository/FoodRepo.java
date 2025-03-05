@@ -15,15 +15,19 @@ public interface FoodRepo extends JpaRepository<Food, String> {
     Food findByNameIgnoreCase(String name);
 
     @Query("""
-        SELECT DISTINCT f FROM Food f 
-        LEFT JOIN f.foodAllergies fa 
-        LEFT JOIN f.foodDietaries fd
-        WHERE (:userAllergies IS NULL OR fa.allergy NOT IN :userAllergies)
-        AND (:userDietaries IS NULL OR fd.dietary IN :userDietaries)
-    """)
-    Page <Food> findRecommendedFoods(
-            @Param("userAllergies") List<Allergy> userAllergies,
-            @Param("userDietaries") List<Dietary> userDietaries,
+    SELECT DISTINCT f FROM Food f
+    LEFT JOIN f.foodAllergies fa
+    LEFT JOIN f.foodDietaries fd
+    WHERE (:userAllergyIds IS NULL OR NOT EXISTS (
+        SELECT 1 FROM f.foodAllergies fa2 WHERE fa2.allergy.id IN :userAllergyIds
+    ))
+    AND (:userDietaryIds IS NULL OR EXISTS (
+        SELECT 1 FROM f.foodDietaries fd2 WHERE fd2.dietary.id IN :userDietaryIds
+    ))
+""")
+    Page<Food> findRecommendedFoods(
+            @Param("userAllergyIds") List<String> userAllergyIds,
+            @Param("userDietaryIds") List<String> userDietaryIds,
             Pageable pageable
     );
 }

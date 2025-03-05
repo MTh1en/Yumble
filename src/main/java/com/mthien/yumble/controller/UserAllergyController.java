@@ -18,7 +18,6 @@ import java.util.List;
 public class UserAllergyController {
     private final UserAllergyService userAllergyService;
 
-    @CacheEvict(value = "foods", allEntries = true)
     @PostMapping("/{userId}/allergies")
     public ApiResponse<UserAllergyDetailResponse> addUserAllergy(@PathVariable("userId") String userId,
                                                                  @RequestBody AddUserAllergyRequest request) {
@@ -28,7 +27,6 @@ public class UserAllergyController {
                 .build();
     }
 
-    @CacheEvict(value = "foods", allEntries = true)
     @DeleteMapping("/{userId}/allergies/{allergyId}")
     public ApiResponse<Void> deleteUserAllergy(@PathVariable("userId") String userId,
                                                @PathVariable("allergyId") String allergyId) {

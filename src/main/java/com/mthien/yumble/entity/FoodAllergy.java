@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(indexes = {
+        @Index(name = "idx_food_allergy_composite", columnList = "food_id, allergy_id")
+})
 public class FoodAllergy {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

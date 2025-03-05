@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(indexes = {
+        @Index(name = "idx_food_dietary_composite", columnList = "food_id, dietary_id")
+})
 public class FoodDietary {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

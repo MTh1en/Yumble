@@ -28,18 +28,23 @@ public class SuggestService {
 
     public List<FoodResponse> suggestFoodByPersonalization(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<Food> recommendedFoods = foodRepo.findAll(pageable);
         Users user = accountUtils.getMyInfo();
-        List<Allergy> userAllergies = userAllergyRepo.findByUser(user).stream()
+        List<String> userAllergies = userAllergyRepo.findByUser(user).stream()
                 .map(UserAllergy::getAllergy)
+                .map(Allergy::getId)
                 .toList();
-        List<Dietary> userDietaries = userDietaryRepo.findByUser(user).stream()
+        List<String> userDietaries = userDietaryRepo.findByUser(user).stream()
                 .map(UserDietary::getDietary)
+                .map(Dietary::getId)
                 .toList();
-        if (!userAllergies.isEmpty() && !userDietaries.isEmpty()) {
-            recommendedFoods = foodRepo.findRecommendedFoods(userAllergies, userDietaries, pageable);
+        Page<Food> recommendedFoods;
+        if (userAllergies.isEmpty() && userDietaries.isEmpty()) {
+            recommendedFoods = foodRepo.findAll(pageable);
+        } else {
+            recommendedFoods = foodRepo.findRecommendedFoods(userAllergies.isEmpty() ? null : userAllergies,
+                    userDietaries.isEmpty() ? null : userDietaries, pageable);
         }
-        return recommendedFoods.getContent().stream().map(food -> {
+        return recommendedFoods.stream().map(food -> {
             String image = Optional.ofNullable(food.getImage())
                     .filter(imageUrl -> imageUrl.contains("food"))
                     .map(firebaseService::getImageUrl)
