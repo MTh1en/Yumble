@@ -12,6 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(indexes = {@Index(name = "idx_name", columnList = "name")})
 public class Food{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

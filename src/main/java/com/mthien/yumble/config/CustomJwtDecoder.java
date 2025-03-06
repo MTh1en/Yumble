@@ -5,6 +5,7 @@ import com.mthien.yumble.service.AuthService;
 import com.nimbusds.jose.JOSEException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -32,10 +33,10 @@ public class CustomJwtDecoder implements JwtDecoder {
                     .token(token)
                     .build());
             if (!response.getIsValid()) {
-                throw new JwtException("invalid token");
+                throw new BadCredentialsException("Invalid or expired token");
             }
         } catch (JOSEException | ParseException e) {
-            throw new JwtException(e.getMessage());
+            throw new BadCredentialsException("Error parsing token: " + e.getMessage());
         }
         if (Objects.isNull(nimbusJwtDecoder)) {
             SecretKeySpec secretKeySpec = new SecretKeySpec(signerKey.getBytes(), "HS512");

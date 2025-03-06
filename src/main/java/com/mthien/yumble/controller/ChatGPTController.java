@@ -21,5 +21,4 @@ public class ChatGPTController {
                 .data(chatGPTService.chat(question))
                 .build();
     }
-
 }

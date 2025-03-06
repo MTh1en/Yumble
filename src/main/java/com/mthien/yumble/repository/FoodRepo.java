@@ -30,4 +30,7 @@ public interface FoodRepo extends JpaRepository<Food, String> {
             @Param("userDietaryIds") List<String> userDietaryIds,
             Pageable pageable
     );
+
+    @Query("SELECT DISTINCT f.name FROM Food f")
+    List<String> findFoodNameForAI();
 }

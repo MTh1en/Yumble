@@ -8,6 +8,7 @@ import com.mthien.yumble.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -57,6 +58,7 @@ public class UserController {
     }
 
     //ADMIN
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping()
     public ApiResponse<List<UserResponse>> viewAll() {
         return ApiResponse.<List<UserResponse>>builder()

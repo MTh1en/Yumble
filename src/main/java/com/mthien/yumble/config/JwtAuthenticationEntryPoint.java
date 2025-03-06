@@ -1,6 +1,7 @@
 package com.mthien.yumble.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.mthien.yumble.exception.ErrorCode;
 import com.mthien.yumble.payload.response.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 //Config response trả về của unauthorized request
 //vì unauthorized request bắt ngay trên filter nên không thể dùng Exception Handler
@@ -28,7 +30,6 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
                 .build();
 
         ObjectMapper objectMapper = new ObjectMapper();
-
         response.getWriter().write(objectMapper.writeValueAsString(apiResponse));
         response.flushBuffer();
     }
