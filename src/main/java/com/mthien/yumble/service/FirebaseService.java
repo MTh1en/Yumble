@@ -38,7 +38,8 @@ public class FirebaseService {
 
     public String getImageUrl(String baseImageUrl) {
         URL signedUrl = storage.signUrl(
-                BlobInfo.newBuilder(BlobId.of(firebaseBucketName, baseImageUrl)).build(),
+                BlobInfo.newBuilder(BlobId.of(firebaseBucketName, baseImageUrl))
+                        .setContentType("model/gltf-binary").build(),
                 1, TimeUnit.HOURS,
                 Storage.SignUrlOption.withV4Signature());
         return signedUrl.toString();

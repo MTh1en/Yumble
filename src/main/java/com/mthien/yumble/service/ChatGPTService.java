@@ -23,7 +23,11 @@ import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.image.ImageModel;
+import org.springframework.ai.image.ImagePrompt;
+import org.springframework.ai.image.ImageResponse;
 import org.springframework.ai.openai.OpenAiChatOptions;
+import org.springframework.ai.openai.OpenAiImageOptions;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +42,19 @@ public class ChatGPTService {
     private final FoodMapper foodMapper;
     private final AccountUtils accountUtils;
     private final PremiumRepo premiumRepo;
+    private final ImageModel imageModel;
+
+    public ImageResponse generatedImage(String question) {
+        return imageModel.call(
+                new ImagePrompt(question,
+                        OpenAiImageOptions.builder()
+                                .model("dall-e-2")
+                                .quality("hd")
+                                .N(1)
+                                .height(512)
+                                .width(512).build())
+        );
+    }
 
     public CustomOpenAIResponse chat(String question) {
         String message = generateAIResponse(question);
@@ -53,7 +70,7 @@ public class ChatGPTService {
 
     public String generateAIResponse(String message) {
         Users users = accountUtils.getMyInfo();
-        if(users == null){
+        if (users == null) {
             throw new AppException(ErrorCode.UNAUTHENTICATED);
         }
         if (!premiumRepo.existsByUsersAndPremiumStatus(users, PremiumStatus.ACTIVE)) {
